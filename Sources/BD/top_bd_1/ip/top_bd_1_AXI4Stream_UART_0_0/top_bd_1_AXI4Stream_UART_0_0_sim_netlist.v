@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Fri May 15 18:28:48 2020
-// Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_AXI4Stream_UART_0_0/top_bd_1_AXI4Stream_UART_0_0_sim_netlist.v
+// Date        : Sat May 16 00:48:33 2020
+// Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim -rename_top top_bd_1_AXI4Stream_UART_0_0 -prefix
+//               top_bd_1_AXI4Stream_UART_0_0_ top_bd_1_AXI4Stream_UART_0_0_sim_netlist.v
 // Design      : top_bd_1_AXI4Stream_UART_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,76 +12,8 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "top_bd_1_AXI4Stream_UART_0_0,AXI4Stream_UART_v1_0,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "AXI4Stream_UART_v1_0,Vivado 2019.2" *) 
-(* NotValidForBitStream *)
-module top_bd_1_AXI4Stream_UART_0_0
-   (clk_uart,
-    rst,
-    UART_TX,
-    UART_RX,
-    m00_axis_rx_aclk,
-    m00_axis_rx_aresetn,
-    m00_axis_rx_tvalid,
-    m00_axis_rx_tdata,
-    m00_axis_rx_tready,
-    s00_axis_tx_aclk,
-    s00_axis_tx_aresetn,
-    s00_axis_tx_tready,
-    s00_axis_tx_tdata,
-    s00_axis_tx_tvalid);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 ClockUART CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME ClockUART, ASSOCIATED_BUSIF UART, ASSOCIATED_RESET rst, FREQ_HZ 96000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk_uart;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input rst;
-  (* x_interface_info = "xilinx.com:interface:uart:1.0 UART TxD" *) (* x_interface_parameter = "XIL_INTERFACENAME UART, BOARD.ASSOCIATED_PARAM UART_BOARD_INTERFACE" *) output UART_TX;
-  (* x_interface_info = "xilinx.com:interface:uart:1.0 UART RxD" *) input UART_RX;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 M00_AXIS_RX_CLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME M00_AXIS_RX_CLK, ASSOCIATED_BUSIF M00_AXIS_RX, ASSOCIATED_RESET m00_axis_rx_aresetn, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input m00_axis_rx_aclk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 M00_AXIS_RX_RST RST" *) (* x_interface_parameter = "XIL_INTERFACENAME M00_AXIS_RX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input m00_axis_rx_aresetn;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 M00_AXIS_RX TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME M00_AXIS_RX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *) output m00_axis_rx_tvalid;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 M00_AXIS_RX TDATA" *) output [7:0]m00_axis_rx_tdata;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 M00_AXIS_RX TREADY" *) input m00_axis_rx_tready;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 S00_AXIS_TX_CLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME S00_AXIS_TX_CLK, ASSOCIATED_BUSIF S00_AXIS_TX, ASSOCIATED_RESET s00_axis_tx_aresetn, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input s00_axis_tx_aclk;
-  (* x_interface_info = "xilinx.com:signal:reset:1.0 S00_AXIS_TX_RST RST" *) (* x_interface_parameter = "XIL_INTERFACENAME S00_AXIS_TX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input s00_axis_tx_aresetn;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 S00_AXIS_TX TREADY" *) (* x_interface_parameter = "XIL_INTERFACENAME S00_AXIS_TX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *) output s00_axis_tx_tready;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 S00_AXIS_TX TDATA" *) input [7:0]s00_axis_tx_tdata;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 S00_AXIS_TX TVALID" *) input s00_axis_tx_tvalid;
-
-  wire UART_RX;
-  wire UART_TX;
-  wire clk_uart;
-  wire m00_axis_rx_aclk;
-  wire m00_axis_rx_aresetn;
-  wire [7:0]m00_axis_rx_tdata;
-  wire m00_axis_rx_tready;
-  wire m00_axis_rx_tvalid;
-  wire rst;
-  wire s00_axis_tx_aclk;
-  wire s00_axis_tx_aresetn;
-  wire [7:0]s00_axis_tx_tdata;
-  wire s00_axis_tx_tready;
-  wire s00_axis_tx_tvalid;
-
-  (* C_M00_AXIS_RX_TDATA_WIDTH = "8" *) 
-  (* C_S00_AXIS_TX_TDATA_WIDTH = "8" *) 
-  (* UART_BAUD_RATE = "2000000" *) 
-  (* UART_CLOCK_FREQUENCY = "96000000" *) 
-  top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 U0
-       (.UART_RX(UART_RX),
-        .UART_TX(UART_TX),
-        .clk_uart(clk_uart),
-        .m00_axis_rx_aclk(m00_axis_rx_aclk),
-        .m00_axis_rx_aresetn(m00_axis_rx_aresetn),
-        .m00_axis_rx_tdata(m00_axis_rx_tdata),
-        .m00_axis_rx_tready(m00_axis_rx_tready),
-        .m00_axis_rx_tvalid(m00_axis_rx_tvalid),
-        .rst(rst),
-        .s00_axis_tx_aclk(s00_axis_tx_aclk),
-        .s00_axis_tx_aresetn(s00_axis_tx_aresetn),
-        .s00_axis_tx_tdata(s00_axis_tx_tdata),
-        .s00_axis_tx_tready(s00_axis_tx_tready),
-        .s00_axis_tx_tvalid(s00_axis_tx_tvalid));
-endmodule
-
-(* C_M00_AXIS_RX_TDATA_WIDTH = "8" *) (* C_S00_AXIS_TX_TDATA_WIDTH = "8" *) (* ORIG_REF_NAME = "AXI4Stream_UART_v1_0" *) 
-(* UART_BAUD_RATE = "2000000" *) (* UART_CLOCK_FREQUENCY = "96000000" *) 
+(* C_M00_AXIS_RX_TDATA_WIDTH = "8" *) (* C_S00_AXIS_TX_TDATA_WIDTH = "8" *) (* UART_BAUD_RATE = "2000000" *) 
+(* UART_CLOCK_FREQUENCY = "95983935" *) 
 module top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0
    (clk_uart,
     rst,
@@ -319,7 +251,6 @@ module top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0
         .O(s00_axis_tx_tready));
 endmodule
 
-(* ORIG_REF_NAME = "UART_Engine" *) 
 module top_bd_1_AXI4Stream_UART_0_0_UART_Engine
    (E,
     UART_TX,
@@ -1323,7 +1254,6 @@ module top_bd_1_AXI4Stream_UART_0_0_UART_Engine
         .R(rst));
 endmodule
 
-(* ORIG_REF_NAME = "UART_Manager" *) 
 module top_bd_1_AXI4Stream_UART_0_0_UART_Manager
    (wr_en,
     UART_TX,
@@ -1609,10 +1539,77 @@ module top_bd_1_AXI4Stream_UART_0_0_UART_Manager
         .Q(data_stream_in_stb_reg_n_0));
 endmodule
 
-(* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "1" *) (* ORIG_REF_NAME = "xpm_cdc_gray" *) 
-(* REG_OUTPUT = "0" *) (* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) 
-(* VERSION = "0" *) (* WIDTH = "11" *) (* XPM_MODULE = "TRUE" *) 
-(* xpm_cdc = "GRAY" *) 
+(* CHECK_LICENSE_TYPE = "top_bd_1_AXI4Stream_UART_0_0,AXI4Stream_UART_v1_0,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "AXI4Stream_UART_v1_0,Vivado 2019.2" *) 
+(* NotValidForBitStream *)
+module top_bd_1_AXI4Stream_UART_0_0
+   (clk_uart,
+    rst,
+    UART_TX,
+    UART_RX,
+    m00_axis_rx_aclk,
+    m00_axis_rx_aresetn,
+    m00_axis_rx_tvalid,
+    m00_axis_rx_tdata,
+    m00_axis_rx_tready,
+    s00_axis_tx_aclk,
+    s00_axis_tx_aresetn,
+    s00_axis_tx_tready,
+    s00_axis_tx_tdata,
+    s00_axis_tx_tvalid);
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 ClockUART CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME ClockUART, ASSOCIATED_BUSIF UART, ASSOCIATED_RESET rst, FREQ_HZ 95983935, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input clk_uart;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input rst;
+  (* x_interface_info = "xilinx.com:interface:uart:1.0 UART TxD" *) (* x_interface_parameter = "XIL_INTERFACENAME UART, BOARD.ASSOCIATED_PARAM UART_BOARD_INTERFACE" *) output UART_TX;
+  (* x_interface_info = "xilinx.com:interface:uart:1.0 UART RxD" *) input UART_RX;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 M00_AXIS_RX_CLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME M00_AXIS_RX_CLK, ASSOCIATED_BUSIF M00_AXIS_RX, ASSOCIATED_RESET m00_axis_rx_aresetn, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input m00_axis_rx_aclk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 M00_AXIS_RX_RST RST" *) (* x_interface_parameter = "XIL_INTERFACENAME M00_AXIS_RX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input m00_axis_rx_aresetn;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 M00_AXIS_RX TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME M00_AXIS_RX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *) output m00_axis_rx_tvalid;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 M00_AXIS_RX TDATA" *) output [7:0]m00_axis_rx_tdata;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 M00_AXIS_RX TREADY" *) input m00_axis_rx_tready;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 S00_AXIS_TX_CLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME S00_AXIS_TX_CLK, ASSOCIATED_BUSIF S00_AXIS_TX, ASSOCIATED_RESET s00_axis_tx_aresetn, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0" *) input s00_axis_tx_aclk;
+  (* x_interface_info = "xilinx.com:signal:reset:1.0 S00_AXIS_TX_RST RST" *) (* x_interface_parameter = "XIL_INTERFACENAME S00_AXIS_TX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input s00_axis_tx_aresetn;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 S00_AXIS_TX TREADY" *) (* x_interface_parameter = "XIL_INTERFACENAME S00_AXIS_TX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0" *) output s00_axis_tx_tready;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 S00_AXIS_TX TDATA" *) input [7:0]s00_axis_tx_tdata;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 S00_AXIS_TX TVALID" *) input s00_axis_tx_tvalid;
+
+  wire UART_RX;
+  wire UART_TX;
+  wire clk_uart;
+  wire m00_axis_rx_aclk;
+  wire m00_axis_rx_aresetn;
+  wire [7:0]m00_axis_rx_tdata;
+  wire m00_axis_rx_tready;
+  wire m00_axis_rx_tvalid;
+  wire rst;
+  wire s00_axis_tx_aclk;
+  wire s00_axis_tx_aresetn;
+  wire [7:0]s00_axis_tx_tdata;
+  wire s00_axis_tx_tready;
+  wire s00_axis_tx_tvalid;
+
+  (* C_M00_AXIS_RX_TDATA_WIDTH = "8" *) 
+  (* C_S00_AXIS_TX_TDATA_WIDTH = "8" *) 
+  (* UART_BAUD_RATE = "2000000" *) 
+  (* UART_CLOCK_FREQUENCY = "95983935" *) 
+  top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 U0
+       (.UART_RX(UART_RX),
+        .UART_TX(UART_TX),
+        .clk_uart(clk_uart),
+        .m00_axis_rx_aclk(m00_axis_rx_aclk),
+        .m00_axis_rx_aresetn(m00_axis_rx_aresetn),
+        .m00_axis_rx_tdata(m00_axis_rx_tdata),
+        .m00_axis_rx_tready(m00_axis_rx_tready),
+        .m00_axis_rx_tvalid(m00_axis_rx_tvalid),
+        .rst(rst),
+        .s00_axis_tx_aclk(s00_axis_tx_aclk),
+        .s00_axis_tx_aresetn(s00_axis_tx_aresetn),
+        .s00_axis_tx_tdata(s00_axis_tx_tdata),
+        .s00_axis_tx_tready(s00_axis_tx_tready),
+        .s00_axis_tx_tvalid(s00_axis_tx_tvalid));
+endmodule
+
+(* DEST_SYNC_FF = "2" *) (* INIT_SYNC_FF = "1" *) (* REG_OUTPUT = "0" *) 
+(* SIM_ASSERT_CHK = "0" *) (* SIM_LOSSLESS_GRAY_CHK = "0" *) (* VERSION = "0" *) 
+(* WIDTH = "11" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "GRAY" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_gray
    (src_clk,
     src_in_bin,
@@ -5718,8 +5715,8 @@ module top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_gray__parameterized1__2
 endmodule
 
 (* DEF_VAL = "1'b0" *) (* DEST_SYNC_FF = "2" *) (* INIT = "0" *) 
-(* INIT_SYNC_FF = "1" *) (* ORIG_REF_NAME = "xpm_cdc_sync_rst" *) (* SIM_ASSERT_CHK = "0" *) 
-(* VERSION = "0" *) (* XPM_MODULE = "TRUE" *) (* xpm_cdc = "SYNC_RST" *) 
+(* INIT_SYNC_FF = "1" *) (* SIM_ASSERT_CHK = "0" *) (* VERSION = "0" *) 
+(* XPM_MODULE = "TRUE" *) (* xpm_cdc = "SYNC_RST" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_sync_rst
    (src_rst,
     dest_clk,
@@ -5877,7 +5874,6 @@ module top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_sync_rst__6
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_counter_updn" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_counter_updn
    (Q,
     S,
@@ -8266,12 +8262,12 @@ endmodule
 (* CASCADE_HEIGHT = "0" *) (* CDC_SYNC_STAGES = "2" *) (* DOUT_RESET_VALUE = "0" *) 
 (* ECC_MODE = "no_ecc" *) (* EN_ADV_FEATURE_ASYNC = "16'b0000100000001000" *) (* FIFO_MEMORY_TYPE = "block" *) 
 (* FIFO_READ_LATENCY = "0" *) (* FIFO_WRITE_DEPTH = "2048" *) (* FULL_RESET_VALUE = "0" *) 
-(* ORIG_REF_NAME = "xpm_fifo_async" *) (* PROG_EMPTY_THRESH = "10" *) (* PROG_FULL_THRESH = "10" *) 
-(* P_COMMON_CLOCK = "0" *) (* P_ECC_MODE = "0" *) (* P_FIFO_MEMORY_TYPE = "2" *) 
-(* P_READ_MODE = "1" *) (* P_WAKEUP_TIME = "2" *) (* RD_DATA_COUNT_WIDTH = "1" *) 
-(* READ_DATA_WIDTH = "8" *) (* READ_MODE = "fwft" *) (* RELATED_CLOCKS = "0" *) 
-(* SIM_ASSERT_CHK = "0" *) (* USE_ADV_FEATURES = "0808" *) (* WAKEUP_TIME = "0" *) 
-(* WRITE_DATA_WIDTH = "8" *) (* WR_DATA_COUNT_WIDTH = "1" *) (* XPM_MODULE = "TRUE" *) 
+(* PROG_EMPTY_THRESH = "10" *) (* PROG_FULL_THRESH = "10" *) (* P_COMMON_CLOCK = "0" *) 
+(* P_ECC_MODE = "0" *) (* P_FIFO_MEMORY_TYPE = "2" *) (* P_READ_MODE = "1" *) 
+(* P_WAKEUP_TIME = "2" *) (* RD_DATA_COUNT_WIDTH = "1" *) (* READ_DATA_WIDTH = "8" *) 
+(* READ_MODE = "fwft" *) (* RELATED_CLOCKS = "0" *) (* SIM_ASSERT_CHK = "0" *) 
+(* USE_ADV_FEATURES = "0808" *) (* WAKEUP_TIME = "0" *) (* WRITE_DATA_WIDTH = "8" *) 
+(* WR_DATA_COUNT_WIDTH = "1" *) (* XPM_MODULE = "TRUE" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_async
    (sleep,
     rst,
@@ -8655,19 +8651,18 @@ endmodule
 (* EN_WACK = "1'b0" *) (* EN_WDC = "1'b0" *) (* FG_EQ_ASYM_DOUT = "1'b0" *) 
 (* FIFO_MEMORY_TYPE = "2" *) (* FIFO_MEM_TYPE = "2" *) (* FIFO_READ_DEPTH = "2048" *) 
 (* FIFO_READ_LATENCY = "0" *) (* FIFO_SIZE = "16384" *) (* FIFO_WRITE_DEPTH = "2048" *) 
-(* FULL_RESET_VALUE = "0" *) (* FULL_RST_VAL = "1'b0" *) (* ORIG_REF_NAME = "xpm_fifo_base" *) 
-(* PE_THRESH_ADJ = "8" *) (* PE_THRESH_MAX = "2043" *) (* PE_THRESH_MIN = "5" *) 
-(* PF_THRESH_ADJ = "8" *) (* PF_THRESH_MAX = "2043" *) (* PF_THRESH_MIN = "7" *) 
-(* PROG_EMPTY_THRESH = "10" *) (* PROG_FULL_THRESH = "10" *) (* RD_DATA_COUNT_WIDTH = "1" *) 
-(* RD_DC_WIDTH_EXT = "12" *) (* RD_LATENCY = "2" *) (* RD_MODE = "1" *) 
-(* RD_PNTR_WIDTH = "11" *) (* READ_DATA_WIDTH = "8" *) (* READ_MODE = "1" *) 
-(* RELATED_CLOCKS = "0" *) (* REMOVE_WR_RD_PROT_LOGIC = "0" *) (* SIM_ASSERT_CHK = "0" *) 
-(* USE_ADV_FEATURES = "0808" *) (* VERSION = "0" *) (* WAKEUP_TIME = "0" *) 
-(* WIDTH_RATIO = "1" *) (* WRITE_DATA_WIDTH = "8" *) (* WR_DATA_COUNT_WIDTH = "1" *) 
-(* WR_DC_WIDTH_EXT = "12" *) (* WR_DEPTH_LOG = "11" *) (* WR_PNTR_WIDTH = "11" *) 
-(* WR_RD_RATIO = "0" *) (* WR_WIDTH_LOG = "3" *) (* XPM_MODULE = "TRUE" *) 
-(* both_stages_valid = "3" *) (* invalid = "0" *) (* stage1_valid = "2" *) 
-(* stage2_valid = "1" *) 
+(* FULL_RESET_VALUE = "0" *) (* FULL_RST_VAL = "1'b0" *) (* PE_THRESH_ADJ = "8" *) 
+(* PE_THRESH_MAX = "2043" *) (* PE_THRESH_MIN = "5" *) (* PF_THRESH_ADJ = "8" *) 
+(* PF_THRESH_MAX = "2043" *) (* PF_THRESH_MIN = "7" *) (* PROG_EMPTY_THRESH = "10" *) 
+(* PROG_FULL_THRESH = "10" *) (* RD_DATA_COUNT_WIDTH = "1" *) (* RD_DC_WIDTH_EXT = "12" *) 
+(* RD_LATENCY = "2" *) (* RD_MODE = "1" *) (* RD_PNTR_WIDTH = "11" *) 
+(* READ_DATA_WIDTH = "8" *) (* READ_MODE = "1" *) (* RELATED_CLOCKS = "0" *) 
+(* REMOVE_WR_RD_PROT_LOGIC = "0" *) (* SIM_ASSERT_CHK = "0" *) (* USE_ADV_FEATURES = "0808" *) 
+(* VERSION = "0" *) (* WAKEUP_TIME = "0" *) (* WIDTH_RATIO = "1" *) 
+(* WRITE_DATA_WIDTH = "8" *) (* WR_DATA_COUNT_WIDTH = "1" *) (* WR_DC_WIDTH_EXT = "12" *) 
+(* WR_DEPTH_LOG = "11" *) (* WR_PNTR_WIDTH = "11" *) (* WR_RD_RATIO = "0" *) 
+(* WR_WIDTH_LOG = "3" *) (* XPM_MODULE = "TRUE" *) (* both_stages_valid = "3" *) 
+(* invalid = "0" *) (* stage1_valid = "2" *) (* stage2_valid = "1" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_base
    (sleep,
     rst,
@@ -9777,7 +9772,6 @@ module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_base__xdcDup__1
         .wrst_busy(wrst_busy));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_fifo_reg_bit" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_bit
    (rst_d1,
     rst_0,
@@ -9981,7 +9975,6 @@ module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_bit_9
         .O(d_out_reg_0));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_fifo_reg_vec" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_vec
    (\gen_pf_ic_rc.gaf_ic.ram_afull_i_reg ,
     ram_full_i0,
@@ -11123,7 +11116,6 @@ module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_vec_5
         .R(\reg_out_i_reg[0]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "xpm_fifo_rst" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_rst
    (\gen_rst_ic.fifo_rd_rst_ic_reg_0 ,
     wrst_busy,
@@ -11870,24 +11862,23 @@ endmodule
 (* CLOCKING_MODE = "1" *) (* ECC_MODE = "0" *) (* MAX_NUM_CHAR = "0" *) 
 (* MEMORY_INIT_FILE = "none" *) (* MEMORY_INIT_PARAM = "" *) (* MEMORY_OPTIMIZATION = "true" *) 
 (* MEMORY_PRIMITIVE = "2" *) (* MEMORY_SIZE = "16384" *) (* MEMORY_TYPE = "1" *) 
-(* MESSAGE_CONTROL = "0" *) (* NUM_CHAR_LOC = "0" *) (* ORIG_REF_NAME = "xpm_memory_base" *) 
-(* P_ECC_MODE = "no_ecc" *) (* P_ENABLE_BYTE_WRITE_A = "0" *) (* P_ENABLE_BYTE_WRITE_B = "0" *) 
-(* P_MAX_DEPTH_DATA = "2048" *) (* P_MEMORY_OPT = "yes" *) (* P_MEMORY_PRIMITIVE = "block" *) 
-(* P_MIN_WIDTH_DATA = "8" *) (* P_MIN_WIDTH_DATA_A = "8" *) (* P_MIN_WIDTH_DATA_B = "8" *) 
-(* P_MIN_WIDTH_DATA_ECC = "8" *) (* P_MIN_WIDTH_DATA_LDW = "4" *) (* P_MIN_WIDTH_DATA_SHFT = "8" *) 
-(* P_NUM_COLS_WRITE_A = "1" *) (* P_NUM_COLS_WRITE_B = "1" *) (* P_NUM_ROWS_READ_A = "1" *) 
-(* P_NUM_ROWS_READ_B = "1" *) (* P_NUM_ROWS_WRITE_A = "1" *) (* P_NUM_ROWS_WRITE_B = "1" *) 
-(* P_SDP_WRITE_MODE = "no" *) (* P_WIDTH_ADDR_LSB_READ_A = "0" *) (* P_WIDTH_ADDR_LSB_READ_B = "0" *) 
-(* P_WIDTH_ADDR_LSB_WRITE_A = "0" *) (* P_WIDTH_ADDR_LSB_WRITE_B = "0" *) (* P_WIDTH_ADDR_READ_A = "11" *) 
-(* P_WIDTH_ADDR_READ_B = "11" *) (* P_WIDTH_ADDR_WRITE_A = "11" *) (* P_WIDTH_ADDR_WRITE_B = "11" *) 
-(* P_WIDTH_COL_WRITE_A = "8" *) (* P_WIDTH_COL_WRITE_B = "8" *) (* READ_DATA_WIDTH_A = "8" *) 
-(* READ_DATA_WIDTH_B = "8" *) (* READ_LATENCY_A = "2" *) (* READ_LATENCY_B = "2" *) 
-(* READ_RESET_VALUE_A = "0" *) (* READ_RESET_VALUE_B = "0" *) (* RST_MODE_A = "SYNC" *) 
-(* RST_MODE_B = "SYNC" *) (* SIM_ASSERT_CHK = "0" *) (* USE_EMBEDDED_CONSTRAINT = "0" *) 
-(* USE_MEM_INIT = "0" *) (* VERSION = "0" *) (* WAKEUP_TIME = "0" *) 
-(* WRITE_DATA_WIDTH_A = "8" *) (* WRITE_DATA_WIDTH_B = "8" *) (* WRITE_MODE_A = "2" *) 
-(* WRITE_MODE_B = "2" *) (* XPM_MODULE = "TRUE" *) (* rsta_loop_iter = "8" *) 
-(* rstb_loop_iter = "8" *) 
+(* MESSAGE_CONTROL = "0" *) (* NUM_CHAR_LOC = "0" *) (* P_ECC_MODE = "no_ecc" *) 
+(* P_ENABLE_BYTE_WRITE_A = "0" *) (* P_ENABLE_BYTE_WRITE_B = "0" *) (* P_MAX_DEPTH_DATA = "2048" *) 
+(* P_MEMORY_OPT = "yes" *) (* P_MEMORY_PRIMITIVE = "block" *) (* P_MIN_WIDTH_DATA = "8" *) 
+(* P_MIN_WIDTH_DATA_A = "8" *) (* P_MIN_WIDTH_DATA_B = "8" *) (* P_MIN_WIDTH_DATA_ECC = "8" *) 
+(* P_MIN_WIDTH_DATA_LDW = "4" *) (* P_MIN_WIDTH_DATA_SHFT = "8" *) (* P_NUM_COLS_WRITE_A = "1" *) 
+(* P_NUM_COLS_WRITE_B = "1" *) (* P_NUM_ROWS_READ_A = "1" *) (* P_NUM_ROWS_READ_B = "1" *) 
+(* P_NUM_ROWS_WRITE_A = "1" *) (* P_NUM_ROWS_WRITE_B = "1" *) (* P_SDP_WRITE_MODE = "no" *) 
+(* P_WIDTH_ADDR_LSB_READ_A = "0" *) (* P_WIDTH_ADDR_LSB_READ_B = "0" *) (* P_WIDTH_ADDR_LSB_WRITE_A = "0" *) 
+(* P_WIDTH_ADDR_LSB_WRITE_B = "0" *) (* P_WIDTH_ADDR_READ_A = "11" *) (* P_WIDTH_ADDR_READ_B = "11" *) 
+(* P_WIDTH_ADDR_WRITE_A = "11" *) (* P_WIDTH_ADDR_WRITE_B = "11" *) (* P_WIDTH_COL_WRITE_A = "8" *) 
+(* P_WIDTH_COL_WRITE_B = "8" *) (* READ_DATA_WIDTH_A = "8" *) (* READ_DATA_WIDTH_B = "8" *) 
+(* READ_LATENCY_A = "2" *) (* READ_LATENCY_B = "2" *) (* READ_RESET_VALUE_A = "0" *) 
+(* READ_RESET_VALUE_B = "0" *) (* RST_MODE_A = "SYNC" *) (* RST_MODE_B = "SYNC" *) 
+(* SIM_ASSERT_CHK = "0" *) (* USE_EMBEDDED_CONSTRAINT = "0" *) (* USE_MEM_INIT = "0" *) 
+(* VERSION = "0" *) (* WAKEUP_TIME = "0" *) (* WRITE_DATA_WIDTH_A = "8" *) 
+(* WRITE_DATA_WIDTH_B = "8" *) (* WRITE_MODE_A = "2" *) (* WRITE_MODE_B = "2" *) 
+(* XPM_MODULE = "TRUE" *) (* rsta_loop_iter = "8" *) (* rstb_loop_iter = "8" *) 
 module top_bd_1_AXI4Stream_UART_0_0_xpm_memory_base
    (sleep,
     clka,

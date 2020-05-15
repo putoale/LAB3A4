@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Fri May 15 18:28:48 2020
--- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_AXI4Stream_UART_0_0/top_bd_1_AXI4Stream_UART_0_0_sim_netlist.vhdl
+-- Date        : Sat May 16 00:48:33 2020
+-- Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim -rename_top top_bd_1_AXI4Stream_UART_0_0 -prefix
+--               top_bd_1_AXI4Stream_UART_0_0_ top_bd_1_AXI4Stream_UART_0_0_sim_netlist.vhdl
 -- Design      : top_bd_1_AXI4Stream_UART_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -30,8 +30,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_UART_Engine is
     Q : in STD_LOGIC_VECTOR ( 7 downto 0 );
     UART_RX : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_UART_Engine : entity is "UART_Engine";
 end top_bd_1_AXI4Stream_UART_0_0_UART_Engine;
 
 architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0_UART_Engine is
@@ -1338,8 +1336,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_gray is
   attribute DEST_SYNC_FF of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_gray : entity is 2;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_gray : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_gray : entity is "xpm_cdc_gray";
   attribute REG_OUTPUT : integer;
   attribute REG_OUTPUT of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_gray : entity is 0;
   attribute SIM_ASSERT_CHK : integer;
@@ -6829,8 +6825,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_sync_rst is
   attribute INIT of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_sync_rst : entity is "0";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_sync_rst : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_sync_rst : entity is "xpm_cdc_sync_rst";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of top_bd_1_AXI4Stream_UART_0_0_xpm_cdc_sync_rst : entity is 0;
   attribute VERSION : integer;
@@ -7103,8 +7097,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_counter_updn is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     wr_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_counter_updn : entity is "xpm_counter_updn";
 end top_bd_1_AXI4Stream_UART_0_0_xpm_counter_updn;
 
 architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0_xpm_counter_updn is
@@ -10321,8 +10313,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_bit is
     \count_value_i_reg[3]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \count_value_i_reg[3]_2\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_bit : entity is "xpm_fifo_reg_bit";
 end top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_bit;
 
 architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_bit is
@@ -10521,8 +10511,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_vec is
     D : in STD_LOGIC_VECTOR ( 10 downto 0 );
     wr_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_vec : entity is "xpm_fifo_reg_vec";
 end top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_vec;
 
 architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_reg_vec is
@@ -11993,8 +11981,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_memory_base is
   attribute MESSAGE_CONTROL of top_bd_1_AXI4Stream_UART_0_0_xpm_memory_base : entity is 0;
   attribute NUM_CHAR_LOC : integer;
   attribute NUM_CHAR_LOC of top_bd_1_AXI4Stream_UART_0_0_xpm_memory_base : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_memory_base : entity is "xpm_memory_base";
   attribute P_ECC_MODE : string;
   attribute P_ECC_MODE of top_bd_1_AXI4Stream_UART_0_0_xpm_memory_base : entity is "no_ecc";
   attribute P_ENABLE_BYTE_WRITE_A : integer;
@@ -12659,8 +12645,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_UART_Manager is
     dout : in STD_LOGIC_VECTOR ( 7 downto 0 );
     UART_RX : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_UART_Manager : entity is "UART_Manager";
 end top_bd_1_AXI4Stream_UART_0_0_UART_Manager;
 
 architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0_UART_Manager is
@@ -13025,8 +13009,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_rst is
     \count_value_i_reg[10]\ : in STD_LOGIC;
     rst_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_rst : entity is "xpm_fifo_rst";
 end top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_rst;
 
 architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_rst is
@@ -14062,8 +14044,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_base is
   attribute FULL_RESET_VALUE of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_base : entity is 0;
   attribute FULL_RST_VAL : string;
   attribute FULL_RST_VAL of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_base : entity is "1'b0";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_base : entity is "xpm_fifo_base";
   attribute PE_THRESH_ADJ : integer;
   attribute PE_THRESH_ADJ of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_base : entity is 8;
   attribute PE_THRESH_MAX : integer;
@@ -15805,8 +15785,6 @@ entity top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_async is
   attribute FIFO_WRITE_DEPTH of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_async : entity is 2048;
   attribute FULL_RESET_VALUE : integer;
   attribute FULL_RESET_VALUE of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_async : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_async : entity is "xpm_fifo_async";
   attribute PROG_EMPTY_THRESH : integer;
   attribute PROG_EMPTY_THRESH of top_bd_1_AXI4Stream_UART_0_0_xpm_fifo_async : entity is 10;
   attribute PROG_FULL_THRESH : integer;
@@ -16283,12 +16261,10 @@ entity top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 is
   attribute C_M00_AXIS_RX_TDATA_WIDTH of top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 : entity is 8;
   attribute C_S00_AXIS_TX_TDATA_WIDTH : integer;
   attribute C_S00_AXIS_TX_TDATA_WIDTH of top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 : entity is 8;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 : entity is "AXI4Stream_UART_v1_0";
   attribute UART_BAUD_RATE : integer;
   attribute UART_BAUD_RATE of top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 : entity is 2000000;
   attribute UART_CLOCK_FREQUENCY : integer;
-  attribute UART_CLOCK_FREQUENCY of top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 : entity is 96000000;
+  attribute UART_CLOCK_FREQUENCY of top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 : entity is 95983935;
 end top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0;
 
 architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0_AXI4Stream_UART_v1_0 is
@@ -16571,29 +16547,29 @@ architecture STRUCTURE of top_bd_1_AXI4Stream_UART_0_0 is
   attribute UART_BAUD_RATE : integer;
   attribute UART_BAUD_RATE of U0 : label is 2000000;
   attribute UART_CLOCK_FREQUENCY : integer;
-  attribute UART_CLOCK_FREQUENCY of U0 : label is 96000000;
+  attribute UART_CLOCK_FREQUENCY of U0 : label is 95983935;
   attribute x_interface_info : string;
   attribute x_interface_info of UART_RX : signal is "xilinx.com:interface:uart:1.0 UART RxD";
   attribute x_interface_info of UART_TX : signal is "xilinx.com:interface:uart:1.0 UART TxD";
   attribute x_interface_parameter : string;
   attribute x_interface_parameter of UART_TX : signal is "XIL_INTERFACENAME UART, BOARD.ASSOCIATED_PARAM UART_BOARD_INTERFACE";
   attribute x_interface_info of clk_uart : signal is "xilinx.com:signal:clock:1.0 ClockUART CLK";
-  attribute x_interface_parameter of clk_uart : signal is "XIL_INTERFACENAME ClockUART, ASSOCIATED_BUSIF UART, ASSOCIATED_RESET rst, FREQ_HZ 96000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of clk_uart : signal is "XIL_INTERFACENAME ClockUART, ASSOCIATED_BUSIF UART, ASSOCIATED_RESET rst, FREQ_HZ 95983935, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of m00_axis_rx_aclk : signal is "xilinx.com:signal:clock:1.0 M00_AXIS_RX_CLK CLK";
-  attribute x_interface_parameter of m00_axis_rx_aclk : signal is "XIL_INTERFACENAME M00_AXIS_RX_CLK, ASSOCIATED_BUSIF M00_AXIS_RX, ASSOCIATED_RESET m00_axis_rx_aresetn, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of m00_axis_rx_aclk : signal is "XIL_INTERFACENAME M00_AXIS_RX_CLK, ASSOCIATED_BUSIF M00_AXIS_RX, ASSOCIATED_RESET m00_axis_rx_aresetn, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of m00_axis_rx_aresetn : signal is "xilinx.com:signal:reset:1.0 M00_AXIS_RX_RST RST";
   attribute x_interface_parameter of m00_axis_rx_aresetn : signal is "XIL_INTERFACENAME M00_AXIS_RX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of m00_axis_rx_tready : signal is "xilinx.com:interface:axis:1.0 M00_AXIS_RX TREADY";
   attribute x_interface_info of m00_axis_rx_tvalid : signal is "xilinx.com:interface:axis:1.0 M00_AXIS_RX TVALID";
-  attribute x_interface_parameter of m00_axis_rx_tvalid : signal is "XIL_INTERFACENAME M00_AXIS_RX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of m00_axis_rx_tvalid : signal is "XIL_INTERFACENAME M00_AXIS_RX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of rst : signal is "xilinx.com:signal:reset:1.0 reset RST";
   attribute x_interface_parameter of rst : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_aclk : signal is "xilinx.com:signal:clock:1.0 S00_AXIS_TX_CLK CLK";
-  attribute x_interface_parameter of s00_axis_tx_aclk : signal is "XIL_INTERFACENAME S00_AXIS_TX_CLK, ASSOCIATED_BUSIF S00_AXIS_TX, ASSOCIATED_RESET s00_axis_tx_aresetn, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of s00_axis_tx_aclk : signal is "XIL_INTERFACENAME S00_AXIS_TX_CLK, ASSOCIATED_BUSIF S00_AXIS_TX, ASSOCIATED_RESET s00_axis_tx_aresetn, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_aresetn : signal is "xilinx.com:signal:reset:1.0 S00_AXIS_TX_RST RST";
   attribute x_interface_parameter of s00_axis_tx_aresetn : signal is "XIL_INTERFACENAME S00_AXIS_TX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_tready : signal is "xilinx.com:interface:axis:1.0 S00_AXIS_TX TREADY";
-  attribute x_interface_parameter of s00_axis_tx_tready : signal is "XIL_INTERFACENAME S00_AXIS_TX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of s00_axis_tx_tready : signal is "XIL_INTERFACENAME S00_AXIS_TX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 248958333, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_tvalid : signal is "xilinx.com:interface:axis:1.0 S00_AXIS_TX TVALID";
   attribute x_interface_info of m00_axis_rx_tdata : signal is "xilinx.com:interface:axis:1.0 M00_AXIS_RX TDATA";
   attribute x_interface_info of s00_axis_tx_tdata : signal is "xilinx.com:interface:axis:1.0 S00_AXIS_TX TDATA";
