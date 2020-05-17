@@ -98,7 +98,7 @@ begin
 
         when RECEIVE_DATA =>
 
-            data_out  <= s_axis_tdata;
+            data_out  <= s_axis_tdata; --?
 
             if tlast_sampled = tlast_expected then
               state <= SUBTRACTION;
@@ -127,16 +127,10 @@ begin
 
           if tlast_sampled='1' then
             data_out <= STD_LOGIC_VECTOR(sub_sig + last_avarage_dx);
-            --sub := shift_right(sub , AV_WIDTH_BIT);
-            --data_out <= std_logic_vector(sub(data_width-1 downto 0) + last_avarage_dx);
             last_avarage_dx <= sub_sig + last_avarage_dx;
-            --last_avarage_dx <= sub(data_width-1 downto 0) + last_avarage_dx;
           else
             data_out <= STD_LOGIC_VECTOR(sub_sig + last_avarage_sx);
-            --sub := shift_right(sub , AV_WIDTH_BIT);
-            --data_out <= std_logic_vector(sub(data_width-1 downto 0) + last_avarage_sx);
             last_avarage_sx <= sub_sig + last_avarage_sx;
-            --last_avarage_sx <= sub(data_width-1 downto 0) + last_avarage_sx;
           end if;
 
           if sw_reg = '0' then

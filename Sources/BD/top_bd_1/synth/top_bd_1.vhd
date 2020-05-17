@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Sun May 17 22:19:49 2020
+--Date        : Sun May 17 22:38:21 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target top_bd_1.bd
 --Design      : top_bd_1
@@ -19,10 +19,10 @@ entity top_bd_1 is
     usb_uart_rxd : in STD_LOGIC;
     usb_uart_txd : out STD_LOGIC
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of top_bd_1 : entity is "top_bd_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top_bd_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=6,numNonXlnxBlks=1,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of top_bd_1 : entity is "top_bd_1.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of top_bd_1 : entity is "top_bd_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=top_bd_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=6,numNonXlnxBlks=1,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of top_bd_1 : entity is "top_bd_1.hwdef";
 end top_bd_1;
 
 architecture STRUCTURE of top_bd_1 is
@@ -123,14 +123,14 @@ architecture STRUCTURE of top_bd_1 is
   signal sys_clock_1 : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
-  attribute x_interface_info : string;
-  attribute x_interface_info of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
-  attribute x_interface_parameter : string;
-  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
-  attribute x_interface_info of sys_clock : signal is "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK";
-  attribute x_interface_parameter of sys_clock : signal is "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN top_bd_1_sys_clock, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000";
-  attribute x_interface_info of usb_uart_rxd : signal is "xilinx.com:interface:uart:1.0 usb_uart RxD";
-  attribute x_interface_info of usb_uart_txd : signal is "xilinx.com:interface:uart:1.0 usb_uart TxD";
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
+  attribute X_INTERFACE_INFO of sys_clock : signal is "xilinx.com:signal:clock:1.0 CLK.SYS_CLOCK CLK";
+  attribute X_INTERFACE_PARAMETER of sys_clock : signal is "XIL_INTERFACENAME CLK.SYS_CLOCK, CLK_DOMAIN top_bd_1_sys_clock, FREQ_HZ 100000000, INSERT_VIP 0, PHASE 0.000";
+  attribute X_INTERFACE_INFO of usb_uart_rxd : signal is "xilinx.com:interface:uart:1.0 usb_uart RxD";
+  attribute X_INTERFACE_INFO of usb_uart_txd : signal is "xilinx.com:interface:uart:1.0 usb_uart TxD";
 begin
   AXI4Stream_UART_0_UART_RxD <= usb_uart_rxd;
   reset_1 <= reset;
