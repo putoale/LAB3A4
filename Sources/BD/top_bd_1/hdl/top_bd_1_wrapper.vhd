@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Fri May 15 18:27:53 2020
+--Date        : Sun May 17 22:19:49 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target top_bd_1_wrapper.bd
 --Design      : top_bd_1_wrapper
@@ -25,10 +25,10 @@ architecture STRUCTURE of top_bd_1_wrapper is
   component top_bd_1 is
   port (
     sys_clock : in STD_LOGIC;
-    usb_uart_txd : out STD_LOGIC;
-    usb_uart_rxd : in STD_LOGIC;
     reset : in STD_LOGIC;
-    sw_in_0 : in STD_LOGIC
+    sw_in_0 : in STD_LOGIC;
+    usb_uart_txd : out STD_LOGIC;
+    usb_uart_rxd : in STD_LOGIC
   );
   end component top_bd_1;
 begin

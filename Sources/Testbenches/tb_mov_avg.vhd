@@ -27,7 +27,7 @@ architecture Behavioral of tb_mov_avg is
 
 
 	------- DUT Generics -------
-  constant DUT_AV_WIDTH   : positive := 4;
+  constant DUT_AV_WIDTH_BIT   : positive := 2;
   constant DUT_DATA_WIDTH : positive := 16;
 	----------------------------
 
@@ -51,7 +51,7 @@ architecture Behavioral of tb_mov_avg is
 	-------- First DUT ---------
   component moving_avarage is
   Generic(
-    AV_WIDTH : positive := 32;
+    AV_WIDTH_BIT : positive := 32;
     DATA_WIDTH : positive := 16
   );
   Port (
@@ -121,7 +121,7 @@ begin
 	-------- First DUT ---------
   dut_mov_avg : moving_avarage
   Generic Map (
-                AV_WIDTH   => DUT_AV_WIDTH,
+                AV_WIDTH_BIT   => DUT_AV_WIDTH_BIT,
                 DATA_WIDTH => DUT_DATA_WIDTH
   )
   Port Map(

@@ -1,10 +1,11 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use IEEE.MATH_REAL;
 
 entity moving_avarage is
 Generic(
-  AV_WIDTH : positive := 32;
+  AV_WIDTH_BIT : integer := 5;
   DATA_WIDTH : positive := 16
 );
 Port (
@@ -28,6 +29,7 @@ Port (
 end moving_avarage;
 
 architecture Behavioral of moving_avarage is
+  constant AV_WIDTH : POSITIVE := 2**AV_WIDTH_BIT;
 
   type state_type is (IDLE, RECEIVE_DATA, SUBTRACTION, AVARAGE, SEND_DATA);
   signal state : state_type  := IDLE;
@@ -118,17 +120,23 @@ begin
             else
                sub := resize(signed(data_in) - signed(last_values_sx(av_width-1)), sub'length);
             end if;
-            sub_sig <= resize ((sub / (AV_WIDTH)),sub_sig'length);
+            sub_sig <= resize (shift_right(sub , AV_WIDTH_BIT),sub_sig'length);
 
         when AVARAGE =>
           state<=SEND_DATA;
 
           if tlast_sampled='1' then
             data_out <= STD_LOGIC_VECTOR(sub_sig + last_avarage_dx);
+            --sub := shift_right(sub , AV_WIDTH_BIT);
+            --data_out <= std_logic_vector(sub(data_width-1 downto 0) + last_avarage_dx);
             last_avarage_dx <= sub_sig + last_avarage_dx;
+            --last_avarage_dx <= sub(data_width-1 downto 0) + last_avarage_dx;
           else
             data_out <= STD_LOGIC_VECTOR(sub_sig + last_avarage_sx);
+            --sub := shift_right(sub , AV_WIDTH_BIT);
+            --data_out <= std_logic_vector(sub(data_width-1 downto 0) + last_avarage_sx);
             last_avarage_sx <= sub_sig + last_avarage_sx;
+            --last_avarage_sx <= sub(data_width-1 downto 0) + last_avarage_sx;
           end if;
 
           if sw_reg = '0' then
