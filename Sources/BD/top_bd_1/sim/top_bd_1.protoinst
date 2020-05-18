@@ -44,7 +44,7 @@
 						"TVALID": { "actual": "s_axis_tvalid"}
 					}
 				},
-				"/moving_avarage_0/m_axis": {
+				"/moving_average_0/m_axis": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "clk"},
@@ -55,7 +55,7 @@
 						"TVALID": { "actual": "m_axis_tvalid"}
 					}
 				},
-				"/moving_avarage_0/s_axis": {
+				"/moving_average_0/s_axis": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "clk"},

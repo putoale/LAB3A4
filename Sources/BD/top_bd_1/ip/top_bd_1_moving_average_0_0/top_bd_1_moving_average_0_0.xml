@@ -2,7 +2,7 @@
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spirit:vendor>xilinx.com</spirit:vendor>
   <spirit:library>customized_ip</spirit:library>
-  <spirit:name>top_bd_1_moving_avarage_0_0</spirit:name>
+  <spirit:name>top_bd_1_moving_average_0_0</spirit:name>
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
@@ -119,7 +119,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXIS.FREQ_HZ">248958333</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXIS.FREQ_HZ">200000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -278,7 +278,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXIS.FREQ_HZ">248958333</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXIS.FREQ_HZ">200000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -380,7 +380,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">248958333</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">200000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -423,11 +423,11 @@
         <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
         <spirit:displayName>Synthesis</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
-        <spirit:modelName>moving_avarage</spirit:modelName>
+        <spirit:modelName>moving_average</spirit:modelName>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:522ef379</spirit:value>
+            <spirit:value>9:b45ecff8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -438,7 +438,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:522ef379</spirit:value>
+            <spirit:value>9:b45ecff8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -447,18 +447,18 @@
         <spirit:displayName>VHDL Synthesis Wrapper</spirit:displayName>
         <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
         <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>top_bd_1_moving_avarage_0_0</spirit:modelName>
+        <spirit:modelName>top_bd_1_moving_average_0_0</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 18 13:53:22 UTC 2020</spirit:value>
+            <spirit:value>Mon May 18 17:14:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:522ef379</spirit:value>
+            <spirit:value>9:b45ecff8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -466,11 +466,11 @@
         <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
         <spirit:displayName>Simulation</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
-        <spirit:modelName>moving_avarage</spirit:modelName>
+        <spirit:modelName>moving_average</spirit:modelName>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:4f0ccd30</spirit:value>
+            <spirit:value>9:dfe98622</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -479,18 +479,18 @@
         <spirit:displayName>VHDL Simulation Wrapper</spirit:displayName>
         <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
         <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>top_bd_1_moving_avarage_0_0</spirit:modelName>
+        <spirit:modelName>top_bd_1_moving_average_0_0</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_vhdlsimulationwrapper_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 18 13:53:22 UTC 2020</spirit:value>
+            <spirit:value>Mon May 18 17:14:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:4f0ccd30</spirit:value>
+            <spirit:value>9:dfe98622</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -504,11 +504,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon May 18 13:54:00 UTC 2020</spirit:value>
+            <spirit:value>Mon May 18 17:14:43 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:522ef379</spirit:value>
+            <spirit:value>9:b45ecff8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -699,7 +699,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>synth/top_bd_1_moving_avarage_0_0.vhd</spirit:name>
+        <spirit:name>synth/top_bd_1_moving_average_0_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
@@ -707,7 +707,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>sim/top_bd_1_moving_avarage_0_0.vhd</spirit:name>
+        <spirit:name>sim/top_bd_1_moving_average_0_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
@@ -715,33 +715,33 @@
     <spirit:fileSet>
       <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>top_bd_1_moving_avarage_0_0.dcp</spirit:name>
+        <spirit:name>top_bd_1_moving_average_0_0.dcp</spirit:name>
         <spirit:userFileType>dcp</spirit:userFileType>
         <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
         <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>top_bd_1_moving_avarage_0_0_stub.v</spirit:name>
+        <spirit:name>top_bd_1_moving_average_0_0_stub.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>top_bd_1_moving_avarage_0_0_stub.vhdl</spirit:name>
+        <spirit:name>top_bd_1_moving_average_0_0_stub.vhdl</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_synth_blackbox_stub</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>top_bd_1_moving_avarage_0_0_sim_netlist.v</spirit:name>
+        <spirit:name>top_bd_1_moving_average_0_0_sim_netlist.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
       <spirit:file>
-        <spirit:name>top_bd_1_moving_avarage_0_0_sim_netlist.vhdl</spirit:name>
+        <spirit:name>top_bd_1_moving_average_0_0_sim_netlist.vhdl</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
@@ -749,7 +749,7 @@
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>xilinx.com:module_ref:moving_avarage:1.0</spirit:description>
+  <spirit:description>xilinx.com:module_ref:moving_average:1.0</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>MEAN_AV_WIDTH2</spirit:name>
@@ -763,12 +763,12 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">top_bd_1_moving_avarage_0_0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">top_bd_1_moving_average_0_0</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
-      <xilinx:displayName>moving_avarage_v1_0</xilinx:displayName>
+      <xilinx:displayName>moving_average_v1_0</xilinx:displayName>
       <xilinx:definitionSource>module_ref</xilinx:definitionSource>
       <xilinx:coreRevision>1</xilinx:coreRevision>
       <xilinx:configElementInfos>

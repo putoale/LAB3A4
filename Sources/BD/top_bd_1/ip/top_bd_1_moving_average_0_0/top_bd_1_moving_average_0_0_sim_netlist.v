@@ -1,21 +1,21 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Mon May 18 15:54:00 2020
+// Date        : Mon May 18 19:14:43 2020
 // Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_moving_avarage_0_0/top_bd_1_moving_avarage_0_0_sim_netlist.v
-// Design      : top_bd_1_moving_avarage_0_0
+//               c:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_moving_average_0_0/top_bd_1_moving_average_0_0_sim_netlist.v
+// Design      : top_bd_1_moving_average_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "top_bd_1_moving_avarage_0_0,moving_avarage,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
-(* x_core_info = "moving_avarage,Vivado 2019.2" *) 
+(* CHECK_LICENSE_TYPE = "top_bd_1_moving_average_0_0,moving_average,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* ip_definition_source = "module_ref" *) 
+(* x_core_info = "moving_average,Vivado 2019.2" *) 
 (* NotValidForBitStream *)
-module top_bd_1_moving_avarage_0_0
+module top_bd_1_moving_average_0_0
    (clk,
     aresetn,
     sw_in,
@@ -51,7 +51,7 @@ module top_bd_1_moving_avarage_0_0
   wire s_axis_tvalid;
   wire sw_in;
 
-  top_bd_1_moving_avarage_0_0_moving_avarage U0
+  top_bd_1_moving_average_0_0_moving_average U0
        (.aresetn(aresetn),
         .clk(clk),
         .m_axis_tdata(m_axis_tdata),
@@ -65,8 +65,8 @@ module top_bd_1_moving_avarage_0_0
         .sw_in(sw_in));
 endmodule
 
-(* ORIG_REF_NAME = "moving_avarage" *) 
-module top_bd_1_moving_avarage_0_0_moving_avarage
+(* ORIG_REF_NAME = "moving_average" *) 
+module top_bd_1_moving_average_0_0_moving_average
    (m_axis_tdata,
     m_axis_tlast,
     m_axis_tvalid,
@@ -681,7 +681,7 @@ module top_bd_1_moving_avarage_0_0_moving_avarage
         .I1(s_axis_tlast),
         .I2(tlast_expected),
         .O(state));
-  (* FSM_ENCODED_STATES = "idle:000,receive_data:001,subtraction:010,avarage:011,send_data:100," *) 
+  (* FSM_ENCODED_STATES = "idle:000,receive_data:001,subtraction:010,average:011,send_data:100," *) 
   FDCE #(
     .INIT(1'b0)) 
     \FSM_sequential_state_reg[0] 
@@ -690,7 +690,7 @@ module top_bd_1_moving_avarage_0_0_moving_avarage
         .CLR(\FSM_sequential_state[2]_i_3_n_0 ),
         .D(state__1[0]),
         .Q(state__0[0]));
-  (* FSM_ENCODED_STATES = "idle:000,receive_data:001,subtraction:010,avarage:011,send_data:100," *) 
+  (* FSM_ENCODED_STATES = "idle:000,receive_data:001,subtraction:010,average:011,send_data:100," *) 
   FDCE #(
     .INIT(1'b0)) 
     \FSM_sequential_state_reg[1] 
@@ -699,7 +699,7 @@ module top_bd_1_moving_avarage_0_0_moving_avarage
         .CLR(\FSM_sequential_state[2]_i_3_n_0 ),
         .D(\FSM_sequential_state[1]_i_1_n_0 ),
         .Q(state__0[1]));
-  (* FSM_ENCODED_STATES = "idle:000,receive_data:001,subtraction:010,avarage:011,send_data:100," *) 
+  (* FSM_ENCODED_STATES = "idle:000,receive_data:001,subtraction:010,average:011,send_data:100," *) 
   FDCE #(
     .INIT(1'b0)) 
     \FSM_sequential_state_reg[2] 

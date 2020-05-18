@@ -14,7 +14,7 @@
       "packetizer_0": "",
       "clk_wiz_0": "",
       "util_vector_logic_0": "",
-      "moving_avarage_0": ""
+      "moving_average_0": ""
     },
     "interface_ports": {
       "usb_uart": {
@@ -122,7 +122,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -192,7 +192,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -240,7 +240,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -307,7 +307,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -373,7 +373,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -425,7 +425,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -451,22 +451,22 @@
         "xci_name": "top_bd_1_clk_wiz_0_0",
         "parameters": {
           "CLKOUT1_JITTER": {
-            "value": "190.231"
+            "value": "152.663"
           },
           "CLKOUT1_PHASE_ERROR": {
-            "value": "203.313"
+            "value": "132.063"
           },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
             "value": "96"
           },
           "CLKOUT2_JITTER": {
-            "value": "159.740"
+            "value": "132.221"
           },
           "CLKOUT2_PHASE_ERROR": {
-            "value": "203.313"
+            "value": "132.063"
           },
           "CLKOUT2_REQUESTED_OUT_FREQ": {
-            "value": "250.000"
+            "value": "200.000"
           },
           "CLKOUT2_USED": {
             "value": "true"
@@ -475,22 +475,22 @@
             "value": "sys_clock"
           },
           "MMCM_CLKFBOUT_MULT_F": {
-            "value": "29.875"
+            "value": "6.000"
           },
           "MMCM_CLKIN1_PERIOD": {
-            "value": "10.000"
+            "value": "10.0"
           },
           "MMCM_CLKIN2_PERIOD": {
-            "value": "10.000"
+            "value": "10.0"
           },
           "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "10.375"
+            "value": "6.250"
           },
           "MMCM_CLKOUT1_DIVIDE": {
-            "value": "4"
+            "value": "3"
           },
           "MMCM_DIVCLK_DIVIDE": {
-            "value": "3"
+            "value": "1"
           },
           "NUM_OUT_CLKS": {
             "value": "2"
@@ -512,12 +512,12 @@
           }
         }
       },
-      "moving_avarage_0": {
-        "vlnv": "xilinx.com:module_ref:moving_avarage:1.0",
-        "xci_name": "top_bd_1_moving_avarage_0_0",
+      "moving_average_0": {
+        "vlnv": "xilinx.com:module_ref:moving_average:1.0",
+        "xci_name": "top_bd_1_moving_average_0_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "moving_avarage",
+          "ref_name": "moving_average",
           "boundary_crc": "0x0"
         },
         "interface_ports": {
@@ -558,7 +558,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -628,7 +628,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -680,7 +680,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "248958333",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -706,6 +706,12 @@
       }
     },
     "interface_nets": {
+      "depacketizer_0_m_axis": {
+        "interface_ports": [
+          "depacketizer_0/m_axis",
+          "moving_average_0/s_axis"
+        ]
+      },
       "AXI4Stream_UART_0_UART": {
         "interface_ports": [
           "usb_uart",
@@ -718,22 +724,16 @@
           "depacketizer_0/s_axis"
         ]
       },
-      "moving_avarage_0_m_axis": {
-        "interface_ports": [
-          "moving_avarage_0/m_axis",
-          "packetizer_0/s_axis"
-        ]
-      },
       "packetizer_0_m_axis": {
         "interface_ports": [
           "packetizer_0/m_axis",
           "AXI4Stream_UART_0/S00_AXIS_TX"
         ]
       },
-      "depacketizer_0_m_axis": {
+      "moving_average_0_m_axis": {
         "interface_ports": [
-          "depacketizer_0/m_axis",
-          "moving_avarage_0/s_axis"
+          "moving_average_0/m_axis",
+          "packetizer_0/s_axis"
         ]
       }
     },
@@ -765,7 +765,7 @@
           "AXI4Stream_UART_0/m00_axis_rx_aclk",
           "depacketizer_0/aclk",
           "packetizer_0/aclk",
-          "moving_avarage_0/clk"
+          "moving_average_0/clk"
         ]
       },
       "util_vector_logic_0_Res": {
@@ -775,13 +775,13 @@
           "packetizer_0/aresetn",
           "AXI4Stream_UART_0/s00_axis_tx_aresetn",
           "AXI4Stream_UART_0/m00_axis_rx_aresetn",
-          "moving_avarage_0/aresetn"
+          "moving_average_0/aresetn"
         ]
       },
       "sw_in_0_1": {
         "ports": [
           "sw_in_0",
-          "moving_avarage_0/sw_in"
+          "moving_average_0/sw_in"
         ]
       }
     }

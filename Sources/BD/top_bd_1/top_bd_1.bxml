@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="top_bd_1" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1589810002"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1589810002"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1589810002"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1589810002"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1589822228"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1589822228"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1589822228"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1589822228"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\top_bd_1_AXI4Stream_UART_0_0\top_bd_1_AXI4Stream_UART_0_0.xci" Type="IP">
         <Instance HierarchyPath="AXI4Stream_UART_0"/>
@@ -17,14 +17,6 @@
       </File>
       <File Name="ip\top_bd_1_depacketizer_0_0\top_bd_1_depacketizer_0_0.xci" Type="IP">
         <Instance HierarchyPath="depacketizer_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\top_bd_1_moving_avarage_0_0\top_bd_1_moving_avarage_0_0.xci" Type="IP">
-        <Instance HierarchyPath="moving_avarage_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -49,6 +41,14 @@
       </File>
       <File Name="ip\top_bd_1_util_vector_logic_0_0\top_bd_1_util_vector_logic_0_0.xci" Type="IP">
         <Instance HierarchyPath="util_vector_logic_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\top_bd_1_moving_average_0_0\top_bd_1_moving_average_0_0.xci" Type="IP">
+        <Instance HierarchyPath="moving_average_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

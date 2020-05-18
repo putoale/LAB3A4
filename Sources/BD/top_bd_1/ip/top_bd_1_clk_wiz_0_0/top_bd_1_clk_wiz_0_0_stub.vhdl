@@ -1,8 +1,8 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Sat May 16 00:48:27 2020
--- Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
+-- Date        : Sun May 17 19:02:54 2020
+-- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top top_bd_1_clk_wiz_0_0 -prefix
 --               top_bd_1_clk_wiz_0_0_ top_bd_1_clk_wiz_0_0_stub.vhdl
 -- Design      : top_bd_1_clk_wiz_0_0

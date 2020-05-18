@@ -1,8 +1,8 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Sat May 16 00:48:27 2020
-// Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
+// Date        : Sun May 17 19:02:54 2020
+// Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top top_bd_1_clk_wiz_0_0 -prefix
 //               top_bd_1_clk_wiz_0_0_ top_bd_1_clk_wiz_0_0_sim_netlist.v
 // Design      : top_bd_1_clk_wiz_0_0
@@ -101,16 +101,16 @@ module top_bd_1_clk_wiz_0_0_top_bd_1_clk_wiz_0_0_clk_wiz
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(29.875000),
+    .CLKFBOUT_MULT_F(6.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(10.375000),
+    .CLKOUT0_DIVIDE_F(6.250000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(4),
+    .CLKOUT1_DIVIDE(3),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
@@ -136,7 +136,7 @@ module top_bd_1_clk_wiz_0_0_top_bd_1_clk_wiz_0_0_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(3),
+    .DIVCLK_DIVIDE(1),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),

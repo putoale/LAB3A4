@@ -1,11 +1,11 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Mon May 18 15:54:00 2020
+-- Date        : Mon May 18 19:14:43 2020
 -- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_moving_avarage_0_0/top_bd_1_moving_avarage_0_0_sim_netlist.vhdl
--- Design      : top_bd_1_moving_avarage_0_0
+--               c:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_moving_average_0_0/top_bd_1_moving_average_0_0_sim_netlist.vhdl
+-- Design      : top_bd_1_moving_average_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7a35tcpg236-1
@@ -14,7 +14,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity top_bd_1_moving_avarage_0_0_moving_avarage is
+entity top_bd_1_moving_average_0_0_moving_average is
   port (
     m_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
     m_axis_tlast : out STD_LOGIC;
@@ -29,10 +29,10 @@ entity top_bd_1_moving_avarage_0_0_moving_avarage is
     sw_in : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_moving_avarage_0_0_moving_avarage : entity is "moving_avarage";
-end top_bd_1_moving_avarage_0_0_moving_avarage;
+  attribute ORIG_REF_NAME of top_bd_1_moving_average_0_0_moving_average : entity is "moving_average";
+end top_bd_1_moving_average_0_0_moving_average;
 
-architecture STRUCTURE of top_bd_1_moving_avarage_0_0_moving_avarage is
+architecture STRUCTURE of top_bd_1_moving_average_0_0_moving_average is
   signal \FSM_sequential_state[1]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[2]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_sequential_state[2]_i_3_n_0\ : STD_LOGIC;
@@ -573,9 +573,9 @@ architecture STRUCTURE of top_bd_1_moving_avarage_0_0_moving_avarage is
   attribute SOFT_HLUTNM of \FSM_sequential_state[2]_i_2\ : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of \FSM_sequential_state[2]_i_4\ : label is "soft_lutpair2";
   attribute FSM_ENCODED_STATES : string;
-  attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[0]\ : label is "idle:000,receive_data:001,subtraction:010,avarage:011,send_data:100,";
-  attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[1]\ : label is "idle:000,receive_data:001,subtraction:010,avarage:011,send_data:100,";
-  attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[2]\ : label is "idle:000,receive_data:001,subtraction:010,avarage:011,send_data:100,";
+  attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[0]\ : label is "idle:000,receive_data:001,subtraction:010,average:011,send_data:100,";
+  attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[1]\ : label is "idle:000,receive_data:001,subtraction:010,average:011,send_data:100,";
+  attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[2]\ : label is "idle:000,receive_data:001,subtraction:010,average:011,send_data:100,";
   attribute METHODOLOGY_DRC_VIOS : string;
   attribute METHODOLOGY_DRC_VIOS of \_carry\ : label is "{SYNTH-8 {cell *THIS*}}";
   attribute METHODOLOGY_DRC_VIOS of \_carry__0\ : label is "{SYNTH-8 {cell *THIS*}}";
@@ -5319,7 +5319,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity top_bd_1_moving_avarage_0_0 is
+entity top_bd_1_moving_average_0_0 is
   port (
     clk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
@@ -5334,18 +5334,18 @@ entity top_bd_1_moving_avarage_0_0 is
     m_axis_tready : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of top_bd_1_moving_avarage_0_0 : entity is true;
+  attribute NotValidForBitStream of top_bd_1_moving_average_0_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of top_bd_1_moving_avarage_0_0 : entity is "top_bd_1_moving_avarage_0_0,moving_avarage,{}";
+  attribute CHECK_LICENSE_TYPE of top_bd_1_moving_average_0_0 : entity is "top_bd_1_moving_average_0_0,moving_average,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of top_bd_1_moving_avarage_0_0 : entity is "yes";
+  attribute downgradeipidentifiedwarnings of top_bd_1_moving_average_0_0 : entity is "yes";
   attribute ip_definition_source : string;
-  attribute ip_definition_source of top_bd_1_moving_avarage_0_0 : entity is "module_ref";
+  attribute ip_definition_source of top_bd_1_moving_average_0_0 : entity is "module_ref";
   attribute x_core_info : string;
-  attribute x_core_info of top_bd_1_moving_avarage_0_0 : entity is "moving_avarage,Vivado 2019.2";
-end top_bd_1_moving_avarage_0_0;
+  attribute x_core_info of top_bd_1_moving_average_0_0 : entity is "moving_average,Vivado 2019.2";
+end top_bd_1_moving_average_0_0;
 
-architecture STRUCTURE of top_bd_1_moving_avarage_0_0 is
+architecture STRUCTURE of top_bd_1_moving_average_0_0 is
   attribute x_interface_info : string;
   attribute x_interface_info of aresetn : signal is "xilinx.com:signal:reset:1.0 aresetn RST";
   attribute x_interface_parameter : string;
@@ -5363,7 +5363,7 @@ architecture STRUCTURE of top_bd_1_moving_avarage_0_0 is
   attribute x_interface_info of m_axis_tdata : signal is "xilinx.com:interface:axis:1.0 m_axis TDATA";
   attribute x_interface_info of s_axis_tdata : signal is "xilinx.com:interface:axis:1.0 s_axis TDATA";
 begin
-U0: entity work.top_bd_1_moving_avarage_0_0_moving_avarage
+U0: entity work.top_bd_1_moving_average_0_0_moving_average
      port map (
       aresetn => aresetn,
       clk => clk,

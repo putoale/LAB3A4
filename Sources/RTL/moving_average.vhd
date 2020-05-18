@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity moving_avarage is
+entity moving_average is
 Generic(
   MEAN_AV_WIDTH2 : positive := 5;
   DATA_WIDTH : positive := 16
@@ -25,11 +25,11 @@ Port (
   m_axis_tready	: in std_logic
 
   );
-end moving_avarage;
+end moving_average;
 
-architecture Behavioral of moving_avarage is
+architecture Behavioral of moving_average is
 
-  type state_type is (IDLE, RECEIVE_DATA, SUBTRACTION, AVARAGE, SEND_DATA);
+  type state_type is (IDLE, RECEIVE_DATA, SUBTRACTION, AVERAGE, SEND_DATA);
   signal state : state_type  := IDLE;
 
   type mem_type is array (0 to 2**MEAN_AV_WIDTH2-1) of std_logic_vector(data_width-1 downto 0);
@@ -104,7 +104,7 @@ begin
 
         when SUBTRACTION =>
 
-            state<=AVARAGE;
+            state<=AVERAGE;
 
             if tlast_sampled ='1' then
               last_values_dx <= data_in & last_values_dx(0 to last_values_dx'high-1);
@@ -117,7 +117,7 @@ begin
 
 
 
-        when AVARAGE =>
+        when AVERAGE =>
           state<=SEND_DATA;
 
           if tlast_sampled='1' then
