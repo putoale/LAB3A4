@@ -86,20 +86,20 @@ begin
       case state is
 
         when IDLE =>
-          if s_axis_tvalid = '1' then
-            sw_reg <= sw_in;
-            tlast_sampled <= s_axis_tlast;
-            data_in <= s_axis_tdata;
-
             state<=RECEIVE_DATA;
-          end if;
 
 
         when RECEIVE_DATA =>
 
-            if tlast_sampled = tlast_expected then
-              state <= SUBTRACTION;
-              tlast_expected <= not tlast_expected;
+            if s_axis_tvalid = '1' then
+              sw_reg <= sw_in;
+              data_in <= s_axis_tdata;
+
+              if s_axis_tlast = tlast_expected then
+                state <= SUBTRACTION;
+                tlast_expected <= not tlast_expected;
+                tlast_sampled <= s_axis_tlast;
+              end if;
             end if;
 
         when SUBTRACTION =>
@@ -108,10 +108,10 @@ begin
 
             if tlast_sampled ='1' then
               last_values_dx <= data_in & last_values_dx(0 to last_values_dx'high-1);
-              sub<=resize(signed(data_in),sub'length)-resize(signed(last_values_dx(last_values_dx'right)),sub'length);
+              sub <= resize(signed(data_in),sub'length)-resize(signed(last_values_dx(last_values_dx'right)),sub'length);
             else
               last_values_sx<= data_in & last_values_sx(0 to last_values_sx'high-1);
-              sub<=resize(signed(data_in),sub'length)-resize(signed(last_values_sx(last_values_sx'right)),sub'length);
+              sub <= resize(signed(data_in),sub'length)-resize(signed(last_values_sx(last_values_sx'right)),sub'length);
             end if;
 
 
@@ -121,11 +121,11 @@ begin
           state<=SEND_DATA;
 
           if tlast_sampled='1' then
-            sum:=last_sum_dx+resize(sub,sum'length);
+            sum := last_sum_dx+resize(sub,sum'length);
             data_out <= STD_LOGIC_VECTOR(sum(sum'HIGH DOWNTO MEAN_AV_WIDTH2));
             last_sum_dx <= sum;
           else
-            sum:=last_sum_sx+resize(sub,sum'length);
+            sum := last_sum_sx+resize(sub,sum'length);
             data_out <= STD_LOGIC_VECTOR(sum(sum'HIGH DOWNTO MEAN_AV_WIDTH2));
             last_sum_sx <= sum;
           end if;

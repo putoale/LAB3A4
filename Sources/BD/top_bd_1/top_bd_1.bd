@@ -712,16 +712,16 @@
           "AXI4Stream_UART_0/UART"
         ]
       },
-      "moving_avarage_0_m_axis": {
-        "interface_ports": [
-          "moving_avarage_0/m_axis",
-          "packetizer_0/s_axis"
-        ]
-      },
       "AXI4Stream_UART_0_M00_AXIS_RX": {
         "interface_ports": [
           "AXI4Stream_UART_0/M00_AXIS_RX",
           "depacketizer_0/s_axis"
+        ]
+      },
+      "moving_avarage_0_m_axis": {
+        "interface_ports": [
+          "moving_avarage_0/m_axis",
+          "packetizer_0/s_axis"
         ]
       },
       "packetizer_0_m_axis": {
