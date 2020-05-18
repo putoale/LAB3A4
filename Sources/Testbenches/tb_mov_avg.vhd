@@ -49,7 +49,7 @@ architecture Behavioral of tb_mov_avg is
 	------ COMPONENT DECLARATION for the Device Under Test (DUT) ------
 
 	-------- First DUT ---------
-  component moving_avarage is
+  component moving_average is
   Generic(
     MEAN_AV_WIDTH2 : positive := 5;
     DATA_WIDTH : positive := 16
@@ -94,14 +94,14 @@ architecture Behavioral of tb_mov_avg is
     signal dut_m_axis_tvalid : std_logic;
       signal dut_m_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
       signal dut_m_axis_tlast  : std_logic;
-    
+
       signal dut_s_axis_tready : std_logic;
       signal dut_s_axis_tvalid : std_logic;
       signal dut_s_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
       signal dut_s_axis_tlast  : std_logic := '1';
 
      signal dut_sw_in : std_logic :='1';
-     
+
      signal k : integer := 1;
      signal counter : unsigned(1 downto 0) := (others=>'0');
 	----------------------------
@@ -122,7 +122,7 @@ begin
 	--------------------- COMPONENTS DUT WRAPPING --------------------
 
 	-------- First DUT ---------
-  dut_mov_avg : moving_avarage
+  dut_mov_avg : moving_average
   Generic Map (
                 MEAN_AV_WIDTH2   => DUT_MEAN_AV_WIDTH2,
                 DATA_WIDTH => DUT_DATA_WIDTH
