@@ -1,6 +1,4 @@
 
---  ############ Insert Only the Usefor Sections ################
-
 ---------- DEFAULT LIBRARY ---------
 library IEEE;
 	use IEEE.STD_LOGIC_1164.all;
@@ -8,10 +6,10 @@ library IEEE;
 	use IEEE.MATH_REAL.all;
 ------------------------------------
 
-entity tb_mov_avg is
-end tb_mov_avg;
+entity tb_mv_avg_v2 is
+end tb_mv_avg_v2;
 
-architecture Behavioral of tb_mov_avg is
+architecture Behavioral of tb_mv_avg_v2 is
 
 	------------------ CONSTANT DECLARATION -------------------------
 
@@ -27,8 +25,8 @@ architecture Behavioral of tb_mov_avg is
 
 
 	------- DUT Generics -------
-  constant DUT_MEAN_AV_WIDTH2   : positive := 2;
-  constant DUT_DATA_WIDTH : positive := 16;
+  constant DUT_MEAN_AV_WIDTH2  : positive := 2;
+  constant DUT_DATA_WIDTH      : positive := 16;
 	----------------------------
 
 	---------- OTHERS ----------
@@ -49,7 +47,7 @@ architecture Behavioral of tb_mov_avg is
 	------ COMPONENT DECLARATION for the Device Under Test (DUT) ------
 
 	-------- First DUT ---------
-  component moving_average is
+  component moving_average_v2 is
   Generic(
     MEAN_AV_WIDTH2 : positive := 5;
     DATA_WIDTH : positive := 16
@@ -90,8 +88,8 @@ architecture Behavioral of tb_mov_avg is
 	----------------------------
 
 	----- First DUT Signals ----
-	signal dut_m_axis_tready : std_logic:='1';
-    signal dut_m_axis_tvalid : std_logic;
+	    signal dut_m_axis_tready : std_logic:='1';
+      signal dut_m_axis_tvalid : std_logic;
       signal dut_m_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
       signal dut_m_axis_tlast  : std_logic;
 
@@ -100,15 +98,15 @@ architecture Behavioral of tb_mov_avg is
       signal dut_s_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
       signal dut_s_axis_tlast  : std_logic := '1';
 
-     signal dut_sw_in : std_logic :='1';
+      signal dut_sw_in : std_logic :='1';
 
-     signal k : integer := 1;
-     signal counter : unsigned(1 downto 0) := (others=>'0');
+
 	----------------------------
 
 
 	----- OTHER Signals -------
-	-- NONE
+  signal k : integer := 1;
+  signal counter : unsigned(1 downto 0) := (others=>'0');
 	----------------------------
 
 	----------------------------------------------------------------
@@ -122,10 +120,10 @@ begin
 	--------------------- COMPONENTS DUT WRAPPING --------------------
 
 	-------- First DUT ---------
-  dut_mov_avg : moving_average
+  dut_mov_avg : moving_average_v2
   Generic Map (
                 MEAN_AV_WIDTH2   => DUT_MEAN_AV_WIDTH2,
-                DATA_WIDTH => DUT_DATA_WIDTH
+                DATA_WIDTH       => DUT_DATA_WIDTH
   )
   Port Map(
             clk     => clk,
@@ -207,12 +205,12 @@ begin
 			wait until rising_edge(clk);
 			dut_s_axis_tdata <= std_logic_vector(to_signed(I*16*k,dut_s_axis_tdata'length));
 			dut_s_axis_tvalid <= '1';
-			counter<=counter+1;
-			--if counter=1 then
-			 k<=-k;
-			 --counter<=(others=>'0');
+			--counter <= counter + 1;
+			--if counter = 1 then
+			 k <= -k;
+			 --counter <= (others=>'0');
 			--end if;
-            dut_s_axis_tlast <= not dut_s_axis_tlast;
+      dut_s_axis_tlast <= not dut_s_axis_tlast;
 
 			if dut_s_axis_tready = '1' then
 				wait until rising_edge(clk);
