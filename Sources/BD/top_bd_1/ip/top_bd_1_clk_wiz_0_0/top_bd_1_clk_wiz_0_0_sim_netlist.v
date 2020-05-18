@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 // Date        : Sun May 17 19:02:54 2020
 // Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_clk_wiz_0_0/top_bd_1_clk_wiz_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top top_bd_1_clk_wiz_0_0 -prefix
+//               top_bd_1_clk_wiz_0_0_ top_bd_1_clk_wiz_0_0_sim_netlist.v
 // Design      : top_bd_1_clk_wiz_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -39,7 +39,6 @@ module top_bd_1_clk_wiz_0_0
         .reset(reset));
 endmodule
 
-(* ORIG_REF_NAME = "top_bd_1_clk_wiz_0_0_clk_wiz" *) 
 module top_bd_1_clk_wiz_0_0_top_bd_1_clk_wiz_0_0_clk_wiz
    (clk_out1,
     clk_out2,

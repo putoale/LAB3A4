@@ -27,7 +27,7 @@ architecture Behavioral of tb_mov_avg is
 
 
 	------- DUT Generics -------
-  constant DUT_AV_WIDTH_BIT   : positive := 2;
+  constant DUT_MEAN_AV_WIDTH2   : positive := 2;
   constant DUT_DATA_WIDTH : positive := 16;
 	----------------------------
 
@@ -49,9 +49,9 @@ architecture Behavioral of tb_mov_avg is
 	------ COMPONENT DECLARATION for the Device Under Test (DUT) ------
 
 	-------- First DUT ---------
-  component moving_avarage is
+  component moving_average is
   Generic(
-    AV_WIDTH_BIT : positive := 32;
+    MEAN_AV_WIDTH2 : positive := 5;
     DATA_WIDTH : positive := 16
   );
   Port (
@@ -91,16 +91,19 @@ architecture Behavioral of tb_mov_avg is
 
 	----- First DUT Signals ----
 	signal dut_m_axis_tready : std_logic:='1';
-  signal dut_m_axis_tvalid : std_logic;
-  signal dut_m_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
-  signal dut_m_axis_tlast  : std_logic;
+    signal dut_m_axis_tvalid : std_logic;
+      signal dut_m_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
+      signal dut_m_axis_tlast  : std_logic;
 
-  signal dut_s_axis_tready : std_logic;
-  signal dut_s_axis_tvalid : std_logic;
-  signal dut_s_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
-  signal dut_s_axis_tlast  : std_logic := '1';
+      signal dut_s_axis_tready : std_logic;
+      signal dut_s_axis_tvalid : std_logic;
+      signal dut_s_axis_tdata  : std_logic_vector (DUT_DATA_WIDTH-1 downto 0);
+      signal dut_s_axis_tlast  : std_logic := '1';
 
-  signal dut_sw_in : std_logic :='1';
+     signal dut_sw_in : std_logic :='1';
+
+     signal k : integer := 1;
+     signal counter : unsigned(1 downto 0) := (others=>'0');
 	----------------------------
 
 
@@ -119,9 +122,9 @@ begin
 	--------------------- COMPONENTS DUT WRAPPING --------------------
 
 	-------- First DUT ---------
-  dut_mov_avg : moving_avarage
+  dut_mov_avg : moving_average
   Generic Map (
-                AV_WIDTH_BIT   => DUT_AV_WIDTH_BIT,
+                MEAN_AV_WIDTH2   => DUT_MEAN_AV_WIDTH2,
                 DATA_WIDTH => DUT_DATA_WIDTH
   )
   Port Map(
@@ -202,9 +205,14 @@ begin
 			wait for RESET_WND;
 			wait until rising_edge(clk);
 			wait until rising_edge(clk);
-			dut_s_axis_tdata <= std_logic_vector(to_unsigned(I*16,dut_s_axis_tdata'length));
+			dut_s_axis_tdata <= std_logic_vector(to_signed(I*16*k,dut_s_axis_tdata'length));
 			dut_s_axis_tvalid <= '1';
-      dut_s_axis_tlast <= not dut_s_axis_tlast;
+			counter<=counter+1;
+			if counter=1 then
+			 k<=-k;
+			 counter<=(others=>'0');
+			end if;
+            dut_s_axis_tlast <= not dut_s_axis_tlast;
 
 			if dut_s_axis_tready = '1' then
 				wait until rising_edge(clk);

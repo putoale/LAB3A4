@@ -23,6 +23,7 @@
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../../../../IPs"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../../../../../DESD/IPs/ip_repo"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPCachePermission" Val="read"/>
     <Option Name="IPCachePermission" Val="write"/>
@@ -32,7 +33,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="basys3"/>
-    <Option Name="WTXSimLaunchSim" Val="36"/>
+    <Option Name="WTXSimLaunchSim" Val="32"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -67,13 +68,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/Sources/RTL/moving_avarage.vhd">
+      <File Path="$PPRDIR/Sources/RTL/packetizer.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/Sources/RTL/packetizer.vhd">
+      <File Path="$PPRDIR/Sources/RTL/moving_average.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -97,11 +98,11 @@
         <CompFileExtendedInfo CompFileName="top_bd_1.bd" FileRelPathName="ip/top_bd_1_util_vector_logic_0_0/top_bd_1_util_vector_logic_0_0.xci">
           <Proxy FileSetName="top_bd_1_util_vector_logic_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="top_bd_1.bd" FileRelPathName="ip/top_bd_1_clk_wiz_0_0/top_bd_1_clk_wiz_0_0.xci">
-          <Proxy FileSetName="top_bd_1_clk_wiz_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="top_bd_1.bd" FileRelPathName="ip/top_bd_1_packetizer_0_0/top_bd_1_packetizer_0_0.xci">
           <Proxy FileSetName="top_bd_1_packetizer_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="top_bd_1.bd" FileRelPathName="ip/top_bd_1_moving_average_0_0/top_bd_1_moving_average_0_0.xci">
+          <Proxy FileSetName="top_bd_1_moving_average_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PPRDIR/Sources/BD/top_bd_1/hdl/top_bd_1_wrapper.vhd">
@@ -118,6 +119,13 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/Sources/RTL/debouncer.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/Sources/RTL/moving_average_v2.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -193,21 +201,9 @@
         <Option Name="xsim.simulate.runtime" Val="1ms"/>
       </Config>
     </FileSet>
-    <FileSet Name="top_bd_1_AXI4Stream_UART_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_bd_1_AXI4Stream_UART_0_0">
-      <Config>
-        <Option Name="TopModule" Val="top_bd_1_AXI4Stream_UART_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="top_bd_1_depacketizer_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_bd_1_depacketizer_0_0">
       <Config>
         <Option Name="TopModule" Val="top_bd_1_depacketizer_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="top_bd_1_clk_wiz_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_bd_1_clk_wiz_0_0">
-      <Config>
-        <Option Name="TopModule" Val="top_bd_1_clk_wiz_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -223,9 +219,15 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="top_bd_1_moving_avarage_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_bd_1_moving_avarage_0_0">
+    <FileSet Name="top_bd_1_moving_average_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_bd_1_moving_average_0_0">
       <Config>
-        <Option Name="TopModule" Val="top_bd_1_moving_avarage_0_0"/>
+        <Option Name="TopModule" Val="top_bd_1_moving_average_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="top_bd_1_AXI4Stream_UART_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/top_bd_1_AXI4Stream_UART_0_0">
+      <Config>
+        <Option Name="TopModule" Val="top_bd_1_AXI4Stream_UART_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -259,27 +261,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="top_bd_1_AXI4Stream_UART_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_bd_1_AXI4Stream_UART_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_AXI4Stream_UART_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_bd_1_AXI4Stream_UART_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="top_bd_1_depacketizer_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_bd_1_depacketizer_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_depacketizer_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_bd_1_depacketizer_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="top_bd_1_clk_wiz_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_bd_1_clk_wiz_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_clk_wiz_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_bd_1_clk_wiz_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
@@ -309,7 +291,17 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="top_bd_1_moving_avarage_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_bd_1_moving_avarage_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_moving_avarage_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_bd_1_moving_avarage_0_0_synth_1" IncludeInArchive="true">
+    <Run Id="top_bd_1_moving_average_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_bd_1_moving_average_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_moving_average_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_bd_1_moving_average_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="top_bd_1_AXI4Stream_UART_0_0_synth_1" Type="Ft3:Synth" SrcSet="top_bd_1_AXI4Stream_UART_0_0" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_AXI4Stream_UART_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/top_bd_1_AXI4Stream_UART_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -339,41 +331,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="top_bd_1_AXI4Stream_UART_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_AXI4Stream_UART_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_bd_1_AXI4Stream_UART_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design" EnableStepBool="1"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="top_bd_1_depacketizer_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_depacketizer_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_bd_1_depacketizer_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design" EnableStepBool="1"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="top_bd_1_clk_wiz_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_clk_wiz_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_bd_1_clk_wiz_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
         <Step Id="init_design"/>
@@ -424,7 +382,24 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="top_bd_1_moving_avarage_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_moving_avarage_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_bd_1_moving_avarage_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="top_bd_1_moving_average_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_moving_average_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_bd_1_moving_average_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design" EnableStepBool="1"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+      <RQSFiles/>
+    </Run>
+    <Run Id="top_bd_1_AXI4Stream_UART_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="top_bd_1_AXI4Stream_UART_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="top_bd_1_AXI4Stream_UART_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
           <Desc>Default settings for Implementation.</Desc>

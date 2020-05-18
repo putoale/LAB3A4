@@ -14,7 +14,7 @@
       "packetizer_0": "",
       "clk_wiz_0": "",
       "util_vector_logic_0": "",
-      "moving_avarage_0": ""
+      "moving_average_0": ""
     },
     "interface_ports": {
       "usb_uart": {
@@ -512,12 +512,12 @@
           }
         }
       },
-      "moving_avarage_0": {
-        "vlnv": "xilinx.com:module_ref:moving_avarage:1.0",
-        "xci_name": "top_bd_1_moving_avarage_0_0",
+      "moving_average_0": {
+        "vlnv": "xilinx.com:module_ref:moving_average:1.0",
+        "xci_name": "top_bd_1_moving_average_0_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "moving_avarage",
+          "ref_name": "moving_average",
           "boundary_crc": "0x0"
         },
         "interface_ports": {
@@ -706,10 +706,10 @@
       }
     },
     "interface_nets": {
-      "moving_avarage_0_m_axis": {
+      "depacketizer_0_m_axis": {
         "interface_ports": [
-          "moving_avarage_0/m_axis",
-          "packetizer_0/s_axis"
+          "depacketizer_0/m_axis",
+          "moving_average_0/s_axis"
         ]
       },
       "AXI4Stream_UART_0_UART": {
@@ -724,16 +724,16 @@
           "depacketizer_0/s_axis"
         ]
       },
-      "depacketizer_0_m_axis": {
-        "interface_ports": [
-          "depacketizer_0/m_axis",
-          "moving_avarage_0/s_axis"
-        ]
-      },
       "packetizer_0_m_axis": {
         "interface_ports": [
           "packetizer_0/m_axis",
           "AXI4Stream_UART_0/S00_AXIS_TX"
+        ]
+      },
+      "moving_average_0_m_axis": {
+        "interface_ports": [
+          "moving_average_0/m_axis",
+          "packetizer_0/s_axis"
         ]
       }
     },
@@ -765,7 +765,7 @@
           "AXI4Stream_UART_0/m00_axis_rx_aclk",
           "depacketizer_0/aclk",
           "packetizer_0/aclk",
-          "moving_avarage_0/clk"
+          "moving_average_0/clk"
         ]
       },
       "util_vector_logic_0_Res": {
@@ -775,13 +775,13 @@
           "packetizer_0/aresetn",
           "AXI4Stream_UART_0/s00_axis_tx_aresetn",
           "AXI4Stream_UART_0/m00_axis_rx_aresetn",
-          "moving_avarage_0/aresetn"
+          "moving_average_0/aresetn"
         ]
       },
       "sw_in_0_1": {
         "ports": [
           "sw_in_0",
-          "moving_avarage_0/sw_in"
+          "moving_average_0/sw_in"
         ]
       }
     }

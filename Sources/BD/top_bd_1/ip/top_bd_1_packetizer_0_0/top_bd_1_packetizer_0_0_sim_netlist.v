@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Fri May 15 18:28:43 2020
-// Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
+// Date        : Fri May 15 18:47:44 2020
+// Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_packetizer_0_0/top_bd_1_packetizer_0_0_sim_netlist.v
+//               C:/Users/gallu/Documents/GitHub/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_packetizer_0_0/top_bd_1_packetizer_0_0_sim_netlist.v
 // Design      : top_bd_1_packetizer_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

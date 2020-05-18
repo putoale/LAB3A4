@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# depacketizer, moving_avarage, packetizer
+# depacketizer, moving_average, packetizer
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -216,13 +216,13 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: moving_avarage_0, and set properties
-  set block_name moving_avarage
-  set block_cell_name moving_avarage_0
-  if { [catch {set moving_avarage_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: moving_average_0, and set properties
+  set block_name moving_average
+  set block_cell_name moving_average_0
+  if { [catch {set moving_average_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $moving_avarage_0 eq "" } {
+   } elseif { $moving_average_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -248,17 +248,17 @@ proc create_root_design { parentCell } {
   # Create interface connections
   connect_bd_intf_net -intf_net AXI4Stream_UART_0_M00_AXIS_RX [get_bd_intf_pins AXI4Stream_UART_0/M00_AXIS_RX] [get_bd_intf_pins depacketizer_0/s_axis]
   connect_bd_intf_net -intf_net AXI4Stream_UART_0_UART [get_bd_intf_ports usb_uart] [get_bd_intf_pins AXI4Stream_UART_0/UART]
-  connect_bd_intf_net -intf_net depacketizer_0_m_axis [get_bd_intf_pins depacketizer_0/m_axis] [get_bd_intf_pins moving_avarage_0/s_axis]
-  connect_bd_intf_net -intf_net moving_avarage_0_m_axis [get_bd_intf_pins moving_avarage_0/m_axis] [get_bd_intf_pins packetizer_0/s_axis]
+  connect_bd_intf_net -intf_net depacketizer_0_m_axis [get_bd_intf_pins depacketizer_0/m_axis] [get_bd_intf_pins moving_average_0/s_axis]
+  connect_bd_intf_net -intf_net moving_average_0_m_axis [get_bd_intf_pins moving_average_0/m_axis] [get_bd_intf_pins packetizer_0/s_axis]
   connect_bd_intf_net -intf_net packetizer_0_m_axis [get_bd_intf_pins AXI4Stream_UART_0/S00_AXIS_TX] [get_bd_intf_pins packetizer_0/m_axis]
 
   # Create port connections
   connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins AXI4Stream_UART_0/clk_uart] [get_bd_pins clk_wiz_0/clk_out1]
-  connect_bd_net -net clk_wiz_0_clk_out2 [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aclk] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aclk] [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins depacketizer_0/aclk] [get_bd_pins moving_avarage_0/clk] [get_bd_pins packetizer_0/aclk]
+  connect_bd_net -net clk_wiz_0_clk_out2 [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aclk] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aclk] [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins depacketizer_0/aclk] [get_bd_pins moving_average_0/clk] [get_bd_pins packetizer_0/aclk]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins AXI4Stream_UART_0/rst] [get_bd_pins clk_wiz_0/reset] [get_bd_pins util_vector_logic_0/Op1]
-  connect_bd_net -net sw_in_0_1 [get_bd_ports sw_in_0] [get_bd_pins moving_avarage_0/sw_in]
+  connect_bd_net -net sw_in_0_1 [get_bd_ports sw_in_0] [get_bd_pins moving_average_0/sw_in]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_0/clk_in1]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aresetn] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aresetn] [get_bd_pins depacketizer_0/aresetn] [get_bd_pins moving_avarage_0/aresetn] [get_bd_pins packetizer_0/aresetn] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aresetn] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aresetn] [get_bd_pins depacketizer_0/aresetn] [get_bd_pins moving_average_0/aresetn] [get_bd_pins packetizer_0/aresetn] [get_bd_pins util_vector_logic_0/Res]
 
   # Create address segments
 

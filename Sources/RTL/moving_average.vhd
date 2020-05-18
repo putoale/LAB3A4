@@ -1,11 +1,10 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use IEEE.MATH_REAL;
 
-entity moving_avarage is
+entity moving_average is
 Generic(
-  AV_WIDTH_BIT : integer := 5;
+  MEAN_AV_WIDTH2 : positive := 5;
   DATA_WIDTH : positive := 16
 );
 Port (
@@ -26,31 +25,30 @@ Port (
   m_axis_tready	: in std_logic
 
   );
-end moving_avarage;
+end moving_average;
 
-architecture Behavioral of moving_avarage is
-  constant AV_WIDTH : POSITIVE := 2**AV_WIDTH_BIT;
+architecture Behavioral of moving_average is
 
-  type state_type is (IDLE, RECEIVE_DATA, SUBTRACTION, AVARAGE, SEND_DATA);
+  type state_type is (IDLE, RECEIVE_DATA, SUBTRACTION, AVERAGE, SEND_DATA);
   signal state : state_type  := IDLE;
 
-  type mem_type is array (0 to av_width-1) of std_logic_vector(data_width-1 downto 0);
+  type mem_type is array (0 to 2**MEAN_AV_WIDTH2-1) of std_logic_vector(data_width-1 downto 0);
   signal last_values_sx				: mem_type :=(others=>(others=>'0'));
   signal last_values_dx		   	: mem_type :=(others=>(others=>'0'));
 
-  signal data_in         : std_logic_vector(data_width-1 downto 0) := (others=> '0');
+  signal data_in         : std_logic_vector(DATA_WIDTH-1 downto 0) := (others=> '0');
 
-  signal data_out        : std_logic_vector(data_width-1 downto 0) := (others=> '0');
+  signal data_out        : std_logic_vector(DATA_WIDTH-1 downto 0) := (others=> '0');
 
   signal sw_reg : std_logic := '0';
 
-  signal last_avarage_sx : signed (data_width-1 downto 0) := (others=> '0');
-  signal last_avarage_dx : signed (data_width-1 downto 0) := (others=> '0');
+  signal last_sum_sx : signed (data_width-1+MEAN_AV_WIDTH2 downto 0) := (others=> '0');
+  signal last_sum_dx : signed (data_width-1+MEAN_AV_WIDTH2 downto 0) := (others=> '0');
 
   signal tlast_sampled    : std_logic := '0';
   signal tlast_expected   : std_logic := '0';
 
-  signal sub_sig : signed (DATA_WIDTH-1 downto 0) := (Others =>'0');
+  signal sub : signed (DATA_WIDTH downto 0) := (Others =>'0');
 
 begin
 
@@ -71,7 +69,7 @@ begin
 
 
   FSM : PROCESS(clk,aresetn)
-  variable sub : signed (DATA_WIDTH downto 0) := (Others =>'0');
+  variable sum : signed (DATA_WIDTH-1+MEAN_AV_WIDTH2 downto 0) := (Others =>'0');
   begin
 
     if aresetn='0' then
@@ -79,58 +77,57 @@ begin
       state<=IDLE;
       last_values_sx	<= (others => (others=>'0'));
       last_values_dx	<= (others => (others=>'0'));
-      last_avarage_dx <= (others => '0');
-      last_avarage_dx <= (others => '0');
+      last_sum_sx     <= (others =>'0');
+      last_sum_dx     <= (others =>'0');
+
 
     elsif rising_edge(clk) then
 
       case state is
 
         when IDLE =>
-          if s_axis_tvalid = '1' then
-            sw_reg <= sw_in;
-            tlast_sampled <= s_axis_tlast;
-            data_in <= s_axis_tdata;
-
             state<=RECEIVE_DATA;
-          end if;
 
 
         when RECEIVE_DATA =>
 
-            data_out  <= s_axis_tdata; --?
+            if s_axis_tvalid = '1' then
+              sw_reg <= sw_in;
+              data_in <= s_axis_tdata;
 
-            if tlast_sampled = tlast_expected then
-              state <= SUBTRACTION;
-              tlast_expected <= not tlast_expected;
+              if s_axis_tlast = tlast_expected then
+                state <= SUBTRACTION;
+                tlast_expected <= not tlast_expected;
+                tlast_sampled <= s_axis_tlast;
+              end if;
             end if;
 
         when SUBTRACTION =>
 
-            state<=AVARAGE;
+            state<=AVERAGE;
 
             if tlast_sampled ='1' then
               last_values_dx <= data_in & last_values_dx(0 to last_values_dx'high-1);
+              sub <= resize(signed(data_in),sub'length)-resize(signed(last_values_dx(last_values_dx'right)),sub'length);
             else
               last_values_sx<= data_in & last_values_sx(0 to last_values_sx'high-1);
+              sub <= resize(signed(data_in),sub'length)-resize(signed(last_values_sx(last_values_sx'right)),sub'length);
             end if;
 
-            if tlast_sampled='1' then
-               sub := resize(signed(data_in) - signed(last_values_dx(av_width-1)), sub'length);
-            else
-               sub := resize(signed(data_in) - signed(last_values_sx(av_width-1)), sub'length);
-            end if;
-            sub_sig <= resize (shift_right(sub , AV_WIDTH_BIT),sub_sig'length);
 
-        when AVARAGE =>
+
+
+        when AVERAGE =>
           state<=SEND_DATA;
 
           if tlast_sampled='1' then
-            data_out <= STD_LOGIC_VECTOR(sub_sig + last_avarage_dx);
-            last_avarage_dx <= sub_sig + last_avarage_dx;
+            sum := last_sum_dx+resize(sub,sum'length);
+            data_out <= STD_LOGIC_VECTOR(sum(sum'HIGH DOWNTO MEAN_AV_WIDTH2));
+            last_sum_dx <= sum;
           else
-            data_out <= STD_LOGIC_VECTOR(sub_sig + last_avarage_sx);
-            last_avarage_sx <= sub_sig + last_avarage_sx;
+            sum := last_sum_sx+resize(sub,sum'length);
+            data_out <= STD_LOGIC_VECTOR(sum(sum'HIGH DOWNTO MEAN_AV_WIDTH2));
+            last_sum_sx <= sum;
           end if;
 
           if sw_reg = '0' then

@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Sun May 17 22:38:21 2020
+--Date        : Mon May 18 19:17:07 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target top_bd_1.bd
 --Design      : top_bd_1
@@ -85,7 +85,7 @@ architecture STRUCTURE of top_bd_1 is
     Res : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component top_bd_1_util_vector_logic_0_0;
-  component top_bd_1_moving_avarage_0_0 is
+  component top_bd_1_moving_average_0_0 is
   port (
     clk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
@@ -99,7 +99,7 @@ architecture STRUCTURE of top_bd_1 is
     m_axis_tlast : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC
   );
-  end component top_bd_1_moving_avarage_0_0;
+  end component top_bd_1_moving_average_0_0;
   signal AXI4Stream_UART_0_M00_AXIS_RX_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal AXI4Stream_UART_0_M00_AXIS_RX_TREADY : STD_LOGIC;
   signal AXI4Stream_UART_0_M00_AXIS_RX_TVALID : STD_LOGIC;
@@ -111,10 +111,10 @@ architecture STRUCTURE of top_bd_1 is
   signal depacketizer_0_m_axis_TLAST : STD_LOGIC;
   signal depacketizer_0_m_axis_TREADY : STD_LOGIC;
   signal depacketizer_0_m_axis_TVALID : STD_LOGIC;
-  signal moving_avarage_0_m_axis_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal moving_avarage_0_m_axis_TLAST : STD_LOGIC;
-  signal moving_avarage_0_m_axis_TREADY : STD_LOGIC;
-  signal moving_avarage_0_m_axis_TVALID : STD_LOGIC;
+  signal moving_average_0_m_axis_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal moving_average_0_m_axis_TLAST : STD_LOGIC;
+  signal moving_average_0_m_axis_TREADY : STD_LOGIC;
+  signal moving_average_0_m_axis_TVALID : STD_LOGIC;
   signal packetizer_0_m_axis_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal packetizer_0_m_axis_TREADY : STD_LOGIC;
   signal packetizer_0_m_axis_TVALID : STD_LOGIC;
@@ -174,14 +174,14 @@ depacketizer_0: component top_bd_1_depacketizer_0_0
       s_axis_tready => AXI4Stream_UART_0_M00_AXIS_RX_TREADY,
       s_axis_tvalid => AXI4Stream_UART_0_M00_AXIS_RX_TVALID
     );
-moving_avarage_0: component top_bd_1_moving_avarage_0_0
+moving_average_0: component top_bd_1_moving_average_0_0
      port map (
       aresetn => util_vector_logic_0_Res(0),
       clk => clk_wiz_0_clk_out2,
-      m_axis_tdata(15 downto 0) => moving_avarage_0_m_axis_TDATA(15 downto 0),
-      m_axis_tlast => moving_avarage_0_m_axis_TLAST,
-      m_axis_tready => moving_avarage_0_m_axis_TREADY,
-      m_axis_tvalid => moving_avarage_0_m_axis_TVALID,
+      m_axis_tdata(15 downto 0) => moving_average_0_m_axis_TDATA(15 downto 0),
+      m_axis_tlast => moving_average_0_m_axis_TLAST,
+      m_axis_tready => moving_average_0_m_axis_TREADY,
+      m_axis_tvalid => moving_average_0_m_axis_TVALID,
       s_axis_tdata(15 downto 0) => depacketizer_0_m_axis_TDATA(15 downto 0),
       s_axis_tlast => depacketizer_0_m_axis_TLAST,
       s_axis_tready => depacketizer_0_m_axis_TREADY,
@@ -195,10 +195,10 @@ packetizer_0: component top_bd_1_packetizer_0_0
       m_axis_tdata(7 downto 0) => packetizer_0_m_axis_TDATA(7 downto 0),
       m_axis_tready => packetizer_0_m_axis_TREADY,
       m_axis_tvalid => packetizer_0_m_axis_TVALID,
-      s_axis_tdata(15 downto 0) => moving_avarage_0_m_axis_TDATA(15 downto 0),
-      s_axis_tlast => moving_avarage_0_m_axis_TLAST,
-      s_axis_tready => moving_avarage_0_m_axis_TREADY,
-      s_axis_tvalid => moving_avarage_0_m_axis_TVALID
+      s_axis_tdata(15 downto 0) => moving_average_0_m_axis_TDATA(15 downto 0),
+      s_axis_tlast => moving_average_0_m_axis_TLAST,
+      s_axis_tready => moving_average_0_m_axis_TREADY,
+      s_axis_tvalid => moving_average_0_m_axis_TVALID
     );
 util_vector_logic_0: component top_bd_1_util_vector_logic_0_0
      port map (

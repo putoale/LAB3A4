@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May 17 22:38:21 2020" VIVADOVERSION="2019.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon May 18 19:17:08 2020" VIVADOVERSION="2019.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.1" DEVICE="7a35t" NAME="top_bd_1" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -18,7 +18,7 @@
     </PORT>
     <PORT DIR="I" NAME="sw_in_0" SIGIS="undef" SIGNAME="External_Ports_sw_in_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="moving_avarage_0" PORT="sw_in"/>
+        <CONNECTION INSTANCE="moving_average_0" PORT="sw_in"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="usb_uart_txd" SIGIS="undef" SIGNAME="AXI4Stream_UART_0_UART_TX">
@@ -777,7 +777,7 @@
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="m00_axis_rx_aclk"/>
             <CONNECTION INSTANCE="depacketizer_0" PORT="aclk"/>
             <CONNECTION INSTANCE="packetizer_0" PORT="aclk"/>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="clk"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
@@ -821,22 +821,22 @@
         </PORT>
         <PORT DIR="O" NAME="m_axis_tvalid" SIGIS="undef" SIGNAME="depacketizer_0_m_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="s_axis_tvalid"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="s_axis_tvalid"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="m_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="depacketizer_0_m_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="s_axis_tdata"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="s_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_tlast" SIGIS="undef" SIGNAME="depacketizer_0_m_axis_tlast">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="s_axis_tlast"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="s_axis_tlast"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="m_axis_tready" SIGIS="undef" SIGNAME="depacketizer_0_m_axis_tready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="s_axis_tready"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="s_axis_tready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -884,12 +884,12 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/moving_avarage_0" HWVERSION="1.0" INSTANCE="moving_avarage_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="moving_avarage" VLNV="xilinx.com:module_ref:moving_avarage:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/moving_average_0" HWVERSION="1.0" INSTANCE="moving_average_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="moving_average" VLNV="xilinx.com:module_ref:moving_average:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="AV_WIDTH_BIT" VALUE="5"/>
+        <PARAMETER NAME="MEAN_AV_WIDTH2" VALUE="5"/>
         <PARAMETER NAME="DATA_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="Component_Name" VALUE="top_bd_1_moving_avarage_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="top_bd_1_moving_average_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -928,29 +928,29 @@
             <CONNECTION INSTANCE="depacketizer_0" PORT="m_axis_tready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axis_tvalid" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tvalid">
+        <PORT DIR="O" NAME="m_axis_tvalid" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packetizer_0" PORT="s_axis_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="m_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tdata">
+        <PORT DIR="O" LEFT="15" NAME="m_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packetizer_0" PORT="s_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="m_axis_tlast" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tlast">
+        <PORT DIR="O" NAME="m_axis_tlast" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tlast">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packetizer_0" PORT="s_axis_tlast"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="m_axis_tready" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tready">
+        <PORT DIR="I" NAME="m_axis_tready" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packetizer_0" PORT="s_axis_tready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="moving_avarage_0_m_axis" NAME="m_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="moving_average_0_m_axis" NAME="m_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
@@ -1014,24 +1014,24 @@
             <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_tvalid" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tvalid">
+        <PORT DIR="I" NAME="s_axis_tvalid" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="m_axis_tvalid"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="m_axis_tvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="s_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tdata">
+        <PORT DIR="I" LEFT="15" NAME="s_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="m_axis_tdata"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="m_axis_tdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axis_tlast" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tlast">
+        <PORT DIR="I" NAME="s_axis_tlast" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tlast">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="m_axis_tlast"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="m_axis_tlast"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="s_axis_tready" SIGIS="undef" SIGNAME="moving_avarage_0_m_axis_tready">
+        <PORT DIR="O" NAME="s_axis_tready" SIGIS="undef" SIGNAME="moving_average_0_m_axis_tready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="m_axis_tready"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="m_axis_tready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="m_axis_tvalid" SIGIS="undef" SIGNAME="AXI4Stream_UART_0_s00_axis_tx_tvalid">
@@ -1071,7 +1071,7 @@
             <PORTMAP LOGICAL="TREADY" PHYSICAL="m_axis_tready"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="moving_avarage_0_m_axis" NAME="s_axis" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="moving_average_0_m_axis" NAME="s_axis" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
@@ -1115,7 +1115,7 @@
             <CONNECTION INSTANCE="packetizer_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="s00_axis_tx_aresetn"/>
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="m00_axis_rx_aresetn"/>
-            <CONNECTION INSTANCE="moving_avarage_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

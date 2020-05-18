@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 -- Date        : Sun May 17 19:02:54 2020
 -- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_clk_wiz_0_0/top_bd_1_clk_wiz_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top top_bd_1_clk_wiz_0_0 -prefix
+--               top_bd_1_clk_wiz_0_0_ top_bd_1_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : top_bd_1_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,8 +22,6 @@ entity top_bd_1_clk_wiz_0_0_top_bd_1_clk_wiz_0_0_clk_wiz is
     locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of top_bd_1_clk_wiz_0_0_top_bd_1_clk_wiz_0_0_clk_wiz : entity is "top_bd_1_clk_wiz_0_0_clk_wiz";
 end top_bd_1_clk_wiz_0_0_top_bd_1_clk_wiz_0_0_clk_wiz;
 
 architecture STRUCTURE of top_bd_1_clk_wiz_0_0_top_bd_1_clk_wiz_0_0_clk_wiz is
