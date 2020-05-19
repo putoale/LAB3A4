@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="bd_mov_av_v2" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1589882407"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1589882407"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1589882407"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1589882407"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1589915814"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1589915814"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1589915814"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1589915814"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\bd_mov_av_v2_AXI4Stream_UART_0_0\bd_mov_av_v2_AXI4Stream_UART_0_0.xci" Type="IP">
         <Instance HierarchyPath="AXI4Stream_UART_0"/>
@@ -57,6 +57,14 @@
       </File>
       <File Name="ip\bd_mov_av_v2_mute_v1_0_0\bd_mov_av_v2_mute_v1_0_0.xci" Type="IP">
         <Instance HierarchyPath="mute_v1_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_mov_av_v2_volume_controller_0_0\bd_mov_av_v2_volume_controller_0_0.xci" Type="IP">
+        <Instance HierarchyPath="volume_controller_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
