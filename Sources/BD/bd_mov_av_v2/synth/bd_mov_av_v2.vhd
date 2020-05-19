@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Mon May 18 23:05:36 2020
+--Date        : Tue May 19 12:00:06 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target bd_mov_av_v2.bd
 --Design      : bd_mov_av_v2
@@ -13,6 +13,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity bd_mov_av_v2 is
   port (
+    btnL : in STD_LOGIC;
+    btnR : in STD_LOGIC;
     reset : in STD_LOGIC;
     sw_in_0 : in STD_LOGIC;
     sys_clock : in STD_LOGIC;
@@ -20,7 +22,7 @@ entity bd_mov_av_v2 is
     usb_uart_txd : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_mov_av_v2 : entity is "bd_mov_av_v2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_mov_av_v2,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=6,numNonXlnxBlks=1,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of bd_mov_av_v2 : entity is "bd_mov_av_v2,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_mov_av_v2,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=7,numReposBlks=7,numNonXlnxBlks=1,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=4,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_mov_av_v2 : entity is "bd_mov_av_v2.hwdef";
 end bd_mov_av_v2;
@@ -81,8 +83,8 @@ architecture STRUCTURE of bd_mov_av_v2 is
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC;
     clk_out1 : out STD_LOGIC;
-    locked : out STD_LOGIC;
-    clk_out2 : out STD_LOGIC
+    clk_out2 : out STD_LOGIC;
+    locked : out STD_LOGIC
   );
   end component bd_mov_av_v2_clk_wiz_0_0;
   component bd_mov_av_v2_moving_average_v2_0_0 is
@@ -100,6 +102,22 @@ architecture STRUCTURE of bd_mov_av_v2 is
     m_axis_tready : in STD_LOGIC
   );
   end component bd_mov_av_v2_moving_average_v2_0_0;
+  component bd_mov_av_v2_mute_v1_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    mute_left : in STD_LOGIC;
+    mute_right : in STD_LOGIC;
+    s_mute_tvalid : in STD_LOGIC;
+    s_mute_tready : out STD_LOGIC;
+    s_mute_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_mute_tlast : in STD_LOGIC;
+    m_mute_tvalid : out STD_LOGIC;
+    m_mute_tready : in STD_LOGIC;
+    m_mute_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_mute_tlast : out STD_LOGIC
+  );
+  end component bd_mov_av_v2_mute_v1_0_0;
   signal AXI4Stream_UART_0_M00_AXIS_RX_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal AXI4Stream_UART_0_M00_AXIS_RX_TREADY : STD_LOGIC;
   signal AXI4Stream_UART_0_M00_AXIS_RX_TVALID : STD_LOGIC;
@@ -115,6 +133,12 @@ architecture STRUCTURE of bd_mov_av_v2 is
   signal moving_average_v2_0_m_axis_TLAST : STD_LOGIC;
   signal moving_average_v2_0_m_axis_TREADY : STD_LOGIC;
   signal moving_average_v2_0_m_axis_TVALID : STD_LOGIC;
+  signal mute_left_0_1 : STD_LOGIC;
+  signal mute_right_0_1 : STD_LOGIC;
+  signal mute_v1_0_m_mute_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal mute_v1_0_m_mute_TLAST : STD_LOGIC;
+  signal mute_v1_0_m_mute_TREADY : STD_LOGIC;
+  signal mute_v1_0_m_mute_TVALID : STD_LOGIC;
   signal packetizer_0_m_axis_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal packetizer_0_m_axis_TREADY : STD_LOGIC;
   signal packetizer_0_m_axis_TVALID : STD_LOGIC;
@@ -133,6 +157,8 @@ architecture STRUCTURE of bd_mov_av_v2 is
   attribute X_INTERFACE_INFO of usb_uart_txd : signal is "xilinx.com:interface:uart:1.0 usb_uart TxD";
 begin
   AXI4Stream_UART_0_UART_RxD <= usb_uart_rxd;
+  mute_left_0_1 <= btnR;
+  mute_right_0_1 <= btnL;
   reset_1 <= reset;
   sw_in_0_1 <= sw_in_0;
   sys_clock_1 <= sys_clock;
@@ -188,6 +214,21 @@ moving_average_v2_0: component bd_mov_av_v2_moving_average_v2_0_0
       s_axis_tvalid => depacketizer_0_m_axis_TVALID,
       sw_in => sw_in_0_1
     );
+mute_v1_0: component bd_mov_av_v2_mute_v1_0_0
+     port map (
+      aresetn => util_vector_logic_0_Res(0),
+      clk => clk_wiz_0_clk_out2,
+      m_mute_tdata(15 downto 0) => mute_v1_0_m_mute_TDATA(15 downto 0),
+      m_mute_tlast => mute_v1_0_m_mute_TLAST,
+      m_mute_tready => mute_v1_0_m_mute_TREADY,
+      m_mute_tvalid => mute_v1_0_m_mute_TVALID,
+      mute_left => mute_left_0_1,
+      mute_right => mute_right_0_1,
+      s_mute_tdata(15 downto 0) => moving_average_v2_0_m_axis_TDATA(15 downto 0),
+      s_mute_tlast => moving_average_v2_0_m_axis_TLAST,
+      s_mute_tready => moving_average_v2_0_m_axis_TREADY,
+      s_mute_tvalid => moving_average_v2_0_m_axis_TVALID
+    );
 packetizer_0: component bd_mov_av_v2_packetizer_0_0
      port map (
       aclk => clk_wiz_0_clk_out2,
@@ -195,10 +236,10 @@ packetizer_0: component bd_mov_av_v2_packetizer_0_0
       m_axis_tdata(7 downto 0) => packetizer_0_m_axis_TDATA(7 downto 0),
       m_axis_tready => packetizer_0_m_axis_TREADY,
       m_axis_tvalid => packetizer_0_m_axis_TVALID,
-      s_axis_tdata(15 downto 0) => moving_average_v2_0_m_axis_TDATA(15 downto 0),
-      s_axis_tlast => moving_average_v2_0_m_axis_TLAST,
-      s_axis_tready => moving_average_v2_0_m_axis_TREADY,
-      s_axis_tvalid => moving_average_v2_0_m_axis_TVALID
+      s_axis_tdata(15 downto 0) => mute_v1_0_m_mute_TDATA(15 downto 0),
+      s_axis_tlast => mute_v1_0_m_mute_TLAST,
+      s_axis_tready => mute_v1_0_m_mute_TREADY,
+      s_axis_tvalid => mute_v1_0_m_mute_TVALID
     );
 util_vector_logic_0: component bd_mov_av_v2_util_vector_logic_0_0
      port map (

@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Mon May 18 23:05:36 2020
+--Date        : Tue May 19 12:00:06 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target bd_mov_av_v2_wrapper.bd
 --Design      : bd_mov_av_v2_wrapper
@@ -13,6 +13,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity bd_mov_av_v2_wrapper is
   port (
+    btnL : in STD_LOGIC;
+    btnR : in STD_LOGIC;
     reset : in STD_LOGIC;
     sw_in_0 : in STD_LOGIC;
     sys_clock : in STD_LOGIC;
@@ -25,15 +27,19 @@ architecture STRUCTURE of bd_mov_av_v2_wrapper is
   component bd_mov_av_v2 is
   port (
     sys_clock : in STD_LOGIC;
+    reset : in STD_LOGIC;
+    sw_in_0 : in STD_LOGIC;
     usb_uart_txd : out STD_LOGIC;
     usb_uart_rxd : in STD_LOGIC;
-    reset : in STD_LOGIC;
-    sw_in_0 : in STD_LOGIC
+    btnR : in STD_LOGIC;
+    btnL : in STD_LOGIC
   );
   end component bd_mov_av_v2;
 begin
 bd_mov_av_v2_i: component bd_mov_av_v2
      port map (
+      btnL => btnL,
+      btnR => btnR,
       reset => reset,
       sw_in_0 => sw_in_0,
       sys_clock => sys_clock,

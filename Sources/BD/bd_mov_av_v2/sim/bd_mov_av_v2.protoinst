@@ -66,6 +66,28 @@
 						"TVALID": { "actual": "s_axis_tvalid"}
 					}
 				},
+				"/mute_v1_0/m_mute": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "m_mute_tdata"},
+						"TLAST": { "actual": "m_mute_tlast"},
+						"TREADY": { "actual": "m_mute_tready"},
+						"TVALID": { "actual": "m_mute_tvalid"}
+					}
+				},
+				"/mute_v1_0/s_mute": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "clk"},
+						"ARESETN": { "actual": "aresetn"},
+						"TDATA": { "actual": "s_mute_tdata"},
+						"TLAST": { "actual": "s_mute_tlast"},
+						"TREADY": { "actual": "s_mute_tready"},
+						"TVALID": { "actual": "s_mute_tvalid"}
+					}
+				},
 				"/packetizer_0/m_axis": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {

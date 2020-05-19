@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# depacketizer, moving_average_v2, packetizer
+# depacketizer, moving_average_v2, mute_v1, packetizer
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -66,7 +66,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./BD
+  set origin_dir ./Sources/BD
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -165,6 +165,8 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
+  set btnL [ create_bd_port -dir I btnL ]
+  set btnR [ create_bd_port -dir I btnR ]
   set reset [ create_bd_port -dir I -type rst reset ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
@@ -226,6 +228,17 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: mute_v1_0, and set properties
+  set block_name mute_v1
+  set block_cell_name mute_v1_0
+  if { [catch {set mute_v1_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mute_v1_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: packetizer_0, and set properties
   set block_name packetizer
   set block_cell_name packetizer_0
@@ -248,16 +261,19 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net AXI4Stream_UART_0_M00_AXIS_RX [get_bd_intf_pins AXI4Stream_UART_0/M00_AXIS_RX] [get_bd_intf_pins depacketizer_0/s_axis]
   connect_bd_intf_net -intf_net AXI4Stream_UART_0_UART [get_bd_intf_ports usb_uart] [get_bd_intf_pins AXI4Stream_UART_0/UART]
   connect_bd_intf_net -intf_net depacketizer_0_m_axis [get_bd_intf_pins depacketizer_0/m_axis] [get_bd_intf_pins moving_average_v2_0/s_axis]
-  connect_bd_intf_net -intf_net moving_average_v2_0_m_axis [get_bd_intf_pins moving_average_v2_0/m_axis] [get_bd_intf_pins packetizer_0/s_axis]
+  connect_bd_intf_net -intf_net moving_average_v2_0_m_axis [get_bd_intf_pins moving_average_v2_0/m_axis] [get_bd_intf_pins mute_v1_0/s_mute]
+  connect_bd_intf_net -intf_net mute_v1_0_m_mute [get_bd_intf_pins mute_v1_0/m_mute] [get_bd_intf_pins packetizer_0/s_axis]
   connect_bd_intf_net -intf_net packetizer_0_m_axis [get_bd_intf_pins AXI4Stream_UART_0/S00_AXIS_TX] [get_bd_intf_pins packetizer_0/m_axis]
 
   # Create port connections
   connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins AXI4Stream_UART_0/clk_uart] [get_bd_pins clk_wiz_0/clk_out1]
-  connect_bd_net -net clk_wiz_0_clk_out2 [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aclk] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aclk] [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins depacketizer_0/aclk] [get_bd_pins moving_average_v2_0/clk] [get_bd_pins packetizer_0/aclk]
+  connect_bd_net -net clk_wiz_0_clk_out2 [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aclk] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aclk] [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins depacketizer_0/aclk] [get_bd_pins moving_average_v2_0/clk] [get_bd_pins mute_v1_0/clk] [get_bd_pins packetizer_0/aclk]
+  connect_bd_net -net mute_left_0_1 [get_bd_ports btnR] [get_bd_pins mute_v1_0/mute_left]
+  connect_bd_net -net mute_right_0_1 [get_bd_ports btnL] [get_bd_pins mute_v1_0/mute_right]
   connect_bd_net -net reset_1 [get_bd_ports reset] [get_bd_pins AXI4Stream_UART_0/rst] [get_bd_pins clk_wiz_0/reset] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net sw_in_0_1 [get_bd_ports sw_in_0] [get_bd_pins moving_average_v2_0/sw_in]
   connect_bd_net -net sys_clock_1 [get_bd_ports sys_clock] [get_bd_pins clk_wiz_0/clk_in1]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aresetn] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aresetn] [get_bd_pins depacketizer_0/aresetn] [get_bd_pins moving_average_v2_0/aresetn] [get_bd_pins packetizer_0/aresetn] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins AXI4Stream_UART_0/m00_axis_rx_aresetn] [get_bd_pins AXI4Stream_UART_0/s00_axis_tx_aresetn] [get_bd_pins depacketizer_0/aresetn] [get_bd_pins moving_average_v2_0/aresetn] [get_bd_pins mute_v1_0/aresetn] [get_bd_pins packetizer_0/aresetn] [get_bd_pins util_vector_logic_0/Res]
 
   # Create address segments
 
