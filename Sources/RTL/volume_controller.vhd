@@ -49,7 +49,8 @@ architecture Behavioral of volume_controller is
   signal tlast_sampled  : std_logic := '0';
   signal tlast_expected : std_logic := '0';
 
-  signal data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
+  --signal data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
+  signal data_out_temp : signed (data_out'length-1 downto 0) := (Others => '0');
 
 
   constant SCALE_FACTOR : integer := (MAX_VOLUME - MIN_VOLUME + 1) / 16;
@@ -71,6 +72,7 @@ begin
 
   volume_ctrl : process (aclk,aresetn)
   variable volume_var : signed (VOLUME_BITS downto 0) := default_volume_sig;
+  variable n_led_on   : integer range 1 to 16 := 1;
   begin
     if aresetn = '0' then
       volume <= default_volume_sig; --7
@@ -83,8 +85,9 @@ begin
       elsif volume_up = '0' and volume_down = '1' and volume /= to_signed(MIN_VOLUME,volume'length) then
         volume_var := volume_var - 1;
       end if;
-
-      --volume_level <= std_logic_vector ( resize((volume_var / SCALE_FACTOR + 1),volume_level'length) );
+      n_led_on := to_integer (volume_var / SCALE_FACTOR + 1);
+      volume_level (volume_level'high downto n_led_on)<= (Others =>'0');
+      volume_level (n_led_on-1 downto 0)<= (Others =>'1');
       volume <= volume_var;
 
     end if;
@@ -110,7 +113,7 @@ begin
         when RECEIVE_DATA =>
 
             if s_axis_tvalid = '1' then
-              data_in <= signed (s_axis_tdata);
+              data_in <= signed(s_axis_tdata);
 
               if s_axis_tlast = tlast_expected then
                 state <= MULTIPLY;
@@ -139,7 +142,8 @@ begin
 
             if diff > 0 then
               --data_out_var := shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
-              data_out_temp <= shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
+              --data_out_temp <= shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
+              data_out_temp <= shift_left(data_in,to_integer(diff));
             elsif diff < 0 then
               --data_out_temp := shift_right (resize(data_in,data_out_temp'length), to_integer(diff));
               data_out <= shift_right (data_in, abs(to_integer(diff)));
@@ -151,10 +155,13 @@ begin
 
         when COMPUTE_OUT =>
             if diff > 0 then
-              if data_out_temp > 2**data_out'length -1 then
-                data_out <= (Others =>'1');
+              --if data_out_temp > 2**data_out'length -1 then
+              if data_out_temp (data_out_temp'left) /= data_in(data_in'left) then
+                data_out <= (Others => '1');
+                data_out (data_out'left) <= '0';
               else
-                data_out <= resize(data_out_temp,data_out'length);
+                --data_out <= resize(data_out_temp,data_out'length);
+                data_out <= data_out_temp;
               end if;
             end if;
             state <= SEND_DATA;
