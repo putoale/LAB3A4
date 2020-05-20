@@ -51,9 +51,6 @@ architecture Behavioral of volume_controller is
 
   constant SCALE_FACTOR : integer := (MAX_VOLUME - MIN_VOLUME + 1) / 16;
 
-
-
-
 begin
 
   with state select s_axis_tready	<=
@@ -73,7 +70,7 @@ begin
   variable volume_var : signed (VOLUME_BITS downto 0) := default_volume_sig;
   begin
     if aresetn = '0' then
-      volume <= default_volume_sig;
+      volume <= default_volume_sig; --7
       volume_var := default_volume_sig;
 
     elsif rising_edge(aclk) then
@@ -122,7 +119,7 @@ begin
 
         when MULTIPLY =>
             if diff > 0 then
-              data_out_var := data_in * diff;
+              data_out_var := shift_left (resize(data_in,data_out_var'length), to_integer(diff));
 
               if data_out_var > 2 ** data_out'length - 1 then
                 data_out <= (Others =>'1');
