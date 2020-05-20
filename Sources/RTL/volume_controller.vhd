@@ -35,7 +35,7 @@ entity volume_controller is
 end volume_controller;
 
 architecture Behavioral of volume_controller is
-  type state_type is (IDLE, RECEIVE_DATA, MULTIPLY, SEND_DATA);
+  type state_type is (IDLE, RECEIVE_DATA, MULTIPLY, COMPUTE_OUT,SEND_DATA);
   signal state : state_type  := IDLE;
 
   signal data_in  : signed (DATA_WIDTH -1 downto 0) := (Others => '0');
@@ -48,6 +48,9 @@ architecture Behavioral of volume_controller is
 
   signal tlast_sampled  : std_logic := '0';
   signal tlast_expected : std_logic := '0';
+
+  signal data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
+
 
   constant SCALE_FACTOR : integer := (MAX_VOLUME - MIN_VOLUME + 1) / 16;
 
@@ -81,7 +84,7 @@ begin
         volume_var := volume_var - 1;
       end if;
 
-      volume_level <= std_logic_vector ( resize((volume_var / SCALE_FACTOR + 1),volume_level'length) );
+      --volume_level <= std_logic_vector ( resize((volume_var / SCALE_FACTOR + 1),volume_level'length) );
       volume <= volume_var;
 
     end if;
@@ -89,7 +92,7 @@ begin
   end process;
 
   FSM : PROCESS(aclk,aresetn)
-  variable data_out_var : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
+  -- variable data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
   begin
 
     if aresetn = '0' then
@@ -118,22 +121,43 @@ begin
             end if;
 
         when MULTIPLY =>
+            -- if diff > 0 then
+            --   data_out_temp := shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
+            --
+            --   if data_out_temp > 2 ** data_out'length - 1 then
+            --     data_out <= (Others =>'1');
+            --   else
+            --     data_out <= resize (data_out_temp, data_out'length);
+            --   end if;
+            --
+            -- elsif diff < 0 then
+            --   data_out <= shift_right (data_in, to_integer(diff));
+            -- else
+            --   data_out <= data_in;
+            -- end if;
+            -- state <= SEND_DATA;
+
             if diff > 0 then
-              data_out_var := shift_left (resize(data_in,data_out_var'length), to_integer(diff));
-
-              if data_out_var > 2 ** data_out'length - 1 then
-                data_out <= (Others =>'1');
-              else
-                data_out <= resize (data_out_var, data_out'length);
-              end if;
-
+              --data_out_var := shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
+              data_out_temp <= shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
             elsif diff < 0 then
-              data_out <= shift_right (data_in, to_integer(diff));
+              --data_out_temp := shift_right (resize(data_in,data_out_temp'length), to_integer(diff));
+              data_out <= shift_right (data_in, abs(to_integer(diff)));
             else
+              --data_out_temp := resize(data_in,data_out_temp'length);
               data_out <= data_in;
             end if;
-            state <= SEND_DATA;
+            state <= COMPUTE_OUT;
 
+        when COMPUTE_OUT =>
+            if diff > 0 then
+              if data_out_temp > 2**data_out'length -1 then
+                data_out <= (Others =>'1');
+              else
+                data_out <= resize(data_out_temp,data_out'length);
+              end if;
+            end if;
+            state <= SEND_DATA;
 
         when SEND_DATA =>
             if m_axis_tready ='1'  then
