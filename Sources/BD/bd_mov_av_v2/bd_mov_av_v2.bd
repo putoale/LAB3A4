@@ -1118,6 +1118,14 @@
       "volume_controller_0": {
         "vlnv": "xilinx.com:module_ref:volume_controller:1.0",
         "xci_name": "bd_mov_av_v2_volume_controller_0_0",
+        "parameters": {
+          "DEFAULT_VOLUME": {
+            "value": "15"
+          },
+          "MAX_VOLUME": {
+            "value": "31"
+          }
+        },
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "volume_controller",
@@ -1317,22 +1325,10 @@
       }
     },
     "interface_nets": {
-      "AXI4Stream_UART_0_UART": {
-        "interface_ports": [
-          "usb_uart",
-          "AXI4Stream_UART_0/UART"
-        ]
-      },
       "depacketizer_0_m_axis": {
         "interface_ports": [
           "depacketizer_0/m_axis",
           "moving_average_v2_0/s_axis"
-        ]
-      },
-      "moving_average_v2_0_m_axis": {
-        "interface_ports": [
-          "moving_average_v2_0/m_axis",
-          "mute_v1_0/s_mute"
         ]
       },
       "AXI4Stream_UART_0_M00_AXIS_RX": {
@@ -1341,16 +1337,28 @@
           "depacketizer_0/s_axis"
         ]
       },
-      "packetizer_0_m_axis": {
-        "interface_ports": [
-          "packetizer_0/m_axis",
-          "AXI4Stream_UART_0/S00_AXIS_TX"
-        ]
-      },
       "volume_controller_0_m_axis": {
         "interface_ports": [
           "volume_controller_0/m_axis",
           "packetizer_0/s_axis"
+        ]
+      },
+      "AXI4Stream_UART_0_UART": {
+        "interface_ports": [
+          "usb_uart",
+          "AXI4Stream_UART_0/UART"
+        ]
+      },
+      "moving_average_v2_0_m_axis": {
+        "interface_ports": [
+          "moving_average_v2_0/m_axis",
+          "mute_v1_0/s_mute"
+        ]
+      },
+      "packetizer_0_m_axis": {
+        "interface_ports": [
+          "packetizer_0/m_axis",
+          "AXI4Stream_UART_0/S00_AXIS_TX"
         ]
       },
       "mute_v1_0_m_mute": {
