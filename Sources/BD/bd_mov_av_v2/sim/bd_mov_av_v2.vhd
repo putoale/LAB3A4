@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Thu May 21 20:56:05 2020
+--Date        : Sat May 23 19:28:45 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target bd_mov_av_v2.bd
 --Design      : bd_mov_av_v2
@@ -90,21 +90,6 @@ architecture STRUCTURE of bd_mov_av_v2 is
     locked : out STD_LOGIC
   );
   end component bd_mov_av_v2_clk_wiz_0_0;
-  component bd_mov_av_v2_moving_average_v2_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    sw_in : in STD_LOGIC;
-    s_axis_tvalid : in STD_LOGIC;
-    s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    s_axis_tlast : in STD_LOGIC;
-    s_axis_tready : out STD_LOGIC;
-    m_axis_tvalid : out STD_LOGIC;
-    m_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_tlast : out STD_LOGIC;
-    m_axis_tready : in STD_LOGIC
-  );
-  end component bd_mov_av_v2_moving_average_v2_0_0;
   component bd_mov_av_v2_mute_v1_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -153,6 +138,21 @@ architecture STRUCTURE of bd_mov_av_v2 is
     edge_detected : out STD_LOGIC
   );
   end component bd_mov_av_v2_edge_detector_1_0;
+  component bd_mov_av_v2_moving_average_v2_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    sw_in : in STD_LOGIC;
+    s_axis_tvalid : in STD_LOGIC;
+    s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_axis_tlast : in STD_LOGIC;
+    s_axis_tready : out STD_LOGIC;
+    m_axis_tvalid : out STD_LOGIC;
+    m_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_tlast : out STD_LOGIC;
+    m_axis_tready : in STD_LOGIC
+  );
+  end component bd_mov_av_v2_moving_average_v2_0_0;
   component bd_mov_av_v2_volume_controller_0_0 is
   port (
     aclk : in STD_LOGIC;

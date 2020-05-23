@@ -47,8 +47,8 @@ architecture Behavioral of moving_average_v2 is
   signal sw_reg_dx : std_logic := '0';
 
 
-  signal last_sum_sx : signed (data_width-1+MEAN_AV_WIDTH2 downto 0) := (others=> '0');
-  signal last_sum_dx : signed (data_width-1+MEAN_AV_WIDTH2 downto 0) := (others=> '0');
+  signal last_sum_sx : signed (data_width-1 + MEAN_AV_WIDTH2 downto 0) := (others=> '0');
+  signal last_sum_dx : signed (data_width-1 + MEAN_AV_WIDTH2 downto 0) := (others=> '0');
 
   signal tlast_sampled_sx    : std_logic := '0';
   signal tlast_sampled_dx    : std_logic := '0';

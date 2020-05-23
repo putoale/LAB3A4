@@ -9,7 +9,7 @@ entity volume_controller is
         DATA_WIDTH     : POSITIVE := 16;
 
         VOLUME_BITS    : POSITIVE := 4;
-        MIN_VOLUME     : INTEGER := 0;
+        MIN_VOLUME     : INTEGER  := 0;
         MAX_VOLUME     : POSITIVE := 15;
         DEFAULT_VOLUME : POSITIVE := 7
   );
@@ -35,6 +35,27 @@ entity volume_controller is
 end volume_controller;
 
 architecture Behavioral of volume_controller is
+
+  component volume_led_ctrl is
+    Generic(
+            VOLUME_BITS    : POSITIVE := 4;
+            MIN_VOLUME     : INTEGER  := 0;
+            MAX_VOLUME     : POSITIVE := 15;
+            DEFAULT_VOLUME : POSITIVE := 7
+    );
+    Port (
+            aclk    : in std_logic;
+            aresetn : in std_logic;
+
+            btn_up   : in std_logic;
+            btn_down : in std_logic;
+
+            volume   : out std_logic_vector(VOLUME_BITS-1 downto 0);
+            led_out  : out std_logic_vector(15 downto 0) := (Others =>'0')
+    );
+  end component;
+
+
   type state_type is (IDLE, RECEIVE_DATA, MULTIPLY, COMPUTE_OUT,SEND_DATA);
   signal state : state_type  := IDLE;
 
@@ -42,21 +63,36 @@ architecture Behavioral of volume_controller is
   signal data_out : signed (DATA_WIDTH -1 downto 0) := (Others => '0');
 
   signal default_volume_sig : signed (VOLUME_BITS downto 0) := to_signed(DEFAULT_VOLUME,VOLUME_BITS+1);
-  signal volume  : signed (VOLUME_BITS downto 0) := default_volume_sig;
-  signal diff    : signed (VOLUME_BITS downto 0) := (Others => '0');
-
+  signal volume             : std_logic_vector   (VOLUME_BITS-1 downto 0) := std_logic_vector(to_unsigned(DEFAULT_VOLUME,VOLUME_BITS));
+  signal volume_sign        : signed (VOLUME_BITS downto 0) := default_volume_sig;
+  signal diff               : signed (VOLUME_BITS downto 0) := (Others => '0');
 
   signal tlast_sampled  : std_logic := '0';
   signal tlast_expected : std_logic := '0';
 
-  --signal data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
   signal data_out_temp : signed (data_out'length-1 downto 0) := (Others => '0');
 
-
-  --constant SCALE_FACTOR : integer := (MAX_VOLUME - MIN_VOLUME + 1) / 16;
-  constant SCALE_FACTOR : integer := 16 / MAX_VOLUME;
-
 begin
+
+
+  vol_led_ctrl: volume_led_ctrl
+  Generic Map(
+              VOLUME_BITS    => VOLUME_BITS,
+              MIN_VOLUME     => MIN_VOLUME,
+              MAX_VOLUME     => MAX_VOLUME,
+              DEFAULT_VOLUME => DEFAULT_VOLUME
+  )
+    Port Map(
+    aclk      => aclk,
+    aresetn   => aresetn,
+
+    btn_up    => volume_up,
+    btn_down  => volume_down,
+
+    volume    => volume,
+    led_out   => volume_level
+
+    );
 
   with state select s_axis_tready	<=
     '1' when RECEIVE_DATA,
@@ -71,30 +107,7 @@ begin
 
   m_axis_tdata <= std_logic_vector(data_out);
 
-  volume_ctrl : process (aclk,aresetn)
-  variable volume_var : signed (VOLUME_BITS downto 0) := default_volume_sig;
-  variable n_led_on   : integer range 1 to 16 := 1;
-  begin
-    if aresetn = '0' then
-      volume <= default_volume_sig; --7
-      volume_var := default_volume_sig;
-
-    elsif rising_edge(aclk) then
-
-      if volume_up = '1' and volume_down = '0' and volume /= to_signed(MAX_VOLUME,volume'length) then
-        volume_var := volume_var + 1;
-      elsif volume_up = '0' and volume_down = '1' and volume /= to_signed(MIN_VOLUME,volume'length) then
-        volume_var := volume_var - 1;
-      end if;
-      --n_led_on := to_integer (volume_var / SCALE_FACTOR + 1);
-      n_led_on := to_integer (volume_var * SCALE_FACTOR+1);
-      volume_level (volume_level'high downto n_led_on)<= (Others =>'0');
-      volume_level (n_led_on-1 downto 0)<= (Others =>'1');
-      volume <= volume_var;
-
-    end if;
-
-  end process;
+  volume_sign <= signed('0' & volume);
 
   FSM : PROCESS(aclk,aresetn)
   -- variable data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
@@ -121,48 +134,27 @@ begin
                 state <= MULTIPLY;
                 tlast_expected <= not tlast_expected;
                 tlast_sampled <= s_axis_tlast;
-                diff <= resize(volume, diff'length) - resize(default_volume_sig, diff'length);
+                diff <= resize(volume_sign, diff'length) - resize(default_volume_sig, diff'length);
               end if;
             end if;
 
         when MULTIPLY =>
-            -- if diff > 0 then
-            --   data_out_temp := shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
-            --
-            --   if data_out_temp > 2 ** data_out'length - 1 then
-            --     data_out <= (Others =>'1');
-            --   else
-            --     data_out <= resize (data_out_temp, data_out'length);
-            --   end if;
-            --
-            -- elsif diff < 0 then
-            --   data_out <= shift_right (data_in, to_integer(diff));
-            -- else
-            --   data_out <= data_in;
-            -- end if;
-            -- state <= SEND_DATA;
 
             if diff > 0 then
-              --data_out_var := shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
-              --data_out_temp <= shift_left (resize(data_in,data_out_temp'length), to_integer(diff));
               data_out_temp <= shift_left(data_in,to_integer(diff));
             elsif diff < 0 then
-              --data_out_temp := shift_right (resize(data_in,data_out_temp'length), to_integer(diff));
               data_out <= shift_right (data_in, abs(to_integer(diff)));
             else
-              --data_out_temp := resize(data_in,data_out_temp'length);
               data_out <= data_in;
             end if;
             state <= COMPUTE_OUT;
 
         when COMPUTE_OUT =>
             if diff > 0 then
-              --if data_out_temp > 2**data_out'length -1 then
               if data_out_temp (data_out_temp'left) /= data_in(data_in'left) then
                 data_out <= (Others => data_out_temp(data_out_temp'left));
                 data_out (data_out'left) <= data_in (data_in'left);
               else
-                --data_out <= resize(data_out_temp,data_out'length);
                 data_out <= data_out_temp;
               end if;
             end if;
