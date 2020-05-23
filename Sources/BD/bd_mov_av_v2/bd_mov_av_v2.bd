@@ -1120,10 +1120,16 @@
         "xci_name": "bd_mov_av_v2_volume_controller_0_0",
         "parameters": {
           "DEFAULT_VOLUME": {
-            "value": "15"
+            "value": "7"
           },
           "MAX_VOLUME": {
-            "value": "31"
+            "value": "15"
+          },
+          "MIN_VOLUME": {
+            "value": "0"
+          },
+          "VOLUME_BITS": {
+            "value": "4"
           }
         },
         "reference_info": {

@@ -103,7 +103,7 @@ ARCHITECTURE bd_mov_av_v2_volume_controller_0_0_arch OF bd_mov_av_v2_volume_cont
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF bd_mov_av_v2_volume_controller_0_0_arch : ARCHITECTURE IS "bd_mov_av_v2_volume_controller_0_0,volume_controller,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF bd_mov_av_v2_volume_controller_0_0_arch: ARCHITECTURE IS "bd_mov_av_v2_volume_controller_0_0,volume_controller,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=volume_controller,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=16,VOLUME_BITS=4,MIN_VOLUME=0,MAX_VOLUME=31,DEFAULT_VOLUME=15}";
+  ATTRIBUTE CORE_GENERATION_INFO OF bd_mov_av_v2_volume_controller_0_0_arch: ARCHITECTURE IS "bd_mov_av_v2_volume_controller_0_0,volume_controller,{x_ipProduct=Vivado 2019.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=volume_controller,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,DATA_WIDTH=16,VOLUME_BITS=4,MIN_VOLUME=0,MAX_VOLUME=15,DEFAULT_VOLUME=7}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF bd_mov_av_v2_volume_controller_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -128,8 +128,8 @@ BEGIN
       DATA_WIDTH => 16,
       VOLUME_BITS => 4,
       MIN_VOLUME => 0,
-      MAX_VOLUME => 31,
-      DEFAULT_VOLUME => 15
+      MAX_VOLUME => 15,
+      DEFAULT_VOLUME => 7
     )
     PORT MAP (
       aclk => aclk,

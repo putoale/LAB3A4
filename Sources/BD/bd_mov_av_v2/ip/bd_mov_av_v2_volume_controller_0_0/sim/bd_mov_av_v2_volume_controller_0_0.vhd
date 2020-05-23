@@ -122,8 +122,8 @@ BEGIN
       DATA_WIDTH => 16,
       VOLUME_BITS => 4,
       MIN_VOLUME => 0,
-      MAX_VOLUME => 31,
-      DEFAULT_VOLUME => 15
+      MAX_VOLUME => 15,
+      DEFAULT_VOLUME => 7
     )
     PORT MAP (
       aclk => aclk,

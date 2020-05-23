@@ -427,7 +427,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9b137771</spirit:value>
+            <spirit:value>9:a45abd39</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -438,7 +438,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9b137771</spirit:value>
+            <spirit:value>9:a45abd39</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -454,11 +454,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat May 23 17:28:45 UTC 2020</spirit:value>
+            <spirit:value>Sat May 23 19:03:56 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9b137771</spirit:value>
+            <spirit:value>9:a45abd39</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -470,7 +470,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:393e68e8</spirit:value>
+            <spirit:value>9:f3510fdb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -486,11 +486,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat May 23 17:28:45 UTC 2020</spirit:value>
+            <spirit:value>Sat May 23 19:03:56 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:393e68e8</spirit:value>
+            <spirit:value>9:f3510fdb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -504,11 +504,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat May 23 17:29:56 UTC 2020</spirit:value>
+            <spirit:value>Sat May 23 19:04:45 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9b137771</spirit:value>
+            <spirit:value>9:a45abd39</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -724,12 +724,12 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>MAX_VOLUME</spirit:name>
         <spirit:displayName>Max Volume</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.MAX_VOLUME" spirit:minimum="0" spirit:rangeType="long">31</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.MAX_VOLUME" spirit:minimum="0" spirit:rangeType="long">15</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>DEFAULT_VOLUME</spirit:name>
         <spirit:displayName>Default Volume</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.DEFAULT_VOLUME" spirit:minimum="0" spirit:rangeType="long">15</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.DEFAULT_VOLUME" spirit:minimum="0" spirit:rangeType="long">7</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -814,12 +814,12 @@
     <spirit:parameter>
       <spirit:name>MAX_VOLUME</spirit:name>
       <spirit:displayName>Max Volume</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.MAX_VOLUME" spirit:minimum="0" spirit:rangeType="long">31</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.MAX_VOLUME" spirit:minimum="0" spirit:rangeType="long">15</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>DEFAULT_VOLUME</spirit:name>
       <spirit:displayName>Default Volume</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DEFAULT_VOLUME" spirit:minimum="0" spirit:rangeType="long">15</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DEFAULT_VOLUME" spirit:minimum="0" spirit:rangeType="long">7</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -864,6 +864,8 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXIS.TUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.DEFAULT_VOLUME" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.MAX_VOLUME" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.MIN_VOLUME" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.VOLUME_BITS" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

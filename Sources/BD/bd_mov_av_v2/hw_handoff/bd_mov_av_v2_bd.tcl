@@ -66,7 +66,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./BD
+  set origin_dir ./Sources/BD
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -315,8 +315,10 @@ proc create_root_design { parentCell } {
      return 1
    }
     set_property -dict [ list \
-   CONFIG.DEFAULT_VOLUME {15} \
-   CONFIG.MAX_VOLUME {31} \
+   CONFIG.DEFAULT_VOLUME {7} \
+   CONFIG.MAX_VOLUME {15} \
+   CONFIG.MIN_VOLUME {0} \
+   CONFIG.VOLUME_BITS {4} \
  ] $volume_controller_0
 
   # Create interface connections

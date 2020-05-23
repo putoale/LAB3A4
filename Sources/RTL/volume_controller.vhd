@@ -51,7 +51,7 @@ architecture Behavioral of volume_controller is
             btn_down : in std_logic;
 
             volume   : out std_logic_vector(VOLUME_BITS-1 downto 0);
-            led_out  : out std_logic_vector(15 downto 0) := (Others =>'0')
+            led_out  : out std_logic_vector(15 downto 0)
     );
   end component;
 
