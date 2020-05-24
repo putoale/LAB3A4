@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Mon May 18 22:00:26 2020
+-- Date        : Mon May 18 23:06:14 2020
 -- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top bd_mov_av_v2_clk_wiz_0_0 -prefix
 --               bd_mov_av_v2_clk_wiz_0_0_ bd_mov_av_v2_clk_wiz_0_0_sim_netlist.vhdl
@@ -84,16 +84,16 @@ clkout2_buf: unisim.vcomponents.BUFG
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 9.000000,
+      CLKFBOUT_MULT_F => 6.000000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
       CLKIN1_PERIOD => 10.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 9.375000,
+      CLKOUT0_DIVIDE_F => 6.250000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 9,
+      CLKOUT1_DIVIDE => 3,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,

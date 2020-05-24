@@ -154,7 +154,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -224,7 +224,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -272,7 +272,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -339,7 +339,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -405,7 +405,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -457,7 +457,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -483,22 +483,22 @@
         "xci_name": "bd_mov_av_v2_clk_wiz_0_0",
         "parameters": {
           "CLKOUT1_JITTER": {
-            "value": "138.844"
+            "value": "152.663"
           },
           "CLKOUT1_PHASE_ERROR": {
-            "value": "105.461"
+            "value": "132.063"
           },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
             "value": "96.000"
           },
           "CLKOUT2_JITTER": {
-            "value": "137.681"
+            "value": "132.221"
           },
           "CLKOUT2_PHASE_ERROR": {
-            "value": "105.461"
+            "value": "132.063"
           },
           "CLKOUT2_REQUESTED_OUT_FREQ": {
-            "value": "100.000"
+            "value": "200.000"
           },
           "CLKOUT2_USED": {
             "value": "true"
@@ -507,19 +507,19 @@
             "value": "sys_clock"
           },
           "MMCM_CLKFBOUT_MULT_F": {
-            "value": "9.000"
+            "value": "6.000"
           },
           "MMCM_CLKIN1_PERIOD": {
-            "value": "10.000"
+            "value": "10.0"
           },
           "MMCM_CLKIN2_PERIOD": {
-            "value": "10.000"
+            "value": "10.0"
           },
           "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "9.375"
+            "value": "6.250"
           },
           "MMCM_CLKOUT1_DIVIDE": {
-            "value": "9"
+            "value": "3"
           },
           "NUM_OUT_CLKS": {
             "value": "2"
@@ -578,7 +578,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -648,7 +648,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -700,7 +700,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -749,7 +749,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -798,7 +798,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -847,7 +847,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -896,7 +896,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -969,7 +969,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -1039,7 +1039,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -1091,7 +1091,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -1175,7 +1175,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -1245,7 +1245,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -1297,7 +1297,7 @@
                 "value_src": "ip_prop"
               },
               "FREQ_HZ": {
-                "value": "100000000",
+                "value": "200000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -1331,36 +1331,6 @@
       }
     },
     "interface_nets": {
-      "AXI4Stream_UART_0_UART": {
-        "interface_ports": [
-          "usb_uart",
-          "AXI4Stream_UART_0/UART"
-        ]
-      },
-      "AXI4Stream_UART_0_M00_AXIS_RX": {
-        "interface_ports": [
-          "AXI4Stream_UART_0/M00_AXIS_RX",
-          "depacketizer_0/s_axis"
-        ]
-      },
-      "packetizer_0_m_axis": {
-        "interface_ports": [
-          "packetizer_0/m_axis",
-          "AXI4Stream_UART_0/S00_AXIS_TX"
-        ]
-      },
-      "depacketizer_0_m_axis": {
-        "interface_ports": [
-          "depacketizer_0/m_axis",
-          "moving_average_v2_0/s_axis"
-        ]
-      },
-      "volume_controller_0_m_axis": {
-        "interface_ports": [
-          "volume_controller_0/m_axis",
-          "packetizer_0/s_axis"
-        ]
-      },
       "moving_average_v2_0_m_axis": {
         "interface_ports": [
           "moving_average_v2_0/m_axis",
@@ -1371,6 +1341,36 @@
         "interface_ports": [
           "mute_v1_0/m_mute",
           "volume_controller_0/s_axis"
+        ]
+      },
+      "depacketizer_0_m_axis": {
+        "interface_ports": [
+          "depacketizer_0/m_axis",
+          "moving_average_v2_0/s_axis"
+        ]
+      },
+      "AXI4Stream_UART_0_M00_AXIS_RX": {
+        "interface_ports": [
+          "AXI4Stream_UART_0/M00_AXIS_RX",
+          "depacketizer_0/s_axis"
+        ]
+      },
+      "AXI4Stream_UART_0_UART": {
+        "interface_ports": [
+          "usb_uart",
+          "AXI4Stream_UART_0/UART"
+        ]
+      },
+      "volume_controller_0_m_axis": {
+        "interface_ports": [
+          "volume_controller_0/m_axis",
+          "packetizer_0/s_axis"
+        ]
+      },
+      "packetizer_0_m_axis": {
+        "interface_ports": [
+          "packetizer_0/m_axis",
+          "AXI4Stream_UART_0/S00_AXIS_TX"
         ]
       }
     },
