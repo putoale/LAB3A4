@@ -4,34 +4,40 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity moving_average_v2 is
 Generic(
-  MEAN_AV_WIDTH2 : positive := 5;
+  MEAN_AV_WIDTH2 : positive := 5; -- Filter width is 2**MEAN_AV_WIDTH2
   DATA_WIDTH : positive := 16
 );
 Port (
-
+  --------------------------Clk/Reset-----------------------
   clk   : in std_logic;
   aresetn : in std_logic;
+  ----------------------------------------------------------
 
+  --------------------------switches------------------------
   sw_in :  in std_logic;
+  ----------------------------------------------------------
 
+  ------------------- Slave AXI4Stream Port-----------------
   s_axis_tvalid	: in std_logic;
   s_axis_tdata	: in std_logic_vector(DATA_WIDTH-1 downto 0);
   s_axis_tlast	: in std_logic;
   s_axis_tready	: out std_logic;
+  ----------------------------------------------------------
 
+  ------------------- Master AXI4Stream Port-----------------
   m_axis_tvalid	: out std_logic;
   m_axis_tdata	: out std_logic_vector(DATA_WIDTH-1 downto 0);
   m_axis_tlast	: out std_logic;
   m_axis_tready	: in std_logic
-
+  ----------------------------------------------------------
   );
 end moving_average_v2;
 
 architecture Behavioral of moving_average_v2 is
 
   type state_type is (IDLE, RECEIVE_DATA, SUBTRACTION, AVERAGE, WAIT_WRITE, SEND_DATA);
-  signal state1 : state_type  := IDLE;
-  signal state2 : state_type  := IDLE;
+  signal state_sx : state_type  := IDLE;
+  signal state_dx : state_type  := IDLE;
 
   type mem_type is array (0 to 2**MEAN_AV_WIDTH2-1) of std_logic_vector(data_width-1 downto 0);
   signal last_values_sx				: mem_type :=(others=>(others=>'0'));
@@ -54,54 +60,49 @@ architecture Behavioral of moving_average_v2 is
   signal tlast_sampled_dx    : std_logic := '0';
 
   signal read_allowed_sx     : std_logic := '1';  -- if 0, dx is allowed
-  --signal read_allowed_dx     : std_logic := '0';  -- if 0, dx is allowed
 
   signal write_allowed_sx    : std_logic := '1';  -- if 0, dx is allowed
-  --signal write_allowed_dx    : std_logic := '0';  -- if 0, dx is allowed
-
-
 
   signal sub_sx : signed (DATA_WIDTH downto 0) := (Others =>'0');
   signal sub_dx : signed (DATA_WIDTH downto 0) := (Others =>'0');
 
-
 begin
 
   m_axis_tlast <=
-            tlast_sampled_sx when state1 = SEND_DATA else
-            tlast_sampled_dx when state2 = SEND_DATA else
+            tlast_sampled_sx when state_sx = SEND_DATA else
+            tlast_sampled_dx when state_dx = SEND_DATA else
             '0';
 
   s_axis_tready <=
-            '1' when (state1 = RECEIVE_DATA or state2 = RECEIVE_DATA) else
+            '1' when (state_sx = RECEIVE_DATA or state_dx = RECEIVE_DATA) else
             '0';
 
 
   m_axis_tvalid <=
-            '1' when (state1 = SEND_DATA or state2 = SEND_DATA) else
+            '1' when (state_sx = SEND_DATA or state_dx = SEND_DATA) else
             '0';
 
   m_axis_tdata <=
-            data_out_sx when state1 = SEND_DATA else
-            data_out_dx when state2 = SEND_DATA;
+            data_out_sx when state_sx = SEND_DATA else
+            data_out_dx when state_dx = SEND_DATA;
 
 --------------------------------------------------FSM SX--------------------------------------------------
   FSM_sx : PROCESS(clk,aresetn)
-  variable sum_sx : signed (DATA_WIDTH-1+MEAN_AV_WIDTH2 downto 0) := (Others =>'0');
+  variable sum_sx : signed (DATA_WIDTH - 1 + MEAN_AV_WIDTH2 downto 0) := (Others =>'0');
   begin
 
     if aresetn='0' then
-      state1<=IDLE;
+      state_sx<=IDLE;
       last_values_sx	<= (others => (others=>'0'));
       last_sum_sx     <= (others =>'0');
 
     elsif rising_edge(clk) then
 
-      case state1 is
+      case state_sx is
 
         when IDLE =>
             if read_allowed_sx = '1' then
-              state1 <= RECEIVE_DATA;
+              state_sx <= RECEIVE_DATA;
             end if;
 
         when RECEIVE_DATA =>
@@ -111,15 +112,15 @@ begin
               data_in_sx <= s_axis_tdata;
 
               if s_axis_tlast = '0' then
-                state1 <= SUBTRACTION;
+                state_sx <= SUBTRACTION;
                 tlast_sampled_sx <= s_axis_tlast;
-                --read_allowed_sx  <= '0';
+                --read_allowed_sx  <= '0'; This part has been moved to the allowed_control process
               end if;
             end if;
 
         when SUBTRACTION =>
 
-            state1<=AVERAGE;
+            state_sx<=AVERAGE;
 
             if tlast_sampled_sx ='0' then
               last_values_sx <= data_in_sx & last_values_sx(0 to last_values_sx'high-1);
@@ -128,7 +129,7 @@ begin
 
 
         when AVERAGE =>
-          state1 <= WAIT_WRITE;
+          state_sx <= WAIT_WRITE;
 
           if tlast_sampled_sx ='0' then
             sum_sx := last_sum_sx + resize(sub_sx,sum_sx'length);
@@ -142,13 +143,13 @@ begin
 
         when WAIT_WRITE =>
             if write_allowed_sx = '1' then
-              state1 <= SEND_DATA;
+              state_sx <= SEND_DATA;
             end if;
 
         when SEND_DATA =>
             if m_axis_tready ='1'  then
-              --write_allowed_sx <= '0';
-              state1 <= IDLE;
+              --write_allowed_sx <= '0'; This part has been moved to the allowed_control process
+              state_sx <= IDLE;
             end if;
         end case;
 
@@ -164,17 +165,17 @@ begin
   begin
 
     if aresetn='0' then
-      state2<=IDLE;
+      state_dx<=IDLE;
       last_values_dx	<= (others => (others=>'0'));
       last_sum_dx     <= (others =>'0');
 
     elsif rising_edge(clk) then
 
-      case state2 is
+      case state_dx is
 
         when IDLE =>
             if read_allowed_sx = '0' then
-              state2 <= RECEIVE_DATA;
+              state_dx <= RECEIVE_DATA;
             end if;
 
         when RECEIVE_DATA =>
@@ -184,15 +185,15 @@ begin
               data_in_dx <= s_axis_tdata;
 
               if s_axis_tlast = '1' then
-                state2 <= SUBTRACTION;
+                state_dx <= SUBTRACTION;
                 tlast_sampled_dx <= s_axis_tlast;
-                --read_allowed_sx  <= '1';
+                --read_allowed_sx  <= '1'; This part has been moved to the allowed_control process
               end if;
             end if;
 
         when SUBTRACTION =>
 
-            state2<=AVERAGE;
+            state_dx<=AVERAGE;
 
              if tlast_sampled_dx ='1' then
                last_values_dx <= data_in_dx & last_values_dx(0 to last_values_dx'high-1);
@@ -200,7 +201,7 @@ begin
              end if;
 
         when AVERAGE =>
-          state2 <= WAIT_WRITE;
+          state_dx <= WAIT_WRITE;
 
            if tlast_sampled_dx ='1' then
              sum_dx := last_sum_dx + resize(sub_dx,sum_dx'length);
@@ -214,13 +215,13 @@ begin
 
         when WAIT_WRITE =>
             if write_allowed_sx = '0' then
-              state2 <= SEND_DATA;
+              state_dx <= SEND_DATA;
             end if;
 
         when SEND_DATA =>
             if m_axis_tready ='1'  then
-              --write_allowed_sx <= '1';
-              state2 <= IDLE;
+              --write_allowed_sx <= '1';   This part has been moved to the allowed_control process
+              state_dx <= IDLE;
             end if;
         end case;
 
@@ -237,15 +238,15 @@ begin
     write_allowed_sx <= '1';
   elsif rising_edge(clk) then
 
-    if (state1 = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '0') then
+    if (state_sx = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '0') then
       read_allowed_sx <= '0';
-    elsif (state2 = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '1') then
+    elsif (state_dx = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '1') then
       read_allowed_sx <= '1';
     end if;
 
-    if (state1 = SEND_DATA and m_axis_tready = '1') then
+    if (state_sx = SEND_DATA and m_axis_tready = '1') then
       write_allowed_sx <= '0';
-    elsif (state2 = SEND_DATA and m_axis_tready = '1') then
+    elsif (state_dx = SEND_DATA and m_axis_tready = '1') then
       write_allowed_sx <= '1';
     end if;
 

@@ -8,22 +8,28 @@ Generic(
   DATA_WIDTH : positive := 16
 );
 Port (
-
+  --------------------------Clk/Reset-----------------------
   clk   : in std_logic;
   aresetn : in std_logic;
+  ----------------------------------------------------------
 
+  --------------------------switches------------------------
   sw_in :  in std_logic;
+  ----------------------------------------------------------
 
+  ------------------- Slave AXI4Stream Port-----------------
   s_axis_tvalid	: in std_logic;
   s_axis_tdata	: in std_logic_vector(DATA_WIDTH-1 downto 0);
   s_axis_tlast	: in std_logic;
   s_axis_tready	: out std_logic;
+  ----------------------------------------------------------
 
+  ------------------- Master AXI4Stream Port-----------------
   m_axis_tvalid	: out std_logic;
   m_axis_tdata	: out std_logic_vector(DATA_WIDTH-1 downto 0);
   m_axis_tlast	: out std_logic;
   m_axis_tready	: in std_logic
-
+  ----------------------------------------------------------
   );
 end moving_average;
 

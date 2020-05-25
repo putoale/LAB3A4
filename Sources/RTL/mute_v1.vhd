@@ -8,21 +8,26 @@ entity mute_v1 is
     DATA_WIDTH : POSITIVE := 16
   );
   Port (
+    -----------------------Clk/Reset--------------------------
     clk     : in std_logic;
     aresetn : in std_logic;
-
+    ----------------------------------------------------------
+    -----------------------inputs-----------------------------
     mute_left    : in std_logic;
     mute_right   : in std_logic;
-
+    ----------------------------------------------------------
+    -----------------------AXI4Stream_Slave-----------------------
     s_mute_tvalid : in  std_logic;
     s_mute_tready : out std_logic;
     s_mute_tdata  : in  std_logic_vector (DATA_WIDTH-1 downto 0);
     s_mute_tlast  : in  std_logic;
-
+    --------------------------------------------------------------
+    -----------------------AXI4Stream_Master-----------------------
     m_mute_tvalid : out std_logic;
     m_mute_tready : in  std_logic;
     m_mute_tdata  : out std_logic_vector(DATA_WIDTH-1 downto 0);
     m_mute_tlast  : out std_logic
+    ---------------------------------------------------------------
    );
 end mute_v1;
 
@@ -33,9 +38,6 @@ architecture Behavioral of mute_v1 is
 
   signal data_in : std_logic_vector(DATA_WIDTH-1 downto 0) := (Others => '0');
   signal data_out : std_logic_vector(DATA_WIDTH-1 downto 0) := (Others => '0');
-
-  signal L_btn_sampled : std_logic := '0';
-  signal R_btn_sampled : std_logic := '0';
 
   signal tlast_sampled  : std_logic := '0';
   signal tlast_expected : std_logic := '0';
@@ -82,9 +84,6 @@ begin
 
               tlast_expected <= not tlast_expected;
               tlast_sampled <= s_mute_tlast;
-
-              --L_btn_sampled <= L_btn;
-              --R_btn_sampled <= R_btn;
 
               if (tlast_sampled = '0' and mute_left = '1') then
                 data_out <= (Others => '0');

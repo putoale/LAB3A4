@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Sat May 23 17:07:38 2020
+// Date        : Mon May 25 15:44:52 2020
 // Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/bd_mov_av_v2/ip/bd_mov_av_v2_moving_average_v2_0_0/bd_mov_av_v2_moving_average_v2_0_0_sim_netlist.v
@@ -90,22 +90,22 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
   input m_axis_tready;
   input sw_in;
 
-  wire \FSM_onehot_state1[5]_i_1_n_0 ;
-  wire \FSM_onehot_state1[5]_i_2_n_0 ;
-  wire \FSM_onehot_state1[5]_i_3_n_0 ;
-  wire \FSM_onehot_state1[5]_i_4_n_0 ;
-  wire \FSM_onehot_state1_reg_n_0_[1] ;
-  wire \FSM_onehot_state1_reg_n_0_[2] ;
-  wire \FSM_onehot_state1_reg_n_0_[3] ;
-  wire \FSM_onehot_state1_reg_n_0_[4] ;
-  wire \FSM_onehot_state1_reg_n_0_[5] ;
-  wire \FSM_onehot_state2[5]_i_1_n_0 ;
-  wire \FSM_onehot_state2[5]_i_2_n_0 ;
-  wire \FSM_onehot_state2_reg_n_0_[1] ;
-  wire \FSM_onehot_state2_reg_n_0_[2] ;
-  wire \FSM_onehot_state2_reg_n_0_[3] ;
-  wire \FSM_onehot_state2_reg_n_0_[4] ;
-  wire \FSM_onehot_state2_reg_n_0_[5] ;
+  wire \FSM_onehot_state_dx[5]_i_1_n_0 ;
+  wire \FSM_onehot_state_dx[5]_i_2_n_0 ;
+  wire \FSM_onehot_state_dx_reg_n_0_[1] ;
+  wire \FSM_onehot_state_dx_reg_n_0_[2] ;
+  wire \FSM_onehot_state_dx_reg_n_0_[3] ;
+  wire \FSM_onehot_state_dx_reg_n_0_[4] ;
+  wire \FSM_onehot_state_dx_reg_n_0_[5] ;
+  wire \FSM_onehot_state_sx[5]_i_1_n_0 ;
+  wire \FSM_onehot_state_sx[5]_i_2_n_0 ;
+  wire \FSM_onehot_state_sx[5]_i_3_n_0 ;
+  wire \FSM_onehot_state_sx[5]_i_4_n_0 ;
+  wire \FSM_onehot_state_sx_reg_n_0_[1] ;
+  wire \FSM_onehot_state_sx_reg_n_0_[2] ;
+  wire \FSM_onehot_state_sx_reg_n_0_[3] ;
+  wire \FSM_onehot_state_sx_reg_n_0_[4] ;
+  wire \FSM_onehot_state_sx_reg_n_0_[5] ;
   wire aresetn;
   wire clk;
   wire [15:0]data_in_dx;
@@ -695,170 +695,170 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
   wire [3:0]NLW_sub_sx0_carry__3_CO_UNCONNECTED;
   wire [3:1]NLW_sub_sx0_carry__3_O_UNCONNECTED;
 
-  LUT5 #(
-    .INIT(32'hFFFFFFEA)) 
-    \FSM_onehot_state1[5]_i_1 
-       (.I0(\FSM_onehot_state1[5]_i_3_n_0 ),
-        .I1(m_axis_tready),
-        .I2(p_0_in8_in),
-        .I3(\FSM_onehot_state1_reg_n_0_[4] ),
-        .I4(\FSM_onehot_state1_reg_n_0_[3] ),
-        .O(\FSM_onehot_state1[5]_i_1_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \FSM_onehot_state1[5]_i_2 
-       (.I0(aresetn),
-        .O(\FSM_onehot_state1[5]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFF222F222F222)) 
-    \FSM_onehot_state1[5]_i_3 
-       (.I0(\FSM_onehot_state1[5]_i_4_n_0 ),
-        .I1(s_axis_tlast),
-        .I2(write_allowed_sx_reg_n_0),
-        .I3(\FSM_onehot_state1_reg_n_0_[2] ),
-        .I4(\FSM_onehot_state1_reg_n_0_[1] ),
-        .I5(read_allowed_sx_reg_n_0),
-        .O(\FSM_onehot_state1[5]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    \FSM_onehot_state1[5]_i_4 
-       (.I0(\FSM_onehot_state1_reg_n_0_[5] ),
-        .I1(s_axis_tvalid),
-        .O(\FSM_onehot_state1[5]_i_4_n_0 ));
-  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_state1_reg[0] 
-       (.C(clk),
-        .CE(\FSM_onehot_state1[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state1_reg_n_0_[2] ),
-        .Q(p_0_in8_in));
-  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
-  FDPE #(
-    .INIT(1'b1)) 
-    \FSM_onehot_state1_reg[1] 
-       (.C(clk),
-        .CE(\FSM_onehot_state1[5]_i_1_n_0 ),
-        .D(p_0_in8_in),
-        .PRE(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .Q(\FSM_onehot_state1_reg_n_0_[1] ));
-  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_state1_reg[2] 
-       (.C(clk),
-        .CE(\FSM_onehot_state1[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state1_reg_n_0_[3] ),
-        .Q(\FSM_onehot_state1_reg_n_0_[2] ));
-  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_state1_reg[3] 
-       (.C(clk),
-        .CE(\FSM_onehot_state1[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state1_reg_n_0_[4] ),
-        .Q(\FSM_onehot_state1_reg_n_0_[3] ));
-  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_state1_reg[4] 
-       (.C(clk),
-        .CE(\FSM_onehot_state1[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state1_reg_n_0_[5] ),
-        .Q(\FSM_onehot_state1_reg_n_0_[4] ));
-  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
-  FDCE #(
-    .INIT(1'b0)) 
-    \FSM_onehot_state1_reg[5] 
-       (.C(clk),
-        .CE(\FSM_onehot_state1[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state1_reg_n_0_[1] ),
-        .Q(\FSM_onehot_state1_reg_n_0_[5] ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFEEEEEEE)) 
-    \FSM_onehot_state2[5]_i_1 
-       (.I0(\FSM_onehot_state2_reg_n_0_[3] ),
-        .I1(\FSM_onehot_state2[5]_i_2_n_0 ),
+    \FSM_onehot_state_dx[5]_i_1 
+       (.I0(\FSM_onehot_state_dx_reg_n_0_[3] ),
+        .I1(\FSM_onehot_state_dx[5]_i_2_n_0 ),
         .I2(s_axis_tvalid),
-        .I3(\FSM_onehot_state2_reg_n_0_[5] ),
+        .I3(\FSM_onehot_state_dx_reg_n_0_[5] ),
         .I4(s_axis_tlast),
-        .I5(\FSM_onehot_state2_reg_n_0_[4] ),
-        .O(\FSM_onehot_state2[5]_i_1_n_0 ));
+        .I5(\FSM_onehot_state_dx_reg_n_0_[4] ),
+        .O(\FSM_onehot_state_dx[5]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h88F8FFFF88F888F8)) 
-    \FSM_onehot_state2[5]_i_2 
+    \FSM_onehot_state_dx[5]_i_2 
        (.I0(p_0_in7_in),
         .I1(m_axis_tready),
-        .I2(\FSM_onehot_state2_reg_n_0_[2] ),
+        .I2(\FSM_onehot_state_dx_reg_n_0_[2] ),
         .I3(write_allowed_sx_reg_n_0),
         .I4(read_allowed_sx_reg_n_0),
-        .I5(\FSM_onehot_state2_reg_n_0_[1] ),
-        .O(\FSM_onehot_state2[5]_i_2_n_0 ));
+        .I5(\FSM_onehot_state_dx_reg_n_0_[1] ),
+        .O(\FSM_onehot_state_dx[5]_i_2_n_0 ));
   (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
   FDCE #(
     .INIT(1'b0)) 
-    \FSM_onehot_state2_reg[0] 
+    \FSM_onehot_state_dx_reg[0] 
        (.C(clk),
-        .CE(\FSM_onehot_state2[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state2_reg_n_0_[2] ),
+        .CE(\FSM_onehot_state_dx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_dx_reg_n_0_[2] ),
         .Q(p_0_in7_in));
   (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
   FDPE #(
     .INIT(1'b1)) 
-    \FSM_onehot_state2_reg[1] 
+    \FSM_onehot_state_dx_reg[1] 
        (.C(clk),
-        .CE(\FSM_onehot_state2[5]_i_1_n_0 ),
+        .CE(\FSM_onehot_state_dx[5]_i_1_n_0 ),
         .D(p_0_in7_in),
-        .PRE(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .Q(\FSM_onehot_state2_reg_n_0_[1] ));
+        .PRE(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .Q(\FSM_onehot_state_dx_reg_n_0_[1] ));
   (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
   FDCE #(
     .INIT(1'b0)) 
-    \FSM_onehot_state2_reg[2] 
+    \FSM_onehot_state_dx_reg[2] 
        (.C(clk),
-        .CE(\FSM_onehot_state2[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state2_reg_n_0_[3] ),
-        .Q(\FSM_onehot_state2_reg_n_0_[2] ));
+        .CE(\FSM_onehot_state_dx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_dx_reg_n_0_[3] ),
+        .Q(\FSM_onehot_state_dx_reg_n_0_[2] ));
   (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
   FDCE #(
     .INIT(1'b0)) 
-    \FSM_onehot_state2_reg[3] 
+    \FSM_onehot_state_dx_reg[3] 
        (.C(clk),
-        .CE(\FSM_onehot_state2[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state2_reg_n_0_[4] ),
-        .Q(\FSM_onehot_state2_reg_n_0_[3] ));
+        .CE(\FSM_onehot_state_dx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_dx_reg_n_0_[4] ),
+        .Q(\FSM_onehot_state_dx_reg_n_0_[3] ));
   (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
   FDCE #(
     .INIT(1'b0)) 
-    \FSM_onehot_state2_reg[4] 
+    \FSM_onehot_state_dx_reg[4] 
        (.C(clk),
-        .CE(\FSM_onehot_state2[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state2_reg_n_0_[5] ),
-        .Q(\FSM_onehot_state2_reg_n_0_[4] ));
+        .CE(\FSM_onehot_state_dx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_dx_reg_n_0_[5] ),
+        .Q(\FSM_onehot_state_dx_reg_n_0_[4] ));
   (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
   FDCE #(
     .INIT(1'b0)) 
-    \FSM_onehot_state2_reg[5] 
+    \FSM_onehot_state_dx_reg[5] 
        (.C(clk),
-        .CE(\FSM_onehot_state2[5]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
-        .D(\FSM_onehot_state2_reg_n_0_[1] ),
-        .Q(\FSM_onehot_state2_reg_n_0_[5] ));
+        .CE(\FSM_onehot_state_dx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_dx_reg_n_0_[1] ),
+        .Q(\FSM_onehot_state_dx_reg_n_0_[5] ));
+  LUT5 #(
+    .INIT(32'hFFFFFFEA)) 
+    \FSM_onehot_state_sx[5]_i_1 
+       (.I0(\FSM_onehot_state_sx[5]_i_3_n_0 ),
+        .I1(m_axis_tready),
+        .I2(p_0_in8_in),
+        .I3(\FSM_onehot_state_sx_reg_n_0_[4] ),
+        .I4(\FSM_onehot_state_sx_reg_n_0_[3] ),
+        .O(\FSM_onehot_state_sx[5]_i_1_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \FSM_onehot_state_sx[5]_i_2 
+       (.I0(aresetn),
+        .O(\FSM_onehot_state_sx[5]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFF222F222F222)) 
+    \FSM_onehot_state_sx[5]_i_3 
+       (.I0(\FSM_onehot_state_sx[5]_i_4_n_0 ),
+        .I1(s_axis_tlast),
+        .I2(write_allowed_sx_reg_n_0),
+        .I3(\FSM_onehot_state_sx_reg_n_0_[2] ),
+        .I4(\FSM_onehot_state_sx_reg_n_0_[1] ),
+        .I5(read_allowed_sx_reg_n_0),
+        .O(\FSM_onehot_state_sx[5]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \FSM_onehot_state_sx[5]_i_4 
+       (.I0(\FSM_onehot_state_sx_reg_n_0_[5] ),
+        .I1(s_axis_tvalid),
+        .O(\FSM_onehot_state_sx[5]_i_4_n_0 ));
+  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_sx_reg[0] 
+       (.C(clk),
+        .CE(\FSM_onehot_state_sx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_sx_reg_n_0_[2] ),
+        .Q(p_0_in8_in));
+  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
+  FDPE #(
+    .INIT(1'b1)) 
+    \FSM_onehot_state_sx_reg[1] 
+       (.C(clk),
+        .CE(\FSM_onehot_state_sx[5]_i_1_n_0 ),
+        .D(p_0_in8_in),
+        .PRE(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .Q(\FSM_onehot_state_sx_reg_n_0_[1] ));
+  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_sx_reg[2] 
+       (.C(clk),
+        .CE(\FSM_onehot_state_sx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_sx_reg_n_0_[3] ),
+        .Q(\FSM_onehot_state_sx_reg_n_0_[2] ));
+  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_sx_reg[3] 
+       (.C(clk),
+        .CE(\FSM_onehot_state_sx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_sx_reg_n_0_[4] ),
+        .Q(\FSM_onehot_state_sx_reg_n_0_[3] ));
+  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_sx_reg[4] 
+       (.C(clk),
+        .CE(\FSM_onehot_state_sx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_sx_reg_n_0_[5] ),
+        .Q(\FSM_onehot_state_sx_reg_n_0_[4] ));
+  (* FSM_ENCODED_STATES = "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001," *) 
+  FDCE #(
+    .INIT(1'b0)) 
+    \FSM_onehot_state_sx_reg[5] 
+       (.C(clk),
+        .CE(\FSM_onehot_state_sx[5]_i_1_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
+        .D(\FSM_onehot_state_sx_reg_n_0_[1] ),
+        .Q(\FSM_onehot_state_sx_reg_n_0_[5] ));
   LUT3 #(
     .INIT(8'h80)) 
     \data_in_dx[15]_i_1 
        (.I0(s_axis_tvalid),
-        .I1(\FSM_onehot_state2_reg_n_0_[5] ),
+        .I1(\FSM_onehot_state_dx_reg_n_0_[5] ),
         .I2(aresetn),
         .O(sw_reg_dx0));
   FDRE #(
@@ -993,7 +993,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     .INIT(8'h80)) 
     \data_in_sx[15]_i_1 
        (.I0(s_axis_tvalid),
-        .I1(\FSM_onehot_state1_reg_n_0_[5] ),
+        .I1(\FSM_onehot_state_sx_reg_n_0_[5] ),
         .I2(aresetn),
         .O(sw_reg_sx0));
   FDRE #(
@@ -1349,7 +1349,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     .INIT(16'h8808)) 
     \data_out_dx[15]_i_1 
        (.I0(aresetn),
-        .I1(\FSM_onehot_state2_reg_n_0_[3] ),
+        .I1(\FSM_onehot_state_dx_reg_n_0_[3] ),
         .I2(sw_reg_dx_reg_n_0),
         .I3(tlast_sampled_dx_reg_n_0),
         .O(data_out_dx0));
@@ -1786,7 +1786,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     .INIT(16'h0888)) 
     \data_out_sx[15]_i_1 
        (.I0(aresetn),
-        .I1(\FSM_onehot_state1_reg_n_0_[3] ),
+        .I1(\FSM_onehot_state_sx_reg_n_0_[3] ),
         .I2(tlast_sampled_sx_reg_n_0),
         .I3(sw_reg_sx_reg_n_0),
         .O(data_out_sx0));
@@ -2001,7 +2001,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
   LUT2 #(
     .INIT(4'h8)) 
     \last_sum_dx[0]_i_1 
-       (.I0(\FSM_onehot_state2_reg_n_0_[3] ),
+       (.I0(\FSM_onehot_state_dx_reg_n_0_[3] ),
         .I1(tlast_sampled_dx_reg_n_0),
         .O(last_sum_dx));
   LUT2 #(
@@ -2135,7 +2135,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[0] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[0]_i_2_n_7 ),
         .Q(last_sum_dx_reg[0]));
   CARRY4 \last_sum_dx_reg[0]_i_2 
@@ -2150,7 +2150,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[10] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[8]_i_1_n_5 ),
         .Q(last_sum_dx_reg[10]));
   FDCE #(
@@ -2158,7 +2158,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[11] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[8]_i_1_n_4 ),
         .Q(last_sum_dx_reg[11]));
   FDCE #(
@@ -2166,7 +2166,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[12] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[12]_i_1_n_7 ),
         .Q(last_sum_dx_reg[12]));
   CARRY4 \last_sum_dx_reg[12]_i_1 
@@ -2181,7 +2181,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[13] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[12]_i_1_n_6 ),
         .Q(last_sum_dx_reg[13]));
   FDCE #(
@@ -2189,7 +2189,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[14] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[12]_i_1_n_5 ),
         .Q(last_sum_dx_reg[14]));
   FDCE #(
@@ -2197,7 +2197,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[15] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[12]_i_1_n_4 ),
         .Q(last_sum_dx_reg[15]));
   FDCE #(
@@ -2205,7 +2205,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[16] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[16]_i_1_n_7 ),
         .Q(last_sum_dx_reg[16]));
   CARRY4 \last_sum_dx_reg[16]_i_1 
@@ -2220,7 +2220,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[17] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[16]_i_1_n_6 ),
         .Q(last_sum_dx_reg[17]));
   FDCE #(
@@ -2228,7 +2228,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[18] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[16]_i_1_n_5 ),
         .Q(last_sum_dx_reg[18]));
   FDCE #(
@@ -2236,7 +2236,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[19] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[16]_i_1_n_4 ),
         .Q(last_sum_dx_reg[19]));
   FDCE #(
@@ -2244,7 +2244,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[1] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[0]_i_2_n_6 ),
         .Q(last_sum_dx_reg[1]));
   FDCE #(
@@ -2252,7 +2252,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[20] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[20]_i_1_n_7 ),
         .Q(last_sum_dx_reg[20]));
   CARRY4 \last_sum_dx_reg[20]_i_1 
@@ -2267,7 +2267,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[2] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[0]_i_2_n_5 ),
         .Q(last_sum_dx_reg[2]));
   FDCE #(
@@ -2275,7 +2275,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[3] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[0]_i_2_n_4 ),
         .Q(last_sum_dx_reg[3]));
   FDCE #(
@@ -2283,7 +2283,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[4] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[4]_i_1_n_7 ),
         .Q(last_sum_dx_reg[4]));
   CARRY4 \last_sum_dx_reg[4]_i_1 
@@ -2298,7 +2298,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[5] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[4]_i_1_n_6 ),
         .Q(last_sum_dx_reg[5]));
   FDCE #(
@@ -2306,7 +2306,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[6] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[4]_i_1_n_5 ),
         .Q(last_sum_dx_reg[6]));
   FDCE #(
@@ -2314,7 +2314,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[7] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[4]_i_1_n_4 ),
         .Q(last_sum_dx_reg[7]));
   FDCE #(
@@ -2322,7 +2322,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[8] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[8]_i_1_n_7 ),
         .Q(last_sum_dx_reg[8]));
   CARRY4 \last_sum_dx_reg[8]_i_1 
@@ -2337,13 +2337,13 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_dx_reg[9] 
        (.C(clk),
         .CE(last_sum_dx),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_dx_reg[8]_i_1_n_6 ),
         .Q(last_sum_dx_reg[9]));
   LUT2 #(
     .INIT(4'h2)) 
     \last_sum_sx[0]_i_1 
-       (.I0(\FSM_onehot_state1_reg_n_0_[3] ),
+       (.I0(\FSM_onehot_state_sx_reg_n_0_[3] ),
         .I1(tlast_sampled_sx_reg_n_0),
         .O(\last_sum_sx[0]_i_1_n_0 ));
   LUT2 #(
@@ -2477,7 +2477,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[0] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[0]_i_2_n_7 ),
         .Q(last_sum_sx_reg[0]));
   CARRY4 \last_sum_sx_reg[0]_i_2 
@@ -2492,7 +2492,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[10] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[8]_i_1_n_5 ),
         .Q(last_sum_sx_reg[10]));
   FDCE #(
@@ -2500,7 +2500,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[11] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[8]_i_1_n_4 ),
         .Q(last_sum_sx_reg[11]));
   FDCE #(
@@ -2508,7 +2508,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[12] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[12]_i_1_n_7 ),
         .Q(last_sum_sx_reg[12]));
   CARRY4 \last_sum_sx_reg[12]_i_1 
@@ -2523,7 +2523,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[13] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[12]_i_1_n_6 ),
         .Q(last_sum_sx_reg[13]));
   FDCE #(
@@ -2531,7 +2531,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[14] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[12]_i_1_n_5 ),
         .Q(last_sum_sx_reg[14]));
   FDCE #(
@@ -2539,7 +2539,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[15] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[12]_i_1_n_4 ),
         .Q(last_sum_sx_reg[15]));
   FDCE #(
@@ -2547,7 +2547,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[16] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[16]_i_1_n_7 ),
         .Q(last_sum_sx_reg[16]));
   CARRY4 \last_sum_sx_reg[16]_i_1 
@@ -2562,7 +2562,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[17] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[16]_i_1_n_6 ),
         .Q(last_sum_sx_reg[17]));
   FDCE #(
@@ -2570,7 +2570,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[18] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[16]_i_1_n_5 ),
         .Q(last_sum_sx_reg[18]));
   FDCE #(
@@ -2578,7 +2578,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[19] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[16]_i_1_n_4 ),
         .Q(last_sum_sx_reg[19]));
   FDCE #(
@@ -2586,7 +2586,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[1] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[0]_i_2_n_6 ),
         .Q(last_sum_sx_reg[1]));
   FDCE #(
@@ -2594,7 +2594,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[20] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[20]_i_1_n_7 ),
         .Q(last_sum_sx_reg[20]));
   CARRY4 \last_sum_sx_reg[20]_i_1 
@@ -2609,7 +2609,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[2] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[0]_i_2_n_5 ),
         .Q(last_sum_sx_reg[2]));
   FDCE #(
@@ -2617,7 +2617,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[3] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[0]_i_2_n_4 ),
         .Q(last_sum_sx_reg[3]));
   FDCE #(
@@ -2625,7 +2625,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[4] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[4]_i_1_n_7 ),
         .Q(last_sum_sx_reg[4]));
   CARRY4 \last_sum_sx_reg[4]_i_1 
@@ -2640,7 +2640,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[5] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[4]_i_1_n_6 ),
         .Q(last_sum_sx_reg[5]));
   FDCE #(
@@ -2648,7 +2648,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[6] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[4]_i_1_n_5 ),
         .Q(last_sum_sx_reg[6]));
   FDCE #(
@@ -2656,7 +2656,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[7] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[4]_i_1_n_4 ),
         .Q(last_sum_sx_reg[7]));
   FDCE #(
@@ -2664,7 +2664,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[8] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[8]_i_1_n_7 ),
         .Q(last_sum_sx_reg[8]));
   CARRY4 \last_sum_sx_reg[8]_i_1 
@@ -2679,14 +2679,14 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     \last_sum_sx_reg[9] 
        (.C(clk),
         .CE(\last_sum_sx[0]_i_1_n_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(\last_sum_sx_reg[8]_i_1_n_6 ),
         .Q(last_sum_sx_reg[9]));
   LUT2 #(
     .INIT(4'h8)) 
     last_values_dx_c_i_1
        (.I0(tlast_sampled_dx_reg_n_0),
-        .I1(\FSM_onehot_state2_reg_n_0_[4] ),
+        .I1(\FSM_onehot_state_dx_reg_n_0_[4] ),
         .O(\last_values_dx[0]_1 ));
   (* srl_bus_name = "\U0/last_values_dx_reg[29] " *) 
   (* srl_name = "\U0/last_values_dx_reg[29][0]_srl30_U0_last_values_dx_reg_c_58 " *) 
@@ -2963,283 +2963,283 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
   FDCE \last_values_dx_reg[31][0] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__14_n_0),
         .Q(\last_values_dx_reg[31] [0]));
   FDCE \last_values_dx_reg[31][10] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__4_n_0),
         .Q(\last_values_dx_reg[31] [10]));
   FDCE \last_values_dx_reg[31][11] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__3_n_0),
         .Q(\last_values_dx_reg[31] [11]));
   FDCE \last_values_dx_reg[31][12] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__2_n_0),
         .Q(\last_values_dx_reg[31] [12]));
   FDCE \last_values_dx_reg[31][13] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__1_n_0),
         .Q(\last_values_dx_reg[31] [13]));
   FDCE \last_values_dx_reg[31][14] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__0_n_0),
         .Q(\last_values_dx_reg[31] [14]));
   FDCE \last_values_dx_reg[31][15] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate_n_0),
         .Q(\last_values_dx_reg[31] [15]));
   FDCE \last_values_dx_reg[31][1] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__13_n_0),
         .Q(\last_values_dx_reg[31] [1]));
   FDCE \last_values_dx_reg[31][2] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__12_n_0),
         .Q(\last_values_dx_reg[31] [2]));
   FDCE \last_values_dx_reg[31][3] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__11_n_0),
         .Q(\last_values_dx_reg[31] [3]));
   FDCE \last_values_dx_reg[31][4] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__10_n_0),
         .Q(\last_values_dx_reg[31] [4]));
   FDCE \last_values_dx_reg[31][5] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__9_n_0),
         .Q(\last_values_dx_reg[31] [5]));
   FDCE \last_values_dx_reg[31][6] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__8_n_0),
         .Q(\last_values_dx_reg[31] [6]));
   FDCE \last_values_dx_reg[31][7] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__7_n_0),
         .Q(\last_values_dx_reg[31] [7]));
   FDCE \last_values_dx_reg[31][8] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__6_n_0),
         .Q(\last_values_dx_reg[31] [8]));
   FDCE \last_values_dx_reg[31][9] 
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_gate__5_n_0),
         .Q(\last_values_dx_reg[31] [9]));
   FDCE last_values_dx_reg_c
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(1'b1),
         .Q(last_values_dx_reg_c_n_0));
   FDCE last_values_dx_reg_c_30
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_n_0),
         .Q(last_values_dx_reg_c_30_n_0));
   FDCE last_values_dx_reg_c_31
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_30_n_0),
         .Q(last_values_dx_reg_c_31_n_0));
   FDCE last_values_dx_reg_c_32
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_31_n_0),
         .Q(last_values_dx_reg_c_32_n_0));
   FDCE last_values_dx_reg_c_33
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_32_n_0),
         .Q(last_values_dx_reg_c_33_n_0));
   FDCE last_values_dx_reg_c_34
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_33_n_0),
         .Q(last_values_dx_reg_c_34_n_0));
   FDCE last_values_dx_reg_c_35
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_34_n_0),
         .Q(last_values_dx_reg_c_35_n_0));
   FDCE last_values_dx_reg_c_36
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_35_n_0),
         .Q(last_values_dx_reg_c_36_n_0));
   FDCE last_values_dx_reg_c_37
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_36_n_0),
         .Q(last_values_dx_reg_c_37_n_0));
   FDCE last_values_dx_reg_c_38
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_37_n_0),
         .Q(last_values_dx_reg_c_38_n_0));
   FDCE last_values_dx_reg_c_39
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_38_n_0),
         .Q(last_values_dx_reg_c_39_n_0));
   FDCE last_values_dx_reg_c_40
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_39_n_0),
         .Q(last_values_dx_reg_c_40_n_0));
   FDCE last_values_dx_reg_c_41
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_40_n_0),
         .Q(last_values_dx_reg_c_41_n_0));
   FDCE last_values_dx_reg_c_42
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_41_n_0),
         .Q(last_values_dx_reg_c_42_n_0));
   FDCE last_values_dx_reg_c_43
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_42_n_0),
         .Q(last_values_dx_reg_c_43_n_0));
   FDCE last_values_dx_reg_c_44
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_43_n_0),
         .Q(last_values_dx_reg_c_44_n_0));
   FDCE last_values_dx_reg_c_45
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_44_n_0),
         .Q(last_values_dx_reg_c_45_n_0));
   FDCE last_values_dx_reg_c_46
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_45_n_0),
         .Q(last_values_dx_reg_c_46_n_0));
   FDCE last_values_dx_reg_c_47
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_46_n_0),
         .Q(last_values_dx_reg_c_47_n_0));
   FDCE last_values_dx_reg_c_48
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_47_n_0),
         .Q(last_values_dx_reg_c_48_n_0));
   FDCE last_values_dx_reg_c_49
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_48_n_0),
         .Q(last_values_dx_reg_c_49_n_0));
   FDCE last_values_dx_reg_c_50
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_49_n_0),
         .Q(last_values_dx_reg_c_50_n_0));
   FDCE last_values_dx_reg_c_51
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_50_n_0),
         .Q(last_values_dx_reg_c_51_n_0));
   FDCE last_values_dx_reg_c_52
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_51_n_0),
         .Q(last_values_dx_reg_c_52_n_0));
   FDCE last_values_dx_reg_c_53
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_52_n_0),
         .Q(last_values_dx_reg_c_53_n_0));
   FDCE last_values_dx_reg_c_54
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_53_n_0),
         .Q(last_values_dx_reg_c_54_n_0));
   FDCE last_values_dx_reg_c_55
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_54_n_0),
         .Q(last_values_dx_reg_c_55_n_0));
   FDCE last_values_dx_reg_c_56
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_55_n_0),
         .Q(last_values_dx_reg_c_56_n_0));
   FDCE last_values_dx_reg_c_57
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_56_n_0),
         .Q(last_values_dx_reg_c_57_n_0));
   FDCE last_values_dx_reg_c_58
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_57_n_0),
         .Q(last_values_dx_reg_c_58_n_0));
   FDCE last_values_dx_reg_c_59
        (.C(clk),
         .CE(\last_values_dx[0]_1 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_dx_reg_c_58_n_0),
         .Q(last_values_dx_reg_c_59_n_0));
   (* SOFT_HLUTNM = "soft_lutpair33" *) 
@@ -3357,7 +3357,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
   LUT2 #(
     .INIT(4'h2)) 
     last_values_sx_c_i_1
-       (.I0(\FSM_onehot_state1_reg_n_0_[4] ),
+       (.I0(\FSM_onehot_state_sx_reg_n_0_[4] ),
         .I1(tlast_sampled_sx_reg_n_0),
         .O(\last_values_sx[0]_0 ));
   (* srl_bus_name = "\U0/last_values_sx_reg[29] " *) 
@@ -3635,283 +3635,283 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
   FDCE \last_values_sx_reg[31][0] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__14_n_0),
         .Q(\last_values_sx_reg[31] [0]));
   FDCE \last_values_sx_reg[31][10] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__4_n_0),
         .Q(\last_values_sx_reg[31] [10]));
   FDCE \last_values_sx_reg[31][11] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__3_n_0),
         .Q(\last_values_sx_reg[31] [11]));
   FDCE \last_values_sx_reg[31][12] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__2_n_0),
         .Q(\last_values_sx_reg[31] [12]));
   FDCE \last_values_sx_reg[31][13] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__1_n_0),
         .Q(\last_values_sx_reg[31] [13]));
   FDCE \last_values_sx_reg[31][14] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__0_n_0),
         .Q(\last_values_sx_reg[31] [14]));
   FDCE \last_values_sx_reg[31][15] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate_n_0),
         .Q(\last_values_sx_reg[31] [15]));
   FDCE \last_values_sx_reg[31][1] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__13_n_0),
         .Q(\last_values_sx_reg[31] [1]));
   FDCE \last_values_sx_reg[31][2] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__12_n_0),
         .Q(\last_values_sx_reg[31] [2]));
   FDCE \last_values_sx_reg[31][3] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__11_n_0),
         .Q(\last_values_sx_reg[31] [3]));
   FDCE \last_values_sx_reg[31][4] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__10_n_0),
         .Q(\last_values_sx_reg[31] [4]));
   FDCE \last_values_sx_reg[31][5] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__9_n_0),
         .Q(\last_values_sx_reg[31] [5]));
   FDCE \last_values_sx_reg[31][6] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__8_n_0),
         .Q(\last_values_sx_reg[31] [6]));
   FDCE \last_values_sx_reg[31][7] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__7_n_0),
         .Q(\last_values_sx_reg[31] [7]));
   FDCE \last_values_sx_reg[31][8] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__6_n_0),
         .Q(\last_values_sx_reg[31] [8]));
   FDCE \last_values_sx_reg[31][9] 
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_gate__5_n_0),
         .Q(\last_values_sx_reg[31] [9]));
   FDCE last_values_sx_reg_c
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(1'b1),
         .Q(last_values_sx_reg_c_n_0));
   FDCE last_values_sx_reg_c_0
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_n_0),
         .Q(last_values_sx_reg_c_0_n_0));
   FDCE last_values_sx_reg_c_1
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_0_n_0),
         .Q(last_values_sx_reg_c_1_n_0));
   FDCE last_values_sx_reg_c_10
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_9_n_0),
         .Q(last_values_sx_reg_c_10_n_0));
   FDCE last_values_sx_reg_c_11
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_10_n_0),
         .Q(last_values_sx_reg_c_11_n_0));
   FDCE last_values_sx_reg_c_12
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_11_n_0),
         .Q(last_values_sx_reg_c_12_n_0));
   FDCE last_values_sx_reg_c_13
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_12_n_0),
         .Q(last_values_sx_reg_c_13_n_0));
   FDCE last_values_sx_reg_c_14
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_13_n_0),
         .Q(last_values_sx_reg_c_14_n_0));
   FDCE last_values_sx_reg_c_15
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_14_n_0),
         .Q(last_values_sx_reg_c_15_n_0));
   FDCE last_values_sx_reg_c_16
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_15_n_0),
         .Q(last_values_sx_reg_c_16_n_0));
   FDCE last_values_sx_reg_c_17
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_16_n_0),
         .Q(last_values_sx_reg_c_17_n_0));
   FDCE last_values_sx_reg_c_18
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_17_n_0),
         .Q(last_values_sx_reg_c_18_n_0));
   FDCE last_values_sx_reg_c_19
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_18_n_0),
         .Q(last_values_sx_reg_c_19_n_0));
   FDCE last_values_sx_reg_c_2
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_1_n_0),
         .Q(last_values_sx_reg_c_2_n_0));
   FDCE last_values_sx_reg_c_20
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_19_n_0),
         .Q(last_values_sx_reg_c_20_n_0));
   FDCE last_values_sx_reg_c_21
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_20_n_0),
         .Q(last_values_sx_reg_c_21_n_0));
   FDCE last_values_sx_reg_c_22
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_21_n_0),
         .Q(last_values_sx_reg_c_22_n_0));
   FDCE last_values_sx_reg_c_23
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_22_n_0),
         .Q(last_values_sx_reg_c_23_n_0));
   FDCE last_values_sx_reg_c_24
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_23_n_0),
         .Q(last_values_sx_reg_c_24_n_0));
   FDCE last_values_sx_reg_c_25
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_24_n_0),
         .Q(last_values_sx_reg_c_25_n_0));
   FDCE last_values_sx_reg_c_26
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_25_n_0),
         .Q(last_values_sx_reg_c_26_n_0));
   FDCE last_values_sx_reg_c_27
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_26_n_0),
         .Q(last_values_sx_reg_c_27_n_0));
   FDCE last_values_sx_reg_c_28
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_27_n_0),
         .Q(last_values_sx_reg_c_28_n_0));
   FDCE last_values_sx_reg_c_29
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_28_n_0),
         .Q(last_values_sx_reg_c_29_n_0));
   FDCE last_values_sx_reg_c_3
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_2_n_0),
         .Q(last_values_sx_reg_c_3_n_0));
   FDCE last_values_sx_reg_c_4
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_3_n_0),
         .Q(last_values_sx_reg_c_4_n_0));
   FDCE last_values_sx_reg_c_5
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_4_n_0),
         .Q(last_values_sx_reg_c_5_n_0));
   FDCE last_values_sx_reg_c_6
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_5_n_0),
         .Q(last_values_sx_reg_c_6_n_0));
   FDCE last_values_sx_reg_c_7
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_6_n_0),
         .Q(last_values_sx_reg_c_7_n_0));
   FDCE last_values_sx_reg_c_8
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_7_n_0),
         .Q(last_values_sx_reg_c_8_n_0));
   FDCE last_values_sx_reg_c_9
        (.C(clk),
         .CE(\last_values_sx[0]_0 ),
-        .CLR(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .CLR(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .D(last_values_sx_reg_c_8_n_0),
         .Q(last_values_sx_reg_c_9_n_0));
   (* SOFT_HLUTNM = "soft_lutpair27" *) 
@@ -4318,9 +4318,9 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
   LUT5 #(
     .INIT(32'hDDFFC000)) 
     read_allowed_sx_i_1
-       (.I0(\FSM_onehot_state1_reg_n_0_[5] ),
+       (.I0(\FSM_onehot_state_sx_reg_n_0_[5] ),
         .I1(s_axis_tlast),
-        .I2(\FSM_onehot_state2_reg_n_0_[5] ),
+        .I2(\FSM_onehot_state_dx_reg_n_0_[5] ),
         .I3(s_axis_tvalid),
         .I4(read_allowed_sx_reg_n_0),
         .O(read_allowed_sx_i_1_n_0));
@@ -4330,14 +4330,14 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
        (.C(clk),
         .CE(1'b1),
         .D(read_allowed_sx_i_1_n_0),
-        .PRE(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .PRE(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .Q(read_allowed_sx_reg_n_0));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT2 #(
     .INIT(4'hE)) 
     s_axis_tready_INST_0
-       (.I0(\FSM_onehot_state1_reg_n_0_[5] ),
-        .I1(\FSM_onehot_state2_reg_n_0_[5] ),
+       (.I0(\FSM_onehot_state_sx_reg_n_0_[5] ),
+        .I1(\FSM_onehot_state_dx_reg_n_0_[5] ),
         .O(s_axis_tready));
   CARRY4 sub_dx0_carry
        (.CI(1'b0),
@@ -4474,7 +4474,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     .INIT(8'h80)) 
     \sub_dx[16]_i_1 
        (.I0(aresetn),
-        .I1(\FSM_onehot_state2_reg_n_0_[4] ),
+        .I1(\FSM_onehot_state_dx_reg_n_0_[4] ),
         .I2(tlast_sampled_dx_reg_n_0),
         .O(sub_dx0));
   FDRE #(
@@ -4748,7 +4748,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     .INIT(8'h08)) 
     \sub_sx[16]_i_1 
        (.I0(aresetn),
-        .I1(\FSM_onehot_state1_reg_n_0_[4] ),
+        .I1(\FSM_onehot_state_sx_reg_n_0_[4] ),
         .I2(tlast_sampled_sx_reg_n_0),
         .O(sub_sx0));
   FDRE #(
@@ -4907,7 +4907,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
     .INIT(32'hFFFF8000)) 
     tlast_sampled_dx_i_1
        (.I0(s_axis_tlast),
-        .I1(\FSM_onehot_state2_reg_n_0_[5] ),
+        .I1(\FSM_onehot_state_dx_reg_n_0_[5] ),
         .I2(s_axis_tvalid),
         .I3(aresetn),
         .I4(tlast_sampled_dx_reg_n_0),
@@ -4927,7 +4927,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
        (.I0(s_axis_tlast),
         .I1(aresetn),
         .I2(s_axis_tvalid),
-        .I3(\FSM_onehot_state1_reg_n_0_[5] ),
+        .I3(\FSM_onehot_state_sx_reg_n_0_[5] ),
         .I4(tlast_sampled_sx_reg_n_0),
         .O(tlast_sampled_sx_i_1_n_0));
   FDRE #(
@@ -4952,7 +4952,7 @@ module bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2
        (.C(clk),
         .CE(1'b1),
         .D(write_allowed_sx_i_1_n_0),
-        .PRE(\FSM_onehot_state1[5]_i_2_n_0 ),
+        .PRE(\FSM_onehot_state_sx[5]_i_2_n_0 ),
         .Q(write_allowed_sx_reg_n_0));
 endmodule
 `ifndef GLBL

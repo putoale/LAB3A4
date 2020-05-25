@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May 24 13:05:14 2020" VIVADOVERSION="2019.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon May 25 15:43:47 2020" VIVADOVERSION="2019.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.1" DEVICE="7a35t" NAME="bd_mov_av_v2" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -806,13 +806,13 @@
             <CONNECTION INSTANCE="packetizer_0" PORT="aclk"/>
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="m00_axis_rx_aclk"/>
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="s00_axis_tx_aclk"/>
-            <CONNECTION INSTANCE="mute_v1_0" PORT="clk"/>
             <CONNECTION INSTANCE="edge_detector_1" PORT="clk"/>
             <CONNECTION INSTANCE="edge_detector_0" PORT="clk"/>
             <CONNECTION INSTANCE="debouncer_1" PORT="clk"/>
             <CONNECTION INSTANCE="debouncer_0" PORT="clk"/>
-            <CONNECTION INSTANCE="moving_average_v2_0" PORT="clk"/>
             <CONNECTION INSTANCE="volume_controller_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="moving_average_v2_0" PORT="clk"/>
+            <CONNECTION INSTANCE="mute_v1_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
@@ -1390,9 +1390,9 @@
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="s00_axis_tx_aresetn"/>
             <CONNECTION INSTANCE="packetizer_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="depacketizer_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="mute_v1_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="moving_average_v2_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="volume_controller_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="moving_average_v2_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="mute_v1_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

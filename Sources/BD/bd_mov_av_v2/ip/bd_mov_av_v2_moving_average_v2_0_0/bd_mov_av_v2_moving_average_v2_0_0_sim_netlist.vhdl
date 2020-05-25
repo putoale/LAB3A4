@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Sat May 23 17:07:38 2020
+-- Date        : Mon May 25 15:44:52 2020
 -- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/bd_mov_av_v2/ip/bd_mov_av_v2_moving_average_v2_0_0/bd_mov_av_v2_moving_average_v2_0_0_sim_netlist.vhdl
@@ -33,22 +33,22 @@ entity bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2 is
 end bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2;
 
 architecture STRUCTURE of bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2 is
-  signal \FSM_onehot_state1[5]_i_1_n_0\ : STD_LOGIC;
-  signal \FSM_onehot_state1[5]_i_2_n_0\ : STD_LOGIC;
-  signal \FSM_onehot_state1[5]_i_3_n_0\ : STD_LOGIC;
-  signal \FSM_onehot_state1[5]_i_4_n_0\ : STD_LOGIC;
-  signal \FSM_onehot_state1_reg_n_0_[1]\ : STD_LOGIC;
-  signal \FSM_onehot_state1_reg_n_0_[2]\ : STD_LOGIC;
-  signal \FSM_onehot_state1_reg_n_0_[3]\ : STD_LOGIC;
-  signal \FSM_onehot_state1_reg_n_0_[4]\ : STD_LOGIC;
-  signal \FSM_onehot_state1_reg_n_0_[5]\ : STD_LOGIC;
-  signal \FSM_onehot_state2[5]_i_1_n_0\ : STD_LOGIC;
-  signal \FSM_onehot_state2[5]_i_2_n_0\ : STD_LOGIC;
-  signal \FSM_onehot_state2_reg_n_0_[1]\ : STD_LOGIC;
-  signal \FSM_onehot_state2_reg_n_0_[2]\ : STD_LOGIC;
-  signal \FSM_onehot_state2_reg_n_0_[3]\ : STD_LOGIC;
-  signal \FSM_onehot_state2_reg_n_0_[4]\ : STD_LOGIC;
-  signal \FSM_onehot_state2_reg_n_0_[5]\ : STD_LOGIC;
+  signal \FSM_onehot_state_dx[5]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_state_dx[5]_i_2_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_state_dx_reg_n_0_[1]\ : STD_LOGIC;
+  signal \FSM_onehot_state_dx_reg_n_0_[2]\ : STD_LOGIC;
+  signal \FSM_onehot_state_dx_reg_n_0_[3]\ : STD_LOGIC;
+  signal \FSM_onehot_state_dx_reg_n_0_[4]\ : STD_LOGIC;
+  signal \FSM_onehot_state_dx_reg_n_0_[5]\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx[5]_i_1_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx[5]_i_2_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx[5]_i_3_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx[5]_i_4_n_0\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx_reg_n_0_[1]\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx_reg_n_0_[2]\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx_reg_n_0_[3]\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx_reg_n_0_[4]\ : STD_LOGIC;
+  signal \FSM_onehot_state_sx_reg_n_0_[5]\ : STD_LOGIC;
   signal data_in_dx : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_in_sx : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal data_out_dx : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -627,21 +627,21 @@ architecture STRUCTURE of bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2 i
   signal \NLW_sub_dx0_carry__3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
   signal \NLW_sub_sx0_carry__3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_sub_sx0_carry__3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_onehot_state1[5]_i_4\ : label is "soft_lutpair0";
   attribute FSM_ENCODED_STATES : string;
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state1_reg[0]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state1_reg[1]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state1_reg[2]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state1_reg[3]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state1_reg[4]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state1_reg[5]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state2_reg[0]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state2_reg[1]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state2_reg[2]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state2_reg[3]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state2_reg[4]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
-  attribute FSM_ENCODED_STATES of \FSM_onehot_state2_reg[5]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_dx_reg[0]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_dx_reg[1]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_dx_reg[2]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_dx_reg[3]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_dx_reg[4]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_dx_reg[5]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \FSM_onehot_state_sx[5]_i_4\ : label is "soft_lutpair0";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_sx_reg[0]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_sx_reg[1]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_sx_reg[2]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_sx_reg[3]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_sx_reg[4]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
+  attribute FSM_ENCODED_STATES of \FSM_onehot_state_sx_reg[5]\ : label is "idle:000010,receive_data:100000,subtraction:010000,average:001000,wait_write:000100,send_data:000001,";
   attribute SOFT_HLUTNM of \data_out_dx[0]_i_1\ : label is "soft_lutpair16";
   attribute SOFT_HLUTNM of \data_out_dx[10]_i_1\ : label is "soft_lutpair21";
   attribute SOFT_HLUTNM of \data_out_dx[11]_i_1\ : label is "soft_lutpair20";
@@ -812,205 +812,205 @@ architecture STRUCTURE of bd_mov_av_v2_moving_average_v2_0_0_moving_average_v2 i
   attribute SOFT_HLUTNM of tlast_sampled_sx_i_1 : label is "soft_lutpair0";
 begin
   m_axis_tvalid <= \^m_axis_tvalid\;
-\FSM_onehot_state1[5]_i_1\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"FFFFFFEA"
-    )
-        port map (
-      I0 => \FSM_onehot_state1[5]_i_3_n_0\,
-      I1 => m_axis_tready,
-      I2 => p_0_in8_in,
-      I3 => \FSM_onehot_state1_reg_n_0_[4]\,
-      I4 => \FSM_onehot_state1_reg_n_0_[3]\,
-      O => \FSM_onehot_state1[5]_i_1_n_0\
-    );
-\FSM_onehot_state1[5]_i_2\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => aresetn,
-      O => \FSM_onehot_state1[5]_i_2_n_0\
-    );
-\FSM_onehot_state1[5]_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FFFFF222F222F222"
-    )
-        port map (
-      I0 => \FSM_onehot_state1[5]_i_4_n_0\,
-      I1 => s_axis_tlast,
-      I2 => write_allowed_sx_reg_n_0,
-      I3 => \FSM_onehot_state1_reg_n_0_[2]\,
-      I4 => \FSM_onehot_state1_reg_n_0_[1]\,
-      I5 => read_allowed_sx_reg_n_0,
-      O => \FSM_onehot_state1[5]_i_3_n_0\
-    );
-\FSM_onehot_state1[5]_i_4\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => \FSM_onehot_state1_reg_n_0_[5]\,
-      I1 => s_axis_tvalid,
-      O => \FSM_onehot_state1[5]_i_4_n_0\
-    );
-\FSM_onehot_state1_reg[0]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => clk,
-      CE => \FSM_onehot_state1[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state1_reg_n_0_[2]\,
-      Q => p_0_in8_in
-    );
-\FSM_onehot_state1_reg[1]\: unisim.vcomponents.FDPE
-    generic map(
-      INIT => '1'
-    )
-        port map (
-      C => clk,
-      CE => \FSM_onehot_state1[5]_i_1_n_0\,
-      D => p_0_in8_in,
-      PRE => \FSM_onehot_state1[5]_i_2_n_0\,
-      Q => \FSM_onehot_state1_reg_n_0_[1]\
-    );
-\FSM_onehot_state1_reg[2]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => clk,
-      CE => \FSM_onehot_state1[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state1_reg_n_0_[3]\,
-      Q => \FSM_onehot_state1_reg_n_0_[2]\
-    );
-\FSM_onehot_state1_reg[3]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => clk,
-      CE => \FSM_onehot_state1[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state1_reg_n_0_[4]\,
-      Q => \FSM_onehot_state1_reg_n_0_[3]\
-    );
-\FSM_onehot_state1_reg[4]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => clk,
-      CE => \FSM_onehot_state1[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state1_reg_n_0_[5]\,
-      Q => \FSM_onehot_state1_reg_n_0_[4]\
-    );
-\FSM_onehot_state1_reg[5]\: unisim.vcomponents.FDCE
-    generic map(
-      INIT => '0'
-    )
-        port map (
-      C => clk,
-      CE => \FSM_onehot_state1[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state1_reg_n_0_[1]\,
-      Q => \FSM_onehot_state1_reg_n_0_[5]\
-    );
-\FSM_onehot_state2[5]_i_1\: unisim.vcomponents.LUT6
+\FSM_onehot_state_dx[5]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFFFFFFFEEEEEEE"
     )
         port map (
-      I0 => \FSM_onehot_state2_reg_n_0_[3]\,
-      I1 => \FSM_onehot_state2[5]_i_2_n_0\,
+      I0 => \FSM_onehot_state_dx_reg_n_0_[3]\,
+      I1 => \FSM_onehot_state_dx[5]_i_2_n_0\,
       I2 => s_axis_tvalid,
-      I3 => \FSM_onehot_state2_reg_n_0_[5]\,
+      I3 => \FSM_onehot_state_dx_reg_n_0_[5]\,
       I4 => s_axis_tlast,
-      I5 => \FSM_onehot_state2_reg_n_0_[4]\,
-      O => \FSM_onehot_state2[5]_i_1_n_0\
+      I5 => \FSM_onehot_state_dx_reg_n_0_[4]\,
+      O => \FSM_onehot_state_dx[5]_i_1_n_0\
     );
-\FSM_onehot_state2[5]_i_2\: unisim.vcomponents.LUT6
+\FSM_onehot_state_dx[5]_i_2\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"88F8FFFF88F888F8"
     )
         port map (
       I0 => p_0_in7_in,
       I1 => m_axis_tready,
-      I2 => \FSM_onehot_state2_reg_n_0_[2]\,
+      I2 => \FSM_onehot_state_dx_reg_n_0_[2]\,
       I3 => write_allowed_sx_reg_n_0,
       I4 => read_allowed_sx_reg_n_0,
-      I5 => \FSM_onehot_state2_reg_n_0_[1]\,
-      O => \FSM_onehot_state2[5]_i_2_n_0\
+      I5 => \FSM_onehot_state_dx_reg_n_0_[1]\,
+      O => \FSM_onehot_state_dx[5]_i_2_n_0\
     );
-\FSM_onehot_state2_reg[0]\: unisim.vcomponents.FDCE
+\FSM_onehot_state_dx_reg[0]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => clk,
-      CE => \FSM_onehot_state2[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state2_reg_n_0_[2]\,
+      CE => \FSM_onehot_state_dx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_dx_reg_n_0_[2]\,
       Q => p_0_in7_in
     );
-\FSM_onehot_state2_reg[1]\: unisim.vcomponents.FDPE
+\FSM_onehot_state_dx_reg[1]\: unisim.vcomponents.FDPE
     generic map(
       INIT => '1'
     )
         port map (
       C => clk,
-      CE => \FSM_onehot_state2[5]_i_1_n_0\,
+      CE => \FSM_onehot_state_dx[5]_i_1_n_0\,
       D => p_0_in7_in,
-      PRE => \FSM_onehot_state1[5]_i_2_n_0\,
-      Q => \FSM_onehot_state2_reg_n_0_[1]\
+      PRE => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      Q => \FSM_onehot_state_dx_reg_n_0_[1]\
     );
-\FSM_onehot_state2_reg[2]\: unisim.vcomponents.FDCE
+\FSM_onehot_state_dx_reg[2]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => clk,
-      CE => \FSM_onehot_state2[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state2_reg_n_0_[3]\,
-      Q => \FSM_onehot_state2_reg_n_0_[2]\
+      CE => \FSM_onehot_state_dx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_dx_reg_n_0_[3]\,
+      Q => \FSM_onehot_state_dx_reg_n_0_[2]\
     );
-\FSM_onehot_state2_reg[3]\: unisim.vcomponents.FDCE
+\FSM_onehot_state_dx_reg[3]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => clk,
-      CE => \FSM_onehot_state2[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state2_reg_n_0_[4]\,
-      Q => \FSM_onehot_state2_reg_n_0_[3]\
+      CE => \FSM_onehot_state_dx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_dx_reg_n_0_[4]\,
+      Q => \FSM_onehot_state_dx_reg_n_0_[3]\
     );
-\FSM_onehot_state2_reg[4]\: unisim.vcomponents.FDCE
+\FSM_onehot_state_dx_reg[4]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => clk,
-      CE => \FSM_onehot_state2[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state2_reg_n_0_[5]\,
-      Q => \FSM_onehot_state2_reg_n_0_[4]\
+      CE => \FSM_onehot_state_dx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_dx_reg_n_0_[5]\,
+      Q => \FSM_onehot_state_dx_reg_n_0_[4]\
     );
-\FSM_onehot_state2_reg[5]\: unisim.vcomponents.FDCE
+\FSM_onehot_state_dx_reg[5]\: unisim.vcomponents.FDCE
     generic map(
       INIT => '0'
     )
         port map (
       C => clk,
-      CE => \FSM_onehot_state2[5]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
-      D => \FSM_onehot_state2_reg_n_0_[1]\,
-      Q => \FSM_onehot_state2_reg_n_0_[5]\
+      CE => \FSM_onehot_state_dx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_dx_reg_n_0_[1]\,
+      Q => \FSM_onehot_state_dx_reg_n_0_[5]\
+    );
+\FSM_onehot_state_sx[5]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFEA"
+    )
+        port map (
+      I0 => \FSM_onehot_state_sx[5]_i_3_n_0\,
+      I1 => m_axis_tready,
+      I2 => p_0_in8_in,
+      I3 => \FSM_onehot_state_sx_reg_n_0_[4]\,
+      I4 => \FSM_onehot_state_sx_reg_n_0_[3]\,
+      O => \FSM_onehot_state_sx[5]_i_1_n_0\
+    );
+\FSM_onehot_state_sx[5]_i_2\: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => aresetn,
+      O => \FSM_onehot_state_sx[5]_i_2_n_0\
+    );
+\FSM_onehot_state_sx[5]_i_3\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFF222F222F222"
+    )
+        port map (
+      I0 => \FSM_onehot_state_sx[5]_i_4_n_0\,
+      I1 => s_axis_tlast,
+      I2 => write_allowed_sx_reg_n_0,
+      I3 => \FSM_onehot_state_sx_reg_n_0_[2]\,
+      I4 => \FSM_onehot_state_sx_reg_n_0_[1]\,
+      I5 => read_allowed_sx_reg_n_0,
+      O => \FSM_onehot_state_sx[5]_i_3_n_0\
+    );
+\FSM_onehot_state_sx[5]_i_4\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => \FSM_onehot_state_sx_reg_n_0_[5]\,
+      I1 => s_axis_tvalid,
+      O => \FSM_onehot_state_sx[5]_i_4_n_0\
+    );
+\FSM_onehot_state_sx_reg[0]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => clk,
+      CE => \FSM_onehot_state_sx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_sx_reg_n_0_[2]\,
+      Q => p_0_in8_in
+    );
+\FSM_onehot_state_sx_reg[1]\: unisim.vcomponents.FDPE
+    generic map(
+      INIT => '1'
+    )
+        port map (
+      C => clk,
+      CE => \FSM_onehot_state_sx[5]_i_1_n_0\,
+      D => p_0_in8_in,
+      PRE => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      Q => \FSM_onehot_state_sx_reg_n_0_[1]\
+    );
+\FSM_onehot_state_sx_reg[2]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => clk,
+      CE => \FSM_onehot_state_sx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_sx_reg_n_0_[3]\,
+      Q => \FSM_onehot_state_sx_reg_n_0_[2]\
+    );
+\FSM_onehot_state_sx_reg[3]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => clk,
+      CE => \FSM_onehot_state_sx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_sx_reg_n_0_[4]\,
+      Q => \FSM_onehot_state_sx_reg_n_0_[3]\
+    );
+\FSM_onehot_state_sx_reg[4]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => clk,
+      CE => \FSM_onehot_state_sx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_sx_reg_n_0_[5]\,
+      Q => \FSM_onehot_state_sx_reg_n_0_[4]\
+    );
+\FSM_onehot_state_sx_reg[5]\: unisim.vcomponents.FDCE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => clk,
+      CE => \FSM_onehot_state_sx[5]_i_1_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
+      D => \FSM_onehot_state_sx_reg_n_0_[1]\,
+      Q => \FSM_onehot_state_sx_reg_n_0_[5]\
     );
 \data_in_dx[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
@@ -1018,7 +1018,7 @@ begin
     )
         port map (
       I0 => s_axis_tvalid,
-      I1 => \FSM_onehot_state2_reg_n_0_[5]\,
+      I1 => \FSM_onehot_state_dx_reg_n_0_[5]\,
       I2 => aresetn,
       O => sw_reg_dx0
     );
@@ -1204,7 +1204,7 @@ begin
     )
         port map (
       I0 => s_axis_tvalid,
-      I1 => \FSM_onehot_state1_reg_n_0_[5]\,
+      I1 => \FSM_onehot_state_sx_reg_n_0_[5]\,
       I2 => aresetn,
       O => sw_reg_sx0
     );
@@ -1747,7 +1747,7 @@ data_out_dx0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       I0 => aresetn,
-      I1 => \FSM_onehot_state2_reg_n_0_[3]\,
+      I1 => \FSM_onehot_state_dx_reg_n_0_[3]\,
       I2 => sw_reg_dx_reg_n_0,
       I3 => tlast_sampled_dx_reg_n_0,
       O => data_out_dx0
@@ -2391,7 +2391,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       I0 => aresetn,
-      I1 => \FSM_onehot_state1_reg_n_0_[3]\,
+      I1 => \FSM_onehot_state_sx_reg_n_0_[3]\,
       I2 => tlast_sampled_sx_reg_n_0,
       I3 => sw_reg_sx_reg_n_0,
       O => data_out_sx0
@@ -2677,7 +2677,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \FSM_onehot_state2_reg_n_0_[3]\,
+      I0 => \FSM_onehot_state_dx_reg_n_0_[3]\,
       I1 => tlast_sampled_dx_reg_n_0,
       O => last_sum_dx
     );
@@ -2877,7 +2877,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[0]_i_2_n_7\,
       Q => last_sum_dx_reg(0)
     );
@@ -2906,7 +2906,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[8]_i_1_n_5\,
       Q => last_sum_dx_reg(10)
     );
@@ -2917,7 +2917,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[8]_i_1_n_4\,
       Q => last_sum_dx_reg(11)
     );
@@ -2928,7 +2928,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[12]_i_1_n_7\,
       Q => last_sum_dx_reg(12)
     );
@@ -2957,7 +2957,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[12]_i_1_n_6\,
       Q => last_sum_dx_reg(13)
     );
@@ -2968,7 +2968,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[12]_i_1_n_5\,
       Q => last_sum_dx_reg(14)
     );
@@ -2979,7 +2979,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[12]_i_1_n_4\,
       Q => last_sum_dx_reg(15)
     );
@@ -2990,7 +2990,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[16]_i_1_n_7\,
       Q => last_sum_dx_reg(16)
     );
@@ -3022,7 +3022,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[16]_i_1_n_6\,
       Q => last_sum_dx_reg(17)
     );
@@ -3033,7 +3033,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[16]_i_1_n_5\,
       Q => last_sum_dx_reg(18)
     );
@@ -3044,7 +3044,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[16]_i_1_n_4\,
       Q => last_sum_dx_reg(19)
     );
@@ -3055,7 +3055,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[0]_i_2_n_6\,
       Q => last_sum_dx_reg(1)
     );
@@ -3066,7 +3066,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[20]_i_1_n_7\,
       Q => last_sum_dx_reg(20)
     );
@@ -3088,7 +3088,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[0]_i_2_n_5\,
       Q => last_sum_dx_reg(2)
     );
@@ -3099,7 +3099,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[0]_i_2_n_4\,
       Q => last_sum_dx_reg(3)
     );
@@ -3110,7 +3110,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[4]_i_1_n_7\,
       Q => last_sum_dx_reg(4)
     );
@@ -3139,7 +3139,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[4]_i_1_n_6\,
       Q => last_sum_dx_reg(5)
     );
@@ -3150,7 +3150,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[4]_i_1_n_5\,
       Q => last_sum_dx_reg(6)
     );
@@ -3161,7 +3161,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[4]_i_1_n_4\,
       Q => last_sum_dx_reg(7)
     );
@@ -3172,7 +3172,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[8]_i_1_n_7\,
       Q => last_sum_dx_reg(8)
     );
@@ -3201,7 +3201,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => last_sum_dx,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_dx_reg[8]_i_1_n_6\,
       Q => last_sum_dx_reg(9)
     );
@@ -3210,7 +3210,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
       INIT => X"2"
     )
         port map (
-      I0 => \FSM_onehot_state1_reg_n_0_[3]\,
+      I0 => \FSM_onehot_state_sx_reg_n_0_[3]\,
       I1 => tlast_sampled_sx_reg_n_0,
       O => \last_sum_sx[0]_i_1_n_0\
     );
@@ -3410,7 +3410,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[0]_i_2_n_7\,
       Q => last_sum_sx_reg(0)
     );
@@ -3439,7 +3439,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[8]_i_1_n_5\,
       Q => last_sum_sx_reg(10)
     );
@@ -3450,7 +3450,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[8]_i_1_n_4\,
       Q => last_sum_sx_reg(11)
     );
@@ -3461,7 +3461,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[12]_i_1_n_7\,
       Q => last_sum_sx_reg(12)
     );
@@ -3490,7 +3490,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[12]_i_1_n_6\,
       Q => last_sum_sx_reg(13)
     );
@@ -3501,7 +3501,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[12]_i_1_n_5\,
       Q => last_sum_sx_reg(14)
     );
@@ -3512,7 +3512,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[12]_i_1_n_4\,
       Q => last_sum_sx_reg(15)
     );
@@ -3523,7 +3523,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[16]_i_1_n_7\,
       Q => last_sum_sx_reg(16)
     );
@@ -3555,7 +3555,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[16]_i_1_n_6\,
       Q => last_sum_sx_reg(17)
     );
@@ -3566,7 +3566,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[16]_i_1_n_5\,
       Q => last_sum_sx_reg(18)
     );
@@ -3577,7 +3577,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[16]_i_1_n_4\,
       Q => last_sum_sx_reg(19)
     );
@@ -3588,7 +3588,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[0]_i_2_n_6\,
       Q => last_sum_sx_reg(1)
     );
@@ -3599,7 +3599,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[20]_i_1_n_7\,
       Q => last_sum_sx_reg(20)
     );
@@ -3621,7 +3621,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[0]_i_2_n_5\,
       Q => last_sum_sx_reg(2)
     );
@@ -3632,7 +3632,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[0]_i_2_n_4\,
       Q => last_sum_sx_reg(3)
     );
@@ -3643,7 +3643,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[4]_i_1_n_7\,
       Q => last_sum_sx_reg(4)
     );
@@ -3672,7 +3672,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[4]_i_1_n_6\,
       Q => last_sum_sx_reg(5)
     );
@@ -3683,7 +3683,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[4]_i_1_n_5\,
       Q => last_sum_sx_reg(6)
     );
@@ -3694,7 +3694,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[4]_i_1_n_4\,
       Q => last_sum_sx_reg(7)
     );
@@ -3705,7 +3705,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[8]_i_1_n_7\,
       Q => last_sum_sx_reg(8)
     );
@@ -3734,7 +3734,7 @@ data_out_sx0_carry_i_4: unisim.vcomponents.LUT2
         port map (
       C => clk,
       CE => \last_sum_sx[0]_i_1_n_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_sum_sx_reg[8]_i_1_n_6\,
       Q => last_sum_sx_reg(9)
     );
@@ -3744,7 +3744,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
     )
         port map (
       I0 => tlast_sampled_dx_reg_n_0,
-      I1 => \FSM_onehot_state2_reg_n_0_[4]\,
+      I1 => \FSM_onehot_state_dx_reg_n_0_[4]\,
       O => \last_values_dx[0]_1\
     );
 \last_values_dx_reg[29][0]_srl30_U0_last_values_dx_reg_c_58\: unisim.vcomponents.SRLC32E
@@ -4071,7 +4071,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__14_n_0\,
       Q => \last_values_dx_reg[31]\(0)
     );
@@ -4079,7 +4079,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__4_n_0\,
       Q => \last_values_dx_reg[31]\(10)
     );
@@ -4087,7 +4087,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__3_n_0\,
       Q => \last_values_dx_reg[31]\(11)
     );
@@ -4095,7 +4095,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__2_n_0\,
       Q => \last_values_dx_reg[31]\(12)
     );
@@ -4103,7 +4103,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__1_n_0\,
       Q => \last_values_dx_reg[31]\(13)
     );
@@ -4111,7 +4111,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__0_n_0\,
       Q => \last_values_dx_reg[31]\(14)
     );
@@ -4119,7 +4119,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_gate_n_0,
       Q => \last_values_dx_reg[31]\(15)
     );
@@ -4127,7 +4127,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__13_n_0\,
       Q => \last_values_dx_reg[31]\(1)
     );
@@ -4135,7 +4135,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__12_n_0\,
       Q => \last_values_dx_reg[31]\(2)
     );
@@ -4143,7 +4143,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__11_n_0\,
       Q => \last_values_dx_reg[31]\(3)
     );
@@ -4151,7 +4151,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__10_n_0\,
       Q => \last_values_dx_reg[31]\(4)
     );
@@ -4159,7 +4159,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__9_n_0\,
       Q => \last_values_dx_reg[31]\(5)
     );
@@ -4167,7 +4167,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__8_n_0\,
       Q => \last_values_dx_reg[31]\(6)
     );
@@ -4175,7 +4175,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__7_n_0\,
       Q => \last_values_dx_reg[31]\(7)
     );
@@ -4183,7 +4183,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__6_n_0\,
       Q => \last_values_dx_reg[31]\(8)
     );
@@ -4191,7 +4191,7 @@ last_values_dx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_dx_reg_gate__5_n_0\,
       Q => \last_values_dx_reg[31]\(9)
     );
@@ -4199,7 +4199,7 @@ last_values_dx_reg_c: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => '1',
       Q => last_values_dx_reg_c_n_0
     );
@@ -4207,7 +4207,7 @@ last_values_dx_reg_c_30: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_n_0,
       Q => last_values_dx_reg_c_30_n_0
     );
@@ -4215,7 +4215,7 @@ last_values_dx_reg_c_31: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_30_n_0,
       Q => last_values_dx_reg_c_31_n_0
     );
@@ -4223,7 +4223,7 @@ last_values_dx_reg_c_32: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_31_n_0,
       Q => last_values_dx_reg_c_32_n_0
     );
@@ -4231,7 +4231,7 @@ last_values_dx_reg_c_33: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_32_n_0,
       Q => last_values_dx_reg_c_33_n_0
     );
@@ -4239,7 +4239,7 @@ last_values_dx_reg_c_34: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_33_n_0,
       Q => last_values_dx_reg_c_34_n_0
     );
@@ -4247,7 +4247,7 @@ last_values_dx_reg_c_35: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_34_n_0,
       Q => last_values_dx_reg_c_35_n_0
     );
@@ -4255,7 +4255,7 @@ last_values_dx_reg_c_36: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_35_n_0,
       Q => last_values_dx_reg_c_36_n_0
     );
@@ -4263,7 +4263,7 @@ last_values_dx_reg_c_37: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_36_n_0,
       Q => last_values_dx_reg_c_37_n_0
     );
@@ -4271,7 +4271,7 @@ last_values_dx_reg_c_38: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_37_n_0,
       Q => last_values_dx_reg_c_38_n_0
     );
@@ -4279,7 +4279,7 @@ last_values_dx_reg_c_39: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_38_n_0,
       Q => last_values_dx_reg_c_39_n_0
     );
@@ -4287,7 +4287,7 @@ last_values_dx_reg_c_40: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_39_n_0,
       Q => last_values_dx_reg_c_40_n_0
     );
@@ -4295,7 +4295,7 @@ last_values_dx_reg_c_41: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_40_n_0,
       Q => last_values_dx_reg_c_41_n_0
     );
@@ -4303,7 +4303,7 @@ last_values_dx_reg_c_42: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_41_n_0,
       Q => last_values_dx_reg_c_42_n_0
     );
@@ -4311,7 +4311,7 @@ last_values_dx_reg_c_43: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_42_n_0,
       Q => last_values_dx_reg_c_43_n_0
     );
@@ -4319,7 +4319,7 @@ last_values_dx_reg_c_44: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_43_n_0,
       Q => last_values_dx_reg_c_44_n_0
     );
@@ -4327,7 +4327,7 @@ last_values_dx_reg_c_45: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_44_n_0,
       Q => last_values_dx_reg_c_45_n_0
     );
@@ -4335,7 +4335,7 @@ last_values_dx_reg_c_46: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_45_n_0,
       Q => last_values_dx_reg_c_46_n_0
     );
@@ -4343,7 +4343,7 @@ last_values_dx_reg_c_47: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_46_n_0,
       Q => last_values_dx_reg_c_47_n_0
     );
@@ -4351,7 +4351,7 @@ last_values_dx_reg_c_48: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_47_n_0,
       Q => last_values_dx_reg_c_48_n_0
     );
@@ -4359,7 +4359,7 @@ last_values_dx_reg_c_49: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_48_n_0,
       Q => last_values_dx_reg_c_49_n_0
     );
@@ -4367,7 +4367,7 @@ last_values_dx_reg_c_50: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_49_n_0,
       Q => last_values_dx_reg_c_50_n_0
     );
@@ -4375,7 +4375,7 @@ last_values_dx_reg_c_51: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_50_n_0,
       Q => last_values_dx_reg_c_51_n_0
     );
@@ -4383,7 +4383,7 @@ last_values_dx_reg_c_52: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_51_n_0,
       Q => last_values_dx_reg_c_52_n_0
     );
@@ -4391,7 +4391,7 @@ last_values_dx_reg_c_53: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_52_n_0,
       Q => last_values_dx_reg_c_53_n_0
     );
@@ -4399,7 +4399,7 @@ last_values_dx_reg_c_54: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_53_n_0,
       Q => last_values_dx_reg_c_54_n_0
     );
@@ -4407,7 +4407,7 @@ last_values_dx_reg_c_55: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_54_n_0,
       Q => last_values_dx_reg_c_55_n_0
     );
@@ -4415,7 +4415,7 @@ last_values_dx_reg_c_56: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_55_n_0,
       Q => last_values_dx_reg_c_56_n_0
     );
@@ -4423,7 +4423,7 @@ last_values_dx_reg_c_57: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_56_n_0,
       Q => last_values_dx_reg_c_57_n_0
     );
@@ -4431,7 +4431,7 @@ last_values_dx_reg_c_58: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_57_n_0,
       Q => last_values_dx_reg_c_58_n_0
     );
@@ -4439,7 +4439,7 @@ last_values_dx_reg_c_59: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_dx[0]_1\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_dx_reg_c_58_n_0,
       Q => last_values_dx_reg_c_59_n_0
     );
@@ -4592,7 +4592,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
       INIT => X"2"
     )
         port map (
-      I0 => \FSM_onehot_state1_reg_n_0_[4]\,
+      I0 => \FSM_onehot_state_sx_reg_n_0_[4]\,
       I1 => tlast_sampled_sx_reg_n_0,
       O => \last_values_sx[0]_0\
     );
@@ -4920,7 +4920,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__14_n_0\,
       Q => \last_values_sx_reg[31]\(0)
     );
@@ -4928,7 +4928,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__4_n_0\,
       Q => \last_values_sx_reg[31]\(10)
     );
@@ -4936,7 +4936,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__3_n_0\,
       Q => \last_values_sx_reg[31]\(11)
     );
@@ -4944,7 +4944,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__2_n_0\,
       Q => \last_values_sx_reg[31]\(12)
     );
@@ -4952,7 +4952,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__1_n_0\,
       Q => \last_values_sx_reg[31]\(13)
     );
@@ -4960,7 +4960,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__0_n_0\,
       Q => \last_values_sx_reg[31]\(14)
     );
@@ -4968,7 +4968,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_gate_n_0,
       Q => \last_values_sx_reg[31]\(15)
     );
@@ -4976,7 +4976,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__13_n_0\,
       Q => \last_values_sx_reg[31]\(1)
     );
@@ -4984,7 +4984,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__12_n_0\,
       Q => \last_values_sx_reg[31]\(2)
     );
@@ -4992,7 +4992,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__11_n_0\,
       Q => \last_values_sx_reg[31]\(3)
     );
@@ -5000,7 +5000,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__10_n_0\,
       Q => \last_values_sx_reg[31]\(4)
     );
@@ -5008,7 +5008,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__9_n_0\,
       Q => \last_values_sx_reg[31]\(5)
     );
@@ -5016,7 +5016,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__8_n_0\,
       Q => \last_values_sx_reg[31]\(6)
     );
@@ -5024,7 +5024,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__7_n_0\,
       Q => \last_values_sx_reg[31]\(7)
     );
@@ -5032,7 +5032,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__6_n_0\,
       Q => \last_values_sx_reg[31]\(8)
     );
@@ -5040,7 +5040,7 @@ last_values_sx_c_i_1: unisim.vcomponents.LUT2
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => \last_values_sx_reg_gate__5_n_0\,
       Q => \last_values_sx_reg[31]\(9)
     );
@@ -5048,7 +5048,7 @@ last_values_sx_reg_c: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => '1',
       Q => last_values_sx_reg_c_n_0
     );
@@ -5056,7 +5056,7 @@ last_values_sx_reg_c_0: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_n_0,
       Q => last_values_sx_reg_c_0_n_0
     );
@@ -5064,7 +5064,7 @@ last_values_sx_reg_c_1: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_0_n_0,
       Q => last_values_sx_reg_c_1_n_0
     );
@@ -5072,7 +5072,7 @@ last_values_sx_reg_c_10: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_9_n_0,
       Q => last_values_sx_reg_c_10_n_0
     );
@@ -5080,7 +5080,7 @@ last_values_sx_reg_c_11: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_10_n_0,
       Q => last_values_sx_reg_c_11_n_0
     );
@@ -5088,7 +5088,7 @@ last_values_sx_reg_c_12: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_11_n_0,
       Q => last_values_sx_reg_c_12_n_0
     );
@@ -5096,7 +5096,7 @@ last_values_sx_reg_c_13: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_12_n_0,
       Q => last_values_sx_reg_c_13_n_0
     );
@@ -5104,7 +5104,7 @@ last_values_sx_reg_c_14: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_13_n_0,
       Q => last_values_sx_reg_c_14_n_0
     );
@@ -5112,7 +5112,7 @@ last_values_sx_reg_c_15: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_14_n_0,
       Q => last_values_sx_reg_c_15_n_0
     );
@@ -5120,7 +5120,7 @@ last_values_sx_reg_c_16: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_15_n_0,
       Q => last_values_sx_reg_c_16_n_0
     );
@@ -5128,7 +5128,7 @@ last_values_sx_reg_c_17: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_16_n_0,
       Q => last_values_sx_reg_c_17_n_0
     );
@@ -5136,7 +5136,7 @@ last_values_sx_reg_c_18: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_17_n_0,
       Q => last_values_sx_reg_c_18_n_0
     );
@@ -5144,7 +5144,7 @@ last_values_sx_reg_c_19: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_18_n_0,
       Q => last_values_sx_reg_c_19_n_0
     );
@@ -5152,7 +5152,7 @@ last_values_sx_reg_c_2: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_1_n_0,
       Q => last_values_sx_reg_c_2_n_0
     );
@@ -5160,7 +5160,7 @@ last_values_sx_reg_c_20: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_19_n_0,
       Q => last_values_sx_reg_c_20_n_0
     );
@@ -5168,7 +5168,7 @@ last_values_sx_reg_c_21: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_20_n_0,
       Q => last_values_sx_reg_c_21_n_0
     );
@@ -5176,7 +5176,7 @@ last_values_sx_reg_c_22: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_21_n_0,
       Q => last_values_sx_reg_c_22_n_0
     );
@@ -5184,7 +5184,7 @@ last_values_sx_reg_c_23: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_22_n_0,
       Q => last_values_sx_reg_c_23_n_0
     );
@@ -5192,7 +5192,7 @@ last_values_sx_reg_c_24: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_23_n_0,
       Q => last_values_sx_reg_c_24_n_0
     );
@@ -5200,7 +5200,7 @@ last_values_sx_reg_c_25: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_24_n_0,
       Q => last_values_sx_reg_c_25_n_0
     );
@@ -5208,7 +5208,7 @@ last_values_sx_reg_c_26: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_25_n_0,
       Q => last_values_sx_reg_c_26_n_0
     );
@@ -5216,7 +5216,7 @@ last_values_sx_reg_c_27: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_26_n_0,
       Q => last_values_sx_reg_c_27_n_0
     );
@@ -5224,7 +5224,7 @@ last_values_sx_reg_c_28: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_27_n_0,
       Q => last_values_sx_reg_c_28_n_0
     );
@@ -5232,7 +5232,7 @@ last_values_sx_reg_c_29: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_28_n_0,
       Q => last_values_sx_reg_c_29_n_0
     );
@@ -5240,7 +5240,7 @@ last_values_sx_reg_c_3: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_2_n_0,
       Q => last_values_sx_reg_c_3_n_0
     );
@@ -5248,7 +5248,7 @@ last_values_sx_reg_c_4: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_3_n_0,
       Q => last_values_sx_reg_c_4_n_0
     );
@@ -5256,7 +5256,7 @@ last_values_sx_reg_c_5: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_4_n_0,
       Q => last_values_sx_reg_c_5_n_0
     );
@@ -5264,7 +5264,7 @@ last_values_sx_reg_c_6: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_5_n_0,
       Q => last_values_sx_reg_c_6_n_0
     );
@@ -5272,7 +5272,7 @@ last_values_sx_reg_c_7: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_6_n_0,
       Q => last_values_sx_reg_c_7_n_0
     );
@@ -5280,7 +5280,7 @@ last_values_sx_reg_c_8: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_7_n_0,
       Q => last_values_sx_reg_c_8_n_0
     );
@@ -5288,7 +5288,7 @@ last_values_sx_reg_c_9: unisim.vcomponents.FDCE
      port map (
       C => clk,
       CE => \last_values_sx[0]_0\,
-      CLR => \FSM_onehot_state1[5]_i_2_n_0\,
+      CLR => \FSM_onehot_state_sx[5]_i_2_n_0\,
       D => last_values_sx_reg_c_8_n_0,
       Q => last_values_sx_reg_c_9_n_0
     );
@@ -5797,9 +5797,9 @@ read_allowed_sx_i_1: unisim.vcomponents.LUT5
       INIT => X"DDFFC000"
     )
         port map (
-      I0 => \FSM_onehot_state1_reg_n_0_[5]\,
+      I0 => \FSM_onehot_state_sx_reg_n_0_[5]\,
       I1 => s_axis_tlast,
-      I2 => \FSM_onehot_state2_reg_n_0_[5]\,
+      I2 => \FSM_onehot_state_dx_reg_n_0_[5]\,
       I3 => s_axis_tvalid,
       I4 => read_allowed_sx_reg_n_0,
       O => read_allowed_sx_i_1_n_0
@@ -5812,7 +5812,7 @@ read_allowed_sx_reg: unisim.vcomponents.FDPE
       C => clk,
       CE => '1',
       D => read_allowed_sx_i_1_n_0,
-      PRE => \FSM_onehot_state1[5]_i_2_n_0\,
+      PRE => \FSM_onehot_state_sx[5]_i_2_n_0\,
       Q => read_allowed_sx_reg_n_0
     );
 s_axis_tready_INST_0: unisim.vcomponents.LUT2
@@ -5820,8 +5820,8 @@ s_axis_tready_INST_0: unisim.vcomponents.LUT2
       INIT => X"E"
     )
         port map (
-      I0 => \FSM_onehot_state1_reg_n_0_[5]\,
-      I1 => \FSM_onehot_state2_reg_n_0_[5]\,
+      I0 => \FSM_onehot_state_sx_reg_n_0_[5]\,
+      I1 => \FSM_onehot_state_dx_reg_n_0_[5]\,
       O => s_axis_tready
     );
 sub_dx0_carry: unisim.vcomponents.CARRY4
@@ -6045,7 +6045,7 @@ sub_dx0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       I0 => aresetn,
-      I1 => \FSM_onehot_state2_reg_n_0_[4]\,
+      I1 => \FSM_onehot_state_dx_reg_n_0_[4]\,
       I2 => tlast_sampled_dx_reg_n_0,
       O => sub_dx0
     );
@@ -6457,7 +6457,7 @@ sub_sx0_carry_i_4: unisim.vcomponents.LUT2
     )
         port map (
       I0 => aresetn,
-      I1 => \FSM_onehot_state1_reg_n_0_[4]\,
+      I1 => \FSM_onehot_state_sx_reg_n_0_[4]\,
       I2 => tlast_sampled_sx_reg_n_0,
       O => sub_sx0
     );
@@ -6676,7 +6676,7 @@ tlast_sampled_dx_i_1: unisim.vcomponents.LUT5
     )
         port map (
       I0 => s_axis_tlast,
-      I1 => \FSM_onehot_state2_reg_n_0_[5]\,
+      I1 => \FSM_onehot_state_dx_reg_n_0_[5]\,
       I2 => s_axis_tvalid,
       I3 => aresetn,
       I4 => tlast_sampled_dx_reg_n_0,
@@ -6701,7 +6701,7 @@ tlast_sampled_sx_i_1: unisim.vcomponents.LUT5
       I0 => s_axis_tlast,
       I1 => aresetn,
       I2 => s_axis_tvalid,
-      I3 => \FSM_onehot_state1_reg_n_0_[5]\,
+      I3 => \FSM_onehot_state_sx_reg_n_0_[5]\,
       I4 => tlast_sampled_sx_reg_n_0,
       O => tlast_sampled_sx_i_1_n_0
     );
@@ -6735,7 +6735,7 @@ write_allowed_sx_reg: unisim.vcomponents.FDPE
       C => clk,
       CE => '1',
       D => write_allowed_sx_i_1_n_0,
-      PRE => \FSM_onehot_state1[5]_i_2_n_0\,
+      PRE => \FSM_onehot_state_sx[5]_i_2_n_0\,
       Q => write_allowed_sx_reg_n_0
     );
 end STRUCTURE;
