@@ -62,10 +62,10 @@ architecture Behavioral of volume_controller is
   signal data_in  : signed (DATA_WIDTH -1 downto 0) := (Others => '0');
   signal data_out : signed (DATA_WIDTH -1 downto 0) := (Others => '0');
 
-  signal default_volume_sig : signed (VOLUME_BITS downto 0) := to_signed(DEFAULT_VOLUME,VOLUME_BITS+1);
-  signal volume             : std_logic_vector   (VOLUME_BITS-1 downto 0) := std_logic_vector(to_unsigned(DEFAULT_VOLUME,VOLUME_BITS));
-  signal volume_sign        : signed (VOLUME_BITS downto 0) := default_volume_sig;
-  signal diff               : signed (VOLUME_BITS downto 0) := (Others => '0');
+  constant default_volume_sig : signed (VOLUME_BITS downto 0) := to_signed(DEFAULT_VOLUME,VOLUME_BITS+1);
+  signal volume               : std_logic_vector   (VOLUME_BITS-1 downto 0) := std_logic_vector(to_unsigned(DEFAULT_VOLUME,VOLUME_BITS));
+  signal volume_sign          : signed (VOLUME_BITS downto 0) := default_volume_sig;
+  signal diff                 : signed (VOLUME_BITS downto 0) := (Others => '0');
 
   signal tlast_sampled  : std_logic := '0';
   signal tlast_expected : std_logic := '0';
@@ -110,7 +110,6 @@ begin
   volume_sign <= signed('0' & volume);
 
   FSM : PROCESS(aclk,aresetn)
-  -- variable data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
   begin
 
     if aresetn = '0' then
