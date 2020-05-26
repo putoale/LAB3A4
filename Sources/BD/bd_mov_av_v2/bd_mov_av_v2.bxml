@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="bd_mov_av_v2" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1590414227"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1590414227"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1590414227"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1590414227"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1590495339"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1590495339"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1590495339"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1590495339"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\bd_mov_av_v2_AXI4Stream_UART_0_0\bd_mov_av_v2_AXI4Stream_UART_0_0.xci" Type="IP">
         <Instance HierarchyPath="AXI4Stream_UART_0"/>
