@@ -122,6 +122,15 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_edge_detector_1_0/bd_mov_av_v2_edge_detector_1_0.xci">
+          <Proxy FileSetName="bd_mov_av_v2_edge_detector_1_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_debouncer_1_0/bd_mov_av_v2_debouncer_1_0.xci">
+          <Proxy FileSetName="bd_mov_av_v2_debouncer_1_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_depacketizer_0_0/bd_mov_av_v2_depacketizer_0_0.xci">
+          <Proxy FileSetName="bd_mov_av_v2_depacketizer_0_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_moving_average_v2_0_0/bd_mov_av_v2_moving_average_v2_0_0.xci">
           <Proxy FileSetName="bd_mov_av_v2_moving_average_v2_0_0"/>
         </CompFileExtendedInfo>
@@ -131,23 +140,11 @@
         <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_debouncer_0_0/bd_mov_av_v2_debouncer_0_0.xci">
           <Proxy FileSetName="bd_mov_av_v2_debouncer_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_debouncer_1_0/bd_mov_av_v2_debouncer_1_0.xci">
-          <Proxy FileSetName="bd_mov_av_v2_debouncer_1_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_volume_controller_0_0/bd_mov_av_v2_volume_controller_0_0.xci">
-          <Proxy FileSetName="bd_mov_av_v2_volume_controller_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_edge_detector_0_0/bd_mov_av_v2_edge_detector_0_0.xci">
           <Proxy FileSetName="bd_mov_av_v2_edge_detector_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_depacketizer_0_0/bd_mov_av_v2_depacketizer_0_0.xci">
-          <Proxy FileSetName="bd_mov_av_v2_depacketizer_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_packetizer_0_0/bd_mov_av_v2_packetizer_0_0.xci">
           <Proxy FileSetName="bd_mov_av_v2_packetizer_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="bd_mov_av_v2.bd" FileRelPathName="ip/bd_mov_av_v2_edge_detector_1_0/bd_mov_av_v2_edge_detector_1_0.xci">
-          <Proxy FileSetName="bd_mov_av_v2_edge_detector_1_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PPRDIR/Sources/BD/bd_mov_av_v2/hdl/bd_mov_av_v2_wrapper.vhd">
@@ -357,12 +354,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="bd_mov_av_v2_volume_controller_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bd_mov_av_v2_volume_controller_0_0">
-      <Config>
-        <Option Name="TopModule" Val="bd_mov_av_v2_volume_controller_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -466,18 +457,6 @@
     <Run Id="bd_mov_av_v2_moving_average_v2_0_0_synth_1" Type="Ft3:Synth" SrcSet="bd_mov_av_v2_moving_average_v2_0_0" Part="xc7a35tcpg236-1" ConstrsSet="bd_mov_av_v2_moving_average_v2_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bd_mov_av_v2_moving_average_v2_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="bd_mov_av_v2_volume_controller_0_0_synth_1" Type="Ft3:Synth" SrcSet="bd_mov_av_v2_volume_controller_0_0" Part="xc7a35tcpg236-1" ConstrsSet="bd_mov_av_v2_volume_controller_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bd_mov_av_v2_volume_controller_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -625,25 +604,6 @@
     <Run Id="bd_mov_av_v2_moving_average_v2_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="bd_mov_av_v2_moving_average_v2_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="bd_mov_av_v2_moving_average_v2_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design" EnableStepBool="1"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2019"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="bd_mov_av_v2_volume_controller_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="bd_mov_av_v2_volume_controller_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="bd_mov_av_v2_volume_controller_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
