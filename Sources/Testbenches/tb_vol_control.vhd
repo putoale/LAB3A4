@@ -211,9 +211,9 @@ begin
 	-- ----------------------------
 
   -- proc2: process
-	--
+  --
 	-- begin
-	--
+  --
 	-- 	for I in 0 to N_DATA_TO_SEND-1 loop
 	-- 		wait for RESET_WND;
 	-- 		wait until rising_edge(clk);
@@ -226,7 +226,7 @@ begin
 	-- 		 --counter <= (others=>'0');
 	-- 		--end if;
   --     dut_s_axis_tlast <= not dut_s_axis_tlast;
-	--
+  --
 	-- 		if dut_s_axis_tready = '1' then
 	-- 			wait until rising_edge(clk);
 	-- 			dut_s_axis_tvalid <= '0';
@@ -235,8 +235,8 @@ begin
 	-- 			dut_s_axis_tvalid <= '0';
 	-- 		end if;
 	-- 	end loop;
-	--
-	--
+  --
+  --
 	-- 	wait;
 	-- end process;
 
