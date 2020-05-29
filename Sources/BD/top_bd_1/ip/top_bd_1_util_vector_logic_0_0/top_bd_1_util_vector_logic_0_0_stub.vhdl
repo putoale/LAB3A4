@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Fri May 15 18:46:33 2020
+-- Date        : Fri May 15 18:46:31 2020
 -- Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               C:/Users/gallu/Documents/GitHub/LAB3A4/Sources/BD/top_bd_1/ip/top_bd_1_util_vector_logic_0_0/top_bd_1_util_vector_logic_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top top_bd_1_util_vector_logic_0_0 -prefix
+--               top_bd_1_util_vector_logic_0_0_ top_bd_1_util_vector_logic_0_0_stub.vhdl
 -- Design      : top_bd_1_util_vector_logic_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1

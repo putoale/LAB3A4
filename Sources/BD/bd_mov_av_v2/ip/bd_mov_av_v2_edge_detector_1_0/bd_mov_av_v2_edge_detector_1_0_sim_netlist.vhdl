@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Wed May 20 18:59:10 2020
--- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
+-- Date        : Sun May 24 18:50:13 2020
+-- Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/bd_mov_av_v2/ip/bd_mov_av_v2_edge_detector_1_0/bd_mov_av_v2_edge_detector_1_0_sim_netlist.vhdl
+--               C:/Users/gallu/Documents/GitHub/LAB3A4/Sources/BD/bd_mov_av_v2/ip/bd_mov_av_v2_edge_detector_1_0/bd_mov_av_v2_edge_detector_1_0_sim_netlist.vhdl
 -- Design      : bd_mov_av_v2_edge_detector_1_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -84,7 +84,7 @@ architecture STRUCTURE of bd_mov_av_v2_edge_detector_1_0 is
   attribute x_interface_parameter : string;
   attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET reset, FREQ_HZ 200000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of reset : signal is "xilinx.com:signal:reset:1.0 reset RST";
-  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
 begin
 U0: entity work.bd_mov_av_v2_edge_detector_1_0_edge_detector
      port map (

@@ -1,8 +1,8 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Sun May 24 13:05:14 2020
---Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
+--Date        : Sun May 24 18:42:36 2020
+--Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
 --Command     : generate_target bd_mov_av_v2_wrapper.bd
 --Design      : bd_mov_av_v2_wrapper
 --Purpose     : IP block netlist

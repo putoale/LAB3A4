@@ -1,8 +1,8 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Fri May 15 18:28:48 2020
--- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
+-- Date        : Sat May 16 01:21:04 2020
+-- Host        : DESKTOP-C0MMM6H running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top bd_mov_av_v2_AXI4Stream_UART_0_0 -prefix
 --               bd_mov_av_v2_AXI4Stream_UART_0_0_ top_bd_1_AXI4Stream_UART_0_0_sim_netlist.vhdl
 -- Design      : top_bd_1_AXI4Stream_UART_0_0
@@ -16556,20 +16556,20 @@ architecture STRUCTURE of bd_mov_av_v2_AXI4Stream_UART_0_0 is
   attribute x_interface_info of clk_uart : signal is "xilinx.com:signal:clock:1.0 ClockUART CLK";
   attribute x_interface_parameter of clk_uart : signal is "XIL_INTERFACENAME ClockUART, ASSOCIATED_BUSIF UART, ASSOCIATED_RESET rst, FREQ_HZ 96000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of m00_axis_rx_aclk : signal is "xilinx.com:signal:clock:1.0 M00_AXIS_RX_CLK CLK";
-  attribute x_interface_parameter of m00_axis_rx_aclk : signal is "XIL_INTERFACENAME M00_AXIS_RX_CLK, ASSOCIATED_BUSIF M00_AXIS_RX, ASSOCIATED_RESET m00_axis_rx_aresetn, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of m00_axis_rx_aclk : signal is "XIL_INTERFACENAME M00_AXIS_RX_CLK, ASSOCIATED_BUSIF M00_AXIS_RX, ASSOCIATED_RESET m00_axis_rx_aresetn, FREQ_HZ 200000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of m00_axis_rx_aresetn : signal is "xilinx.com:signal:reset:1.0 M00_AXIS_RX_RST RST";
   attribute x_interface_parameter of m00_axis_rx_aresetn : signal is "XIL_INTERFACENAME M00_AXIS_RX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of m00_axis_rx_tready : signal is "xilinx.com:interface:axis:1.0 M00_AXIS_RX TREADY";
   attribute x_interface_info of m00_axis_rx_tvalid : signal is "xilinx.com:interface:axis:1.0 M00_AXIS_RX TVALID";
-  attribute x_interface_parameter of m00_axis_rx_tvalid : signal is "XIL_INTERFACENAME M00_AXIS_RX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of m00_axis_rx_tvalid : signal is "XIL_INTERFACENAME M00_AXIS_RX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 200000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of rst : signal is "xilinx.com:signal:reset:1.0 reset RST";
   attribute x_interface_parameter of rst : signal is "XIL_INTERFACENAME reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_aclk : signal is "xilinx.com:signal:clock:1.0 S00_AXIS_TX_CLK CLK";
-  attribute x_interface_parameter of s00_axis_tx_aclk : signal is "XIL_INTERFACENAME S00_AXIS_TX_CLK, ASSOCIATED_BUSIF S00_AXIS_TX, ASSOCIATED_RESET s00_axis_tx_aresetn, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of s00_axis_tx_aclk : signal is "XIL_INTERFACENAME S00_AXIS_TX_CLK, ASSOCIATED_BUSIF S00_AXIS_TX, ASSOCIATED_RESET s00_axis_tx_aresetn, FREQ_HZ 200000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_aresetn : signal is "xilinx.com:signal:reset:1.0 S00_AXIS_TX_RST RST";
   attribute x_interface_parameter of s00_axis_tx_aresetn : signal is "XIL_INTERFACENAME S00_AXIS_TX_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_tready : signal is "xilinx.com:interface:axis:1.0 S00_AXIS_TX TREADY";
-  attribute x_interface_parameter of s00_axis_tx_tready : signal is "XIL_INTERFACENAME S00_AXIS_TX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute x_interface_parameter of s00_axis_tx_tready : signal is "XIL_INTERFACENAME S00_AXIS_TX, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 200000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute x_interface_info of s00_axis_tx_tvalid : signal is "xilinx.com:interface:axis:1.0 S00_AXIS_TX TVALID";
   attribute x_interface_info of m00_axis_rx_tdata : signal is "xilinx.com:interface:axis:1.0 M00_AXIS_RX TDATA";
   attribute x_interface_info of s00_axis_tx_tdata : signal is "xilinx.com:interface:axis:1.0 S00_AXIS_TX TDATA";
