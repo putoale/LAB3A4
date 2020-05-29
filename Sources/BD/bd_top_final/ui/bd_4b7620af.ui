@@ -1,0 +1,49 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.685895",
+   "Default View_TopLeft":"-131,0",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS-threadsafe
+#  -string -flagsOSRD
+preplace port usb_uart -pg 1 -lvl 8 -x 2170 -y 740 -defaultsOSRD
+preplace port sys_clock -pg 1 -lvl 0 -x -20 -y 880 -defaultsOSRD
+preplace port reset -pg 1 -lvl 0 -x -20 -y 790 -defaultsOSRD
+preplace port btnUp -pg 1 -lvl 0 -x -20 -y 280 -defaultsOSRD
+preplace port btnDown -pg 1 -lvl 0 -x -20 -y 120 -defaultsOSRD
+preplace port btnL -pg 1 -lvl 0 -x -20 -y 750 -defaultsOSRD
+preplace port btnR -pg 1 -lvl 0 -x -20 -y 770 -defaultsOSRD
+preplace port sw_in_0 -pg 1 -lvl 0 -x -20 -y 460 -defaultsOSRD
+preplace inst AXI4Stream_UART_0 -pg 1 -lvl 7 -x 1990 -y 730 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 1 -x 170 -y 690 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 170 -y 870 -defaultsOSRD
+preplace inst debouncer_0 -pg 1 -lvl 3 -x 750 -y 260 -defaultsOSRD
+preplace inst debouncer_1 -pg 1 -lvl 3 -x 750 -y 100 -defaultsOSRD
+preplace inst edge_detector_0 -pg 1 -lvl 4 -x 1050 -y 240 -defaultsOSRD
+preplace inst edge_detector_1 -pg 1 -lvl 4 -x 1050 -y 80 -defaultsOSRD
+preplace inst moving_average_0 -pg 1 -lvl 3 -x 750 -y 430 -defaultsOSRD
+preplace inst packetizer_0 -pg 1 -lvl 6 -x 1680 -y 670 -defaultsOSRD
+preplace inst depacketizer_0 -pg 1 -lvl 2 -x 470 -y 670 -defaultsOSRD
+preplace inst mute_v1_0 -pg 1 -lvl 4 -x 1050 -y 470 -defaultsOSRD
+preplace netloc sys_clock_1 1 0 1 NJ 880
+preplace netloc reset_1 1 0 7 0 260 NJ 260 590 20 890 350 NJ 350 NJ 350 1830J
+preplace netloc clk_wiz_0_clk_out1 1 1 6 330J 580 NJ 580 NJ 580 NJ 580 NJ 580 1820
+preplace netloc clk_wiz_0_clk_out2 1 1 6 320 420 600 180 900 360 N 360 1420 590 1800
+preplace netloc util_vector_logic_0_Res 1 1 6 340 440 620 340 880 370 N 370 1400 570 1810
+preplace netloc debouncer_0_debounced 1 3 1 N 260
+preplace netloc debouncer_1_debounced 1 3 1 N 100
+preplace netloc input_signal_0_1 1 0 3 NJ 280 NJ 280 NJ
+preplace netloc input_signal_0_2 1 0 3 NJ 120 NJ 120 NJ
+preplace netloc mute_left_0_1 1 0 4 20J 560 NJ 560 NJ 560 880J
+preplace netloc mute_right_0_1 1 0 4 10J 550 NJ 550 NJ 550 890J
+preplace netloc sw_in_0_1 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc AXI4Stream_UART_0_UART 1 7 1 N 740
+preplace netloc AXI4Stream_UART_0_M00_AXIS_RX 1 1 7 350 570 NJ 570 NJ 570 1190J 560 NJ 560 NJ 560 2150
+preplace netloc depacketizer_0_m_axis 1 2 1 610 400n
+preplace netloc moving_average_0_m_axis 1 3 1 N 430
+preplace netloc packetizer_0_m_axis 1 6 1 N 670
+preplace netloc mute_v1_0_m_mute 1 4 2 NJ 470 1410
+levelinfo -pg 1 -20 170 470 750 1050 1380 1680 1990 2170
+pagesize -pg 1 -db -bbox -sgen -140 0 2280 950
+"
+}
+
