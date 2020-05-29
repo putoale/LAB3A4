@@ -11,45 +11,17 @@ end tb_vol_control;
 
 architecture Behavioral of tb_vol_control is
 
-	------------------ CONSTANT DECLARATION -------------------------
+	constant period         : TIME     :=1 ns;
+  constant DATA_WIDTH     : POSITIVE := 8;
 
-	--------- Timing -----------
-	constant	CLK_PERIOD 	:	TIME	:= 10 ns;
-	constant	RESET_WND	:	TIME	:= 10*CLK_PERIOD;
-	----------------------------
-
-	--- TB Initialiazzations ---
-	constant	TB_CLK_INIT		:	STD_LOGIC	:= '0';
-	constant	TB_RESET_INIT 	:	STD_LOGIC	:= '1';
-	----------------------------
+  constant VOLUME_BITS    : POSITIVE := 4;
+  constant MIN_VOLUME     : INTEGER  := 0;
+  constant MAX_VOLUME     : POSITIVE := 15;
+  constant DEFAULT_VOLUME : POSITIVE := 7;
+	-----------------------------------
 
 
-	------- DUT Generics -------
-  constant DUT_DATA_WIDTH     : POSITIVE := 16;
-  constant DUT_VOLUME_BITS    : POSITIVE := 4;
-  constant DUT_MIN_VOLUME     : INTEGER  := 0;
-  constant DUT_MAX_VOLUME     : POSITIVE := 15;
-  constant DUT_DEFAULT_VOLUME : POSITIVE := 7;
-	----------------------------
-
-	---------- OTHERS ----------
-
-	----------------------------
-
-	-----------------------------------------------------------------
-
-	------------------------ TYPES DECLARATION ----------------------
-
-	--------- SECTION ----------
-
-	----------------------------
-
-	-----------------------------------------------------------------
-
-
-	------ COMPONENT DECLARATION for the Device Under Test (DUT) ------
-
-	-------- First DUT ---------
+	--------- DUT COMPONENT-----------
   component volume_controller is
     Generic (
           DATA_WIDTH     : POSITIVE := 16;
@@ -80,167 +52,115 @@ architecture Behavioral of tb_vol_control is
      );
   end component;
 	----------------------------
-	------------------------------------------------------------------
 
 
+  signal aclk    :  std_logic:='1';
+  signal aresetn :  std_logic:='1';
+
+  signal volume_up     :  std_logic:='0';
+  signal volume_down   :  std_logic:='0';
+
+  signal s_axis_tvalid :  std_logic:='0';
+  signal s_axis_tready :  std_logic:='0';
+  signal s_axis_tdata  :  std_logic_vector(DATA_WIDTH-1 downto 0);
+  signal s_axis_tlast  :  std_logic:='0';
+
+  signal m_axis_tvalid :  std_logic;
+  signal m_axis_tready :  std_logic:='1';
+  signal m_axis_tdata  :  std_logic_vector(DATA_WIDTH-1 downto 0);
+  signal m_axis_tlast  :  std_logic;
+
+  signal volume_level  :  std_logic_vector (15 downto 0);
 
 
-	--------------------- SIGNALS DECLARATION -----------------------
-
-
-	------- Clock/Reset  -------
-	signal	reset	:	STD_LOGIC	:= TB_RESET_INIT;
-	signal	clk		:	STD_LOGIC	:= TB_CLK_INIT;
-	signal  resetn : std_logic := not reset;
-	----------------------------
-
-	----- First DUT Signals ----
-  signal dut_volume_up     : std_logic := '0';
-  signal dut_volume_down   : std_logic := '0';
-
-  signal dut_s_axis_tvalid :  std_logic :='0';
-  signal dut_s_axis_tready :  std_logic;
-  signal dut_s_axis_tdata  :  std_logic_vector(DUT_DATA_WIDTH-1 downto 0) := (Others =>'0');
-  signal dut_s_axis_tlast  :  std_logic :='0';
-
-  signal dut_m_axis_tvalid :  std_logic;
-  signal dut_m_axis_tready :  std_logic;
-  signal dut_m_axis_tdata  :  std_logic_vector(DUT_DATA_WIDTH-1 downto 0);
-  signal dut_m_axis_tlast  :  std_logic;
-
-  signal dut_volume_level  : std_logic_vector (15 downto 0);
-	----------------------------
-
-
-	----- OTHER Signals -------
-
-	----------------------------
-
-	----------------------------------------------------------------
+  type signal_input is array (0 to 8) of std_logic_vector(DATA_WIDTH-1 downto 0);
+  signal inputs : signal_input:=(std_logic_vector(to_signed(10,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10,DATA_WIDTH)),
+	std_logic_vector(to_signed(120,DATA_WIDTH)),
+	std_logic_vector(to_signed(-120,DATA_WIDTH)),
+	std_logic_vector(to_signed(40,DATA_WIDTH)),
+	std_logic_vector(to_signed(80,DATA_WIDTH)),
+	std_logic_vector(to_signed(40,DATA_WIDTH)),
+	std_logic_vector(to_signed(30,DATA_WIDTH)),
+	std_logic_vector(to_signed(-84,DATA_WIDTH)));
 
 
 begin
 
 
+	dut_volume_controller : volume_controller
+		generic map(
+      DATA_WIDTH     =>DATA_WIDTH,
 
+      VOLUME_BITS    =>VOLUME_BITS,
+      MIN_VOLUME     =>MIN_VOLUME,
+      MAX_VOLUME     =>MAX_VOLUME,
+      DEFAULT_VOLUME =>DEFAULT_VOLUME
+		)
+		port map (
+     aclk      =>aclk,
+     aresetn   =>aresetn,
 
-	--------------------- COMPONENTS DUT WRAPPING --------------------
+     volume_up     =>volume_up,
+     volume_down   =>volume_down,
 
-	-------- First DUT ---------
-  vlm_ctrl_led : volume_controller
+     s_axis_tvalid =>s_axis_tvalid,
+     s_axis_tready =>s_axis_tready,
+     s_axis_tdata  =>s_axis_tdata,
+     s_axis_tlast  =>s_axis_tlast,
 
-  Generic map(
-              VOLUME_BITS => DUT_VOLUME_BITS,
-              MIN_VOLUME  => DUT_MIN_VOLUME,
-              MAX_VOLUME  => DUT_MAX_VOLUME,
-              DEFAULT_VOLUME => DUT_DEFAULT_VOLUME
+     m_axis_tvalid =>m_axis_tvalid,
+     m_axis_tready =>m_axis_tready,
+     m_axis_tdata  =>m_axis_tdata,
+     m_axis_tlast  =>m_axis_tlast,
 
-  )
-  Port Map (
-            aclk    => clk,
-            aresetn => resetn,
+    volume_level   =>volume_level
 
-            volume_up     => dut_volume_up,
-            volume_down   => dut_volume_down,
+		);
 
-            s_axis_tvalid => dut_s_axis_tvalid,
-            s_axis_tready => dut_s_axis_tready,
-            s_axis_tdata  => dut_s_axis_tdata,
-            s_axis_tlast  => dut_s_axis_tlast,
+    aclk<=not aclk after period/2;
 
-            m_axis_tvalid => dut_m_axis_tvalid,
-            m_axis_tready => dut_m_axis_tready,
-            m_axis_tdata  => dut_m_axis_tdata,
-            m_axis_tlast  => dut_m_axis_tlast,
-
-            volume_level  => dut_volume_level
-  );
-	----------------------------
-
-	-------------------------------------------------------------------
-
-
-	--------------------- TEST BENCH DATA FLOW  -----------------------
-
-	---------- clock ----------
-	clk<= not clk after  CLK_PERIOD/2;
-	resetn <= not reset;
-	----------------------------
-
-	--------- SECTION ----------
-	-- NONE
-	----------------------------
-
-	-------------------------------------------------------------------
-
-
-	---------------------- TEST BENCH PROCESS -------------------------
-
-
-	----- Reset Process --------
-	reset_wave :process
+	dut_vol_controller : process
 	begin
-		reset <= TB_RESET_INIT;
-		wait for RESET_WND;
+    wait until rising_edge(aclk);
+    aresetn<='0';
+    wait until rising_edge(aclk);
+    aresetn<='1';
+    volume_up<='0';
+    volume_down<='0';
+    wait until rising_edge(aclk);
 
-		reset <= not reset;
+    for  i in 0 to 8 loop
+      s_axis_tvalid<='1';
+      s_axis_tdata<=inputs(i);
+
+      if (i/2)*2/=(i*2)/2 then
+        s_axis_tlast<='1';
+      else
+        s_axis_tlast<='0';
+      end if;
+      wait until rising_edge(aclk);
+      wait until m_axis_tvalid='1';
+      if i<3 then
+        volume_up<='1';
+        volume_down<='0';
+      else
+        volume_up<='0';
+        volume_down<='1';
+      end if;
+      s_axis_tvalid<='0';
+      s_axis_tlast<='0';
+      wait until rising_edge(aclk);
+      volume_up<='0';
+      volume_down<='0';
+
+    end loop;
+
+
+
+
+
 		wait;
-    end process;
-	----------------------------
 
-
-  --  ------ Stimulus process -------
-
-    stim_proc: process
-    begin
-		-- waiting the reset wave
-		wait for RESET_WND;
-
-
-		-- Start
-
-
-        -- Stop
-		wait;
-
-
-
-
-      wait;
-    end process;
-	-- ----------------------------
-
-  -- proc2: process
-  --
-	-- begin
-  --
-	-- 	for I in 0 to N_DATA_TO_SEND-1 loop
-	-- 		wait for RESET_WND;
-	-- 		wait until rising_edge(clk);
-	-- 		wait until rising_edge(clk);
-	-- 		dut_s_axis_tdata <= std_logic_vector(to_signed(I*16*k,dut_s_axis_tdata'length));
-	-- 		dut_s_axis_tvalid <= '1';
-	-- 		--counter <= counter + 1;
-	-- 		--if counter = 1 then
-	-- 		 k <= -k;
-	-- 		 --counter <= (others=>'0');
-	-- 		--end if;
-  --     dut_s_axis_tlast <= not dut_s_axis_tlast;
-  --
-	-- 		if dut_s_axis_tready = '1' then
-	-- 			wait until rising_edge(clk);
-	-- 			dut_s_axis_tvalid <= '0';
-	-- 		else
-	-- 			wait until dut_s_axis_tready = '1';
-	-- 			dut_s_axis_tvalid <= '0';
-	-- 		end if;
-	-- 	end loop;
-  --
-  --
-	-- 	wait;
-	-- end process;
-
-	-------------------------------------------------------------------
-
-
+	end process;
 end;

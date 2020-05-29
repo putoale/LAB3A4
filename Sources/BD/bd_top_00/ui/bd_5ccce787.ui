@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.850209",
-   "Default View_TopLeft":"-140,-39",
+   "Default View_ScaleFactor":"0.626305",
+   "Default View_TopLeft":"-152,86",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
@@ -11,8 +11,8 @@ preplace port reset -pg 1 -lvl 0 -x -10 -y 600 -defaultsOSRD
 preplace port input_signal_0 -pg 1 -lvl 0 -x -10 -y 280 -defaultsOSRD
 preplace port input_signal_1 -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
 preplace port sw_in_0 -pg 1 -lvl 0 -x -10 -y 460 -defaultsOSRD
-preplace port mute_left_0 -pg 1 -lvl 0 -x -10 -y 520 -defaultsOSRD
-preplace port mute_right_0 -pg 1 -lvl 0 -x -10 -y 540 -defaultsOSRD
+preplace port btnL -pg 1 -lvl 0 -x -10 -y 520 -defaultsOSRD
+preplace port btnR -pg 1 -lvl 0 -x -10 -y 540 -defaultsOSRD
 preplace portBus volume_level_0 -pg 1 -lvl 6 -x 1590 -y 500 -defaultsOSRD
 preplace inst AXI4Stream_UART_0 -pg 1 -lvl 5 -x 1400 -y 770 -defaultsOSRD
 preplace inst util_vector_logic_0 -pg 1 -lvl 1 -x 170 -y 600 -defaultsOSRD

@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Fri May 29 21:34:28 2020
+--Date        : Sat May 30 00:29:13 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target bd_top_00.bd
 --Design      : bd_top_00
@@ -13,10 +13,10 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity bd_top_00 is
   port (
+    btnL : in STD_LOGIC;
+    btnR : in STD_LOGIC;
     input_signal_0 : in STD_LOGIC;
     input_signal_1 : in STD_LOGIC;
-    mute_left_0 : in STD_LOGIC;
-    mute_right_0 : in STD_LOGIC;
     reset : in STD_LOGIC;
     sw_in_0 : in STD_LOGIC;
     sys_clock : in STD_LOGIC;
@@ -222,8 +222,8 @@ begin
   AXI4Stream_UART_0_UART_RxD <= usb_uart_rxd;
   input_signal_0_1 <= input_signal_0;
   input_signal_1_1 <= input_signal_1;
-  mute_left_0_1 <= mute_left_0;
-  mute_right_0_1 <= mute_right_0;
+  mute_left_0_1 <= btnL;
+  mute_right_0_1 <= btnR;
   reset_1 <= reset;
   sw_in_0_1 <= sw_in_0;
   sys_clock_1 <= sys_clock;

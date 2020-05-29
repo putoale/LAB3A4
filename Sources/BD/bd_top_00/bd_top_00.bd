@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA082DE6E5F0FE97A",
+      "boundary_crc": "0x7292A2C557444AC2",
       "device": "xc7a35tcpg236-1",
       "name": "bd_top_00",
       "synth_flow_mode": "Hierarchical",
@@ -76,10 +76,10 @@
       "sw_in_0": {
         "direction": "I"
       },
-      "mute_left_0": {
+      "btnL": {
         "direction": "I"
       },
-      "mute_right_0": {
+      "btnR": {
         "direction": "I"
       }
     },
@@ -88,6 +88,9 @@
         "vlnv": "TimeEngineers:ip:AXI4Stream_UART:1.0",
         "xci_name": "bd_top_00_AXI4Stream_UART_0_0",
         "parameters": {
+          "UART_BAUD_RATE": {
+            "value": "2000000"
+          },
           "UART_BOARD_INTERFACE": {
             "value": "usb_uart"
           },
@@ -1401,13 +1404,13 @@
       "util_vector_logic_0_Res": {
         "ports": [
           "util_vector_logic_0/Res",
-          "volume_controller_0/aresetn",
           "packetizer_0/aresetn",
           "mute_v1_0/aresetn",
           "AXI4Stream_UART_0/m00_axis_rx_aresetn",
           "AXI4Stream_UART_0/s00_axis_tx_aresetn",
           "moving_average_0/aresetn",
-          "depacketizer_0/aresetn"
+          "depacketizer_0/aresetn",
+          "volume_controller_0/aresetn"
         ]
       },
       "input_signal_0_1": {
@@ -1460,13 +1463,13 @@
       },
       "mute_left_0_1": {
         "ports": [
-          "mute_left_0",
+          "btnL",
           "mute_v1_0/mute_left"
         ]
       },
       "mute_right_0_1": {
         "ports": [
-          "mute_right_0",
+          "btnR",
           "mute_v1_0/mute_right"
         ]
       }

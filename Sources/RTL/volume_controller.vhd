@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -56,21 +55,19 @@ architecture Behavioral of volume_controller is
   end component;
 
 
-  type state_type is (IDLE, RECEIVE_DATA, MULTIPLY, COMPUTE_OUT,SEND_DATA);
+  type state_type is (IDLE, RECEIVE_DATA, MULTIPLY,SEND_DATA);
   signal state : state_type  := IDLE;
 
   signal data_in  : signed (DATA_WIDTH -1 downto 0) := (Others => '0');
   signal data_out : signed (DATA_WIDTH -1 downto 0) := (Others => '0');
 
-  constant default_volume_sig : signed (VOLUME_BITS downto 0) := to_signed(DEFAULT_VOLUME,VOLUME_BITS+1);
-  signal volume               : std_logic_vector   (VOLUME_BITS-1 downto 0) := std_logic_vector(to_unsigned(DEFAULT_VOLUME,VOLUME_BITS));
-  signal volume_sign          : signed (VOLUME_BITS downto 0) := default_volume_sig;
-  signal diff                 : signed (VOLUME_BITS downto 0) := (Others => '0');
+  signal default_volume_sig : signed (VOLUME_BITS downto 0) := to_signed(DEFAULT_VOLUME,VOLUME_BITS+1);
+  signal volume             : std_logic_vector   (VOLUME_BITS-1 downto 0) := std_logic_vector(to_unsigned(DEFAULT_VOLUME,VOLUME_BITS));
+  signal volume_sign        : signed (VOLUME_BITS downto 0) := default_volume_sig;
+  signal diff               : signed (VOLUME_BITS downto 0) := (Others => '0');
 
   signal tlast_sampled  : std_logic := '0';
   signal tlast_expected : std_logic := '0';
-
-  signal data_out_temp : signed (data_out'length-1 downto 0) := (Others => '0');
 
 begin
 
@@ -110,6 +107,9 @@ begin
   volume_sign <= signed('0' & volume);
 
   FSM : PROCESS(aclk,aresetn)
+  -- variable data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
+  variable diff_var         : signed (VOLUME_BITS downto 0) := (Others => '0');
+  variable data_out_temp    : signed (data_out'length-1 downto 0) := (Others => '0');
   begin
 
     if aresetn = '0' then
@@ -130,46 +130,52 @@ begin
               data_in <= signed(s_axis_tdata);
 
               if s_axis_tlast = tlast_expected then
-                state <= MULTIPLY;
+
                 tlast_expected <= not tlast_expected;
                 tlast_sampled <= s_axis_tlast;
-                diff <= resize(volume_sign, diff'length) - resize(default_volume_sig, diff'length);
+
+                diff_var:=resize(volume_sign, diff'length) - resize(default_volume_sig, diff'length);
+                diff<=diff_var;
+
+                if diff_var=0 then
+                  data_out<= signed(s_axis_tdata);
+                  state<=SEND_DATA;
+                else
+                  state<=MULTIPLY;
+                end if;
+
               end if;
             end if;
 
         when MULTIPLY =>
 
             if diff > 0 then
-              data_out_temp <= shift_left(data_in,to_integer(diff));
-            elsif diff < 0 then
-              data_out <= shift_right (data_in, abs(to_integer(diff)));
-            else
-              data_out <= data_in;
-            end if;
-            state <= COMPUTE_OUT;
+              --data_out_temp := shift_left(data_in,to_integer(diff));
 
-        when COMPUTE_OUT =>
-            if diff > 0 then
-              if data_out_temp (data_out_temp'left) /= data_in(data_in'left) then
-                data_out <= (Others => data_out_temp(data_out_temp'left));
-                data_out (data_out'left) <= data_in (data_in'left);
+              if data_in(data_in'high) = '0' and  data_in(data_in'high downto data_in'high - to_integer(diff)) /= 0 then --we have to check if the multiplication is correct
+                data_out <= data_in(data_in'high) & (data_out'left-1 downto 0 =>not data_in(data_in'high));
+              elsif data_in(data_in'high) = '1' and data_in (data_in'high downto data_in'high - to_integer(diff)) /= -1 then
+                data_out <= data_in(data_in'high) & (data_out'left-1 downto 0 =>not data_in(data_in'high));
               else
-                data_out <= data_out_temp;
+                data_out <= shift_left(data_in,to_integer(diff));
               end if;
+
+            elsif diff < 0 then
+              data_out <= shift_right (data_in, abs(to_integer(diff)));           --the division has no problem related to change of sign
             end if;
-            state <= SEND_DATA;
+
+            state<=SEND_DATA;
+
+
 
         when SEND_DATA =>
             if m_axis_tready ='1'  then
-              state <= IDLE;
+              state <= RECEIVE_DATA;
             end if;
         end case;
 
       end if;
 
   end process;
-
-
-
 
 end Behavioral;
