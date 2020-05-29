@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root MajorVersion="0" MinorVersion="39">
+  <CompositeFile CompositeFileTopName="bd_top_00" CanBeSetAsTop="false" CanDisplayChildGraph="true">
+    <Description>Composite Fileset</Description>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1590780525"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1590780525"/>
+    <Generation Name="SIMULATION" State="STALE" Timestamp="1590780525"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1590780525"/>
+    <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="ip\bd_top_00_AXI4Stream_UART_0_0\bd_top_00_AXI4Stream_UART_0_0.xci" Type="IP">
+        <Instance HierarchyPath="AXI4Stream_UART_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_util_vector_logic_0_0\bd_top_00_util_vector_logic_0_0.xci" Type="IP">
+        <Instance HierarchyPath="util_vector_logic_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_clk_wiz_0_0\bd_top_00_clk_wiz_0_0.xci" Type="IP">
+        <Instance HierarchyPath="clk_wiz_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_debouncer_0_0\bd_top_00_debouncer_0_0.xci" Type="IP">
+        <Instance HierarchyPath="debouncer_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_debouncer_1_0\bd_top_00_debouncer_1_0.xci" Type="IP">
+        <Instance HierarchyPath="debouncer_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_depacketizer_0_0\bd_top_00_depacketizer_0_0.xci" Type="IP">
+        <Instance HierarchyPath="depacketizer_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_edge_detector_0_0\bd_top_00_edge_detector_0_0.xci" Type="IP">
+        <Instance HierarchyPath="edge_detector_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_edge_detector_1_0\bd_top_00_edge_detector_1_0.xci" Type="IP">
+        <Instance HierarchyPath="edge_detector_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_moving_average_0_0\bd_top_00_moving_average_0_0.xci" Type="IP">
+        <Instance HierarchyPath="moving_average_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_mute_v1_0_0\bd_top_00_mute_v1_0_0.xci" Type="IP">
+        <Instance HierarchyPath="mute_v1_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_packetizer_0_0\bd_top_00_packetizer_0_0.xci" Type="IP">
+        <Instance HierarchyPath="packetizer_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\bd_top_00_volume_controller_0_0\bd_top_00_volume_controller_0_0.xci" Type="IP">
+        <Instance HierarchyPath="volume_controller_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+    </FileCollection>
+  </CompositeFile>
+</Root>
