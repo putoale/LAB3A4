@@ -12,7 +12,7 @@ end tb_vol_control;
 architecture Behavioral of tb_vol_control is
 
 	constant period         : TIME     :=1 ns;
-  constant DATA_WIDTH     : POSITIVE := 8;
+  constant DATA_WIDTH     : POSITIVE := 16;
 
   constant VOLUME_BITS    : POSITIVE := 4;
   constant MIN_VOLUME     : INTEGER  := 0;
@@ -74,15 +74,26 @@ architecture Behavioral of tb_vol_control is
 
 
   type signal_input is array (0 to 8) of std_logic_vector(DATA_WIDTH-1 downto 0);
-  signal inputs : signal_input:=(std_logic_vector(to_signed(10,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10,DATA_WIDTH)),
-	std_logic_vector(to_signed(120,DATA_WIDTH)),
-	std_logic_vector(to_signed(-120,DATA_WIDTH)),
-	std_logic_vector(to_signed(40,DATA_WIDTH)),
-	std_logic_vector(to_signed(80,DATA_WIDTH)),
-	std_logic_vector(to_signed(40,DATA_WIDTH)),
-	std_logic_vector(to_signed(30,DATA_WIDTH)),
-	std_logic_vector(to_signed(-84,DATA_WIDTH)));
+
+  -- signal inputs : signal_input:=(std_logic_vector(to_signed(10,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(-10,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(120,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(-120,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(40,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(80,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(40,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(30,DATA_WIDTH)),
+	-- std_logic_vector(to_signed(-84,DATA_WIDTH)));
+
+	signal inputs : signal_input:=(std_logic_vector(to_signed(10,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10487,DATA_WIDTH)));
 
 
 begin

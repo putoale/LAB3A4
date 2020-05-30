@@ -17,16 +17,16 @@ entity mute_v1 is
     mute_right   : in std_logic;
     ----------------------------------------------------------
     -----------------------AXI4Stream_Slave-----------------------
-    s_mute_tvalid : in  std_logic;
-    s_mute_tready : out std_logic;
-    s_mute_tdata  : in  std_logic_vector (DATA_WIDTH-1 downto 0);
-    s_mute_tlast  : in  std_logic;
+    s_axis_tvalid : in  std_logic;
+    s_axis_tready : out std_logic;
+    s_axis_tdata  : in  std_logic_vector (DATA_WIDTH-1 downto 0);
+    s_axis_tlast  : in  std_logic;
     --------------------------------------------------------------
     -----------------------AXI4Stream_Master-----------------------
-    m_mute_tvalid : out std_logic;
-    m_mute_tready : in  std_logic;
-    m_mute_tdata  : out std_logic_vector(DATA_WIDTH-1 downto 0);
-    m_mute_tlast  : out std_logic
+    m_axis_tvalid : out std_logic;
+    m_axis_tready : in  std_logic;
+    m_axis_tdata  : out std_logic_vector(DATA_WIDTH-1 downto 0);
+    m_axis_tlast  : out std_logic
     ---------------------------------------------------------------
    );
 end mute_v1;
@@ -36,7 +36,6 @@ architecture Behavioral of mute_v1 is
   type state_type is (IDLE, RECEIVE_DATA, SEND_DATA);
   signal state : state_type  := IDLE;
 
-  signal data_in : std_logic_vector(DATA_WIDTH-1 downto 0) := (Others => '0');
   signal data_out : std_logic_vector(DATA_WIDTH-1 downto 0) := (Others => '0');
 
   signal tlast_sampled  : std_logic := '0';
@@ -44,19 +43,19 @@ architecture Behavioral of mute_v1 is
 
 begin
 
-with state select s_mute_tready <=
+with state select s_axis_tready <=
           '1' when RECEIVE_DATA,
           '0' when others;
 
-with state select m_mute_tvalid <=
+with state select m_axis_tvalid <=
           '1' when SEND_DATA,
           '0' when others;
 
-with state select m_mute_tlast <=
+with state select m_axis_tlast <=
            tlast_sampled when SEND_DATA,
            '0' when others;
 
-m_mute_tdata <= data_out;
+m_axis_tdata <= data_out;
 
 FSM : PROCESS(clk,aresetn)
 begin
@@ -76,29 +75,28 @@ begin
 
       when RECEIVE_DATA =>
 
-          if s_mute_tvalid = '1' then
-            data_in <= s_mute_tdata;
+          if s_axis_tvalid = '1' then
 
-            if s_mute_tlast = tlast_expected then
+            if s_axis_tlast = tlast_expected then
               state <= SEND_DATA;
 
               tlast_expected <= not tlast_expected;
-              tlast_sampled <= s_mute_tlast;
+              tlast_sampled <= s_axis_tlast;
 
-              if (tlast_sampled = '0' and mute_left = '1') then
+              if (s_axis_tlast = '0' and mute_left = '1') then
                 data_out <= (Others => '0');
-              elsif (tlast_sampled = '1' and mute_right = '1') then
+              elsif (s_axis_tlast = '1' and mute_right = '1') then
                 data_out <= (Others => '0');
               else
-                data_out <= data_in;
+                data_out <= s_axis_tdata;
               end if;
 
             end if;
           end if;
 
       when SEND_DATA =>
-          if m_mute_tready ='1'  then
-            state <= IDLE;
+          if m_axis_tready ='1'  then
+            state <= RECEIVE_DATA;
           end if;
       end case;
 

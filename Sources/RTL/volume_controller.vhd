@@ -35,7 +35,7 @@ end volume_controller;
 
 architecture Behavioral of volume_controller is
 
-  component volume_led_ctrl is
+  component volume_led_ctrl_v2 is
     Generic(
             VOLUME_BITS    : POSITIVE := 4;
             MIN_VOLUME     : INTEGER  := 0;
@@ -55,7 +55,7 @@ architecture Behavioral of volume_controller is
   end component;
 
 
-  type state_type is (IDLE, RECEIVE_DATA, MULTIPLY,SEND_DATA);
+  type state_type is (IDLE, RECEIVE_DATA, MULTIPLY, CHECK_OF, SEND_DATA);
   signal state : state_type  := IDLE;
 
   signal data_in  : signed (DATA_WIDTH -1 downto 0) := (Others => '0');
@@ -69,10 +69,12 @@ architecture Behavioral of volume_controller is
   signal tlast_sampled  : std_logic := '0';
   signal tlast_expected : std_logic := '0';
 
+  constant allOnes : signed (DATA_WIDTH-1 downto 0) := to_signed(-1,DATA_WIDTH);
+
 begin
 
 
-  vol_led_ctrl: volume_led_ctrl
+  vol_led_ctrl: volume_led_ctrl_v2
   Generic Map(
               VOLUME_BITS    => VOLUME_BITS,
               MIN_VOLUME     => MIN_VOLUME,
@@ -108,6 +110,8 @@ begin
 
   FSM : PROCESS(aclk,aresetn)
   -- variable data_out_temp : signed (data_in'length + diff'length-1 downto 0) := (Others => '0');
+  variable bitmask          : signed (DATA_WIDTH -1 downto 0) := (Others =>'0');
+  variable bitmask_and          : signed (DATA_WIDTH -1 downto 0) := (Others =>'0');
   variable diff_var         : signed (VOLUME_BITS downto 0) := (Others => '0');
   variable data_out_temp    : signed (data_out'length-1 downto 0) := (Others => '0');
   begin
@@ -150,23 +154,43 @@ begin
         when MULTIPLY =>
 
             if diff > 0 then
-              --data_out_temp := shift_left(data_in,to_integer(diff));
-
-              if data_in(data_in'high) = '0' and  data_in(data_in'high downto data_in'high - to_integer(diff)) /= 0 then --we have to check if the multiplication is correct
-                data_out <= data_in(data_in'high) & (data_out'left-1 downto 0 =>not data_in(data_in'high));
-              elsif data_in(data_in'high) = '1' and data_in (data_in'high downto data_in'high - to_integer(diff)) /= -1 then
-                data_out <= data_in(data_in'high) & (data_out'left-1 downto 0 =>not data_in(data_in'high));
-              else
-                data_out <= shift_left(data_in,to_integer(diff));
-              end if;
-
-            elsif diff < 0 then
-              data_out <= shift_right (data_in, abs(to_integer(diff)));           --the division has no problem related to change of sign
+              data_out <= shift_left(data_in,to_integer(diff));
+              state <= CHECK_OF;
+            else
+              data_out <= shift_right (data_in, abs(to_integer(diff))); --the division has no problem related to change of sign
+              state<=SEND_DATA;
             end if;
 
-            state<=SEND_DATA;
+            bitmask := (Others => '0');
+            bitmask(bitmask'high downto bitmask'high-to_integer(diff)) := (Others => '1');
 
+            --bitmask_and := data_in(data_in'high downto data_in'high - to_integer(diff)) AND bitmask(bitmask'high downto bitmask'high-to_integer(diff));
+              bitmask_and := data_in AND bitmask;
+        when CHECK_OF =>
 
+        -- if data_in(data_in'high) = '0' and  data_in(data_in'high downto data_in'high - to_integer(diff)) /= 0 then --we have to check if the multiplication is correct
+        --   data_out <= '0' & (data_out'high-1 downto 0 =>'1');
+        -- elsif data_in(data_in'high) = '1' and data_in (data_in'high downto data_in'high - to_integer(diff)) /= allOnes(data_in'high downto data_in'high - to_integer(diff)) then
+        --   data_out <= '1' & (data_out'high-1 downto 0 =>'0');
+        -- end if;
+
+        if data_in(data_in'high) = '0' then
+
+          --if (data_in AND bitmask) /= 0 then
+          if (bitmask_and) /= 0 then
+            data_out <= '0' & (data_out'high-1 downto 0 =>'1');
+          end if;
+
+        else
+
+          --if (data_in AND bitmask) /= bitmask then
+          if (bitmask_and) /= bitmask then
+            data_out <= '1' & (data_out'high-1 downto 0 =>'0');
+          end if;
+
+        end if;
+
+        state <= SEND_DATA;
 
         when SEND_DATA =>
             if m_axis_tready ='1'  then
