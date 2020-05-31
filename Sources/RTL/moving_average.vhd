@@ -3,34 +3,34 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity moving_average is
-Generic(
-  MEAN_AV_WIDTH2 : positive := 5;
-  DATA_WIDTH : positive := 16
-);
-Port (
-  --------------------------Clk/Reset-----------------------
-  clk   : in std_logic;
-  aresetn : in std_logic;
-  ----------------------------------------------------------
-
-  --------------------------switches------------------------
-  sw_in :  in std_logic;
-  ----------------------------------------------------------
-
-  ------------------- Slave AXI4Stream Port-----------------
-  s_axis_tvalid	: in std_logic;
-  s_axis_tdata	: in std_logic_vector(DATA_WIDTH-1 downto 0);
-  s_axis_tlast	: in std_logic;
-  s_axis_tready	: out std_logic;
-  ----------------------------------------------------------
-
-  ------------------- Master AXI4Stream Port-----------------
-  m_axis_tvalid	: out std_logic;
-  m_axis_tdata	: out std_logic_vector(DATA_WIDTH-1 downto 0);
-  m_axis_tlast	: out std_logic;
-  m_axis_tready	: in std_logic
-  ----------------------------------------------------------
+  Generic(
+    MEAN_AV_WIDTH2 : positive := 5;
+    DATA_WIDTH : positive := 16
   );
+  Port (
+    --------------------------Clk/Reset-----------------------
+    clk   : in std_logic;
+    aresetn : in std_logic;
+    ----------------------------------------------------------
+
+    --------------------------switches------------------------
+    sw_in :  in std_logic;
+    ----------------------------------------------------------
+
+    ------------------- Slave AXI4Stream Port-----------------
+    s_axis_tvalid	: in std_logic;
+    s_axis_tdata	: in std_logic_vector(DATA_WIDTH-1 downto 0);
+    s_axis_tlast	: in std_logic;
+    s_axis_tready	: out std_logic;
+    ----------------------------------------------------------
+
+    ------------------- Master AXI4Stream Port-----------------
+    m_axis_tvalid	: out std_logic;
+    m_axis_tdata	: out std_logic_vector(DATA_WIDTH-1 downto 0);
+    m_axis_tlast	: out std_logic;
+    m_axis_tready	: in std_logic
+    ----------------------------------------------------------
+    );
 end moving_average;
 
 architecture Behavioral of moving_average is
@@ -80,11 +80,12 @@ begin
 
     if aresetn='0' then
 
-      state<=IDLE;
+      state <= IDLE;
       last_values_sx	<= (others => (others=>'0'));
       last_values_dx	<= (others => (others=>'0'));
       last_sum_sx     <= (others =>'0');
       last_sum_dx     <= (others =>'0');
+      tlast_expected  <= '0';
 
 
     elsif rising_edge(clk) then
@@ -92,7 +93,7 @@ begin
       case state is
 
         when IDLE =>
-            state<=RECEIVE_DATA;
+            state <= RECEIVE_DATA;
 
 
         when RECEIVE_DATA =>
@@ -110,7 +111,7 @@ begin
 
         when SUBTRACTION =>
 
-            state<=AVERAGE;
+            state <= AVERAGE;
 
             if tlast_sampled ='1' then
               last_values_dx <= data_in & last_values_dx(0 to last_values_dx'high-1);
@@ -124,14 +125,14 @@ begin
 
 
         when AVERAGE =>
-          state<=SEND_DATA;
+          state <= SEND_DATA;
 
           if tlast_sampled='1' then
-            sum := last_sum_dx+resize(sub,sum'length);
+            sum := last_sum_dx + resize(sub,sum'length);
             data_out <= STD_LOGIC_VECTOR(sum(sum'HIGH DOWNTO MEAN_AV_WIDTH2));
             last_sum_dx <= sum;
           else
-            sum := last_sum_sx+resize(sub,sum'length);
+            sum := last_sum_sx + resize(sub,sum'length);
             data_out <= STD_LOGIC_VECTOR(sum(sum'HIGH DOWNTO MEAN_AV_WIDTH2));
             last_sum_sx <= sum;
           end if;
@@ -143,7 +144,7 @@ begin
 
         when SEND_DATA =>
             if m_axis_tready ='1'  then
-              state <= IDLE;
+              state <= RECEIVE_DATA;
             end if;
         end case;
 

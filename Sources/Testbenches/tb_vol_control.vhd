@@ -11,13 +11,13 @@ end tb_vol_control;
 
 architecture Behavioral of tb_vol_control is
 
-	constant period         : TIME     :=1 ns;
+  constant period         : TIME     :=1 ns;
   constant DATA_WIDTH     : POSITIVE := 16;
 
   constant VOLUME_BITS    : POSITIVE := 4;
-  constant MIN_VOLUME     : INTEGER  := 0;
-  constant MAX_VOLUME     : POSITIVE := 15;
-  constant DEFAULT_VOLUME : POSITIVE := 7;
+  constant MIN_VOLUME     : INTEGER  := 7;
+  constant MAX_VOLUME     : POSITIVE := 19;
+  constant DEFAULT_VOLUME : POSITIVE := 12;
 	-----------------------------------
 
 

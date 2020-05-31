@@ -28,7 +28,7 @@ architecture Behavioral of divlut is
      begin
 
        for I in 0 to 2**OPERAND_WIDTH-1 loop
-         res (I) := std_logic_vector(to_unsigned(I,res'length)/DIVIDER); -- Compiling LUT results
+         res (I) := std_logic_vector(to_unsigned(I,result'length)/DIVIDER); -- Compiling LUT results
        end loop;
 
        return res; -- The function (as a LUT) returns the result of any division by DIVIDER

@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
---Date        : Sat May 30 23:33:47 2020
+--Date        : Sun May 31 19:00:33 2020
 --Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 --Command     : generate_target bd_try.bd
 --Design      : bd_try
@@ -122,21 +122,6 @@ architecture STRUCTURE of bd_try is
     edge_detected : out STD_LOGIC
   );
   end component bd_try_edge_detector_1_0;
-  component bd_try_moving_average_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    sw_in : in STD_LOGIC;
-    s_axis_tvalid : in STD_LOGIC;
-    s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    s_axis_tlast : in STD_LOGIC;
-    s_axis_tready : out STD_LOGIC;
-    m_axis_tvalid : out STD_LOGIC;
-    m_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_tlast : out STD_LOGIC;
-    m_axis_tready : in STD_LOGIC
-  );
-  end component bd_try_moving_average_0_0;
   component bd_try_mute_v1_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -170,6 +155,21 @@ architecture STRUCTURE of bd_try is
     volume_level : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component bd_try_volume_controller_0_0;
+  component bd_try_moving_average_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    sw_in : in STD_LOGIC;
+    s_axis_tvalid : in STD_LOGIC;
+    s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    s_axis_tlast : in STD_LOGIC;
+    s_axis_tready : out STD_LOGIC;
+    m_axis_tvalid : out STD_LOGIC;
+    m_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_tlast : out STD_LOGIC;
+    m_axis_tready : in STD_LOGIC
+  );
+  end component bd_try_moving_average_0_0;
   signal AXI4Stream_UART_0_M00_AXIS_RX_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal AXI4Stream_UART_0_M00_AXIS_RX_TREADY : STD_LOGIC;
   signal AXI4Stream_UART_0_M00_AXIS_RX_TVALID : STD_LOGIC;

@@ -1,3 +1,12 @@
+-------------------------------------------------------------------------
+-- This is an alternative, more complex version of the moving_average  --
+-- filter. It handles the two channels in parallel, making it possible --
+-- to read data while writing other ones                               --
+--                                                                     --
+--                (Ci siamo sentiti su piazza)                         --
+-------------------------------------------------------------------------
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;

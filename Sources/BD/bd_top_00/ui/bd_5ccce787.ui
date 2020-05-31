@@ -1,55 +1,55 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.540909",
-   "Default View_TopLeft":"-314,0",
+   "Default View_ScaleFactor":"0.595",
+   "Default View_TopLeft":"-151,0",
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS-threadsafe
+   "guistr":"# # String gsaved with Nlview 7.0.21  2019-05-29 bk=1.5064 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port usb_uart -pg 1 -lvl 6 -x 1600 -y 770 -defaultsOSRD
-preplace port sys_clock -pg 1 -lvl 0 -x -10 -y 810 -defaultsOSRD
-preplace port reset -pg 1 -lvl 0 -x -10 -y 560 -defaultsOSRD
-preplace port input_signal_0 -pg 1 -lvl 0 -x -10 -y 280 -defaultsOSRD
-preplace port input_signal_1 -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
-preplace port sw_in_0 -pg 1 -lvl 0 -x -10 -y 460 -defaultsOSRD
-preplace port btnL -pg 1 -lvl 0 -x -10 -y 520 -defaultsOSRD
-preplace port btnR -pg 1 -lvl 0 -x -10 -y 540 -defaultsOSRD
-preplace portBus volume_level_0 -pg 1 -lvl 6 -x 1600 -y 500 -defaultsOSRD
-preplace inst AXI4Stream_UART_0 -pg 1 -lvl 5 -x 1410 -y 760 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 1 -x 170 -y 400 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 170 -y 800 -defaultsOSRD
-preplace inst debouncer_0 -pg 1 -lvl 3 -x 750 -y 260 -defaultsOSRD
-preplace inst debouncer_1 -pg 1 -lvl 3 -x 750 -y 100 -defaultsOSRD
-preplace inst depacketizer_0 -pg 1 -lvl 2 -x 470 -y 380 -defaultsOSRD
-preplace inst edge_detector_0 -pg 1 -lvl 4 -x 1070 -y 240 -defaultsOSRD
-preplace inst edge_detector_1 -pg 1 -lvl 4 -x 1070 -y 80 -defaultsOSRD
-preplace inst moving_average_0 -pg 1 -lvl 3 -x 750 -y 410 -defaultsOSRD
-preplace inst packetizer_0 -pg 1 -lvl 4 -x 1070 -y 700 -defaultsOSRD
-preplace inst mute_v1_0 -pg 1 -lvl 4 -x 1070 -y 450 -defaultsOSRD
-preplace inst volume_controller_0 -pg 1 -lvl 5 -x 1410 -y 490 -defaultsOSRD
-preplace netloc sys_clock_1 1 0 1 NJ 810
-preplace netloc reset_1 1 0 5 10 260 NJ 260 590 20 890 790 1250J
-preplace netloc clk_wiz_0_clk_out1 1 1 4 N 780 NJ 780 NJ 780 1210J
-preplace netloc clk_wiz_0_clk_out2 1 1 4 330 300 600 10 920 550 1230
-preplace netloc util_vector_logic_0_Res 1 1 4 320 270 610 180 880 560 1240
-preplace netloc input_signal_0_1 1 0 3 NJ 280 NJ 280 NJ
-preplace netloc debouncer_0_debounced 1 3 1 N 260
-preplace netloc edge_detector_0_edge_detected 1 4 1 1210 240n
-preplace netloc debouncer_1_debounced 1 3 1 N 100
-preplace netloc edge_detector_1_edge_detected 1 4 1 1220 80n
-preplace netloc input_signal_1_1 1 0 3 NJ 120 NJ 120 NJ
-preplace netloc volume_controller_0_volume_level 1 5 1 NJ 500
-preplace netloc sw_in_0_1 1 0 3 NJ 460 NJ 460 600J
-preplace netloc mute_left_0_1 1 0 4 NJ 520 NJ 520 NJ 520 900J
-preplace netloc mute_right_0_1 1 0 4 20J 510 NJ 510 NJ 510 910J
-preplace netloc volume_controller_0_m_axis 1 3 3 930 590 NJ 590 1570
-preplace netloc mute_v1_0_m_mute 1 4 1 N 450
-preplace netloc AXI4Stream_UART_0_M00_AXIS_RX 1 1 5 340 600 NJ 600 NJ 600 NJ 600 1570
-preplace netloc packetizer_0_m_axis 1 4 1 N 700
-preplace netloc depacketizer_0_m_axis 1 2 1 N 380
-preplace netloc AXI4Stream_UART_0_UART 1 5 1 NJ 770
-preplace netloc moving_average_0_m_axis 1 3 1 N 410
-levelinfo -pg 1 -10 170 470 750 1070 1410 1600
-pagesize -pg 1 -db -bbox -sgen -160 0 1790 880
+preplace port usb_uart -pg 1 -lvl 7 -x 1750 -y 670 -defaultsOSRD
+preplace port sys_clock -pg 1 -lvl 0 -x -10 -y 650 -defaultsOSRD
+preplace port reset -pg 1 -lvl 0 -x -10 -y 480 -defaultsOSRD
+preplace port input_signal_0 -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
+preplace port input_signal_1 -pg 1 -lvl 0 -x -10 -y 340 -defaultsOSRD
+preplace port sw_in_0 -pg 1 -lvl 0 -x -10 -y 780 -defaultsOSRD
+preplace port btnR -pg 1 -lvl 0 -x -10 -y 190 -defaultsOSRD
+preplace port btnL -pg 1 -lvl 0 -x -10 -y 210 -defaultsOSRD
+preplace portBus volume_level_0 -pg 1 -lvl 7 -x 1750 -y 430 -defaultsOSRD
+preplace inst AXI4Stream_UART_0 -pg 1 -lvl 4 -x 1040 -y 660 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 2 -x 370 -y 480 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 110 -y 640 -defaultsOSRD
+preplace inst debouncer_0 -pg 1 -lvl 2 -x 370 -y 100 -defaultsOSRD
+preplace inst debouncer_1 -pg 1 -lvl 2 -x 370 -y 320 -defaultsOSRD
+preplace inst depacketizer_0 -pg 1 -lvl 5 -x 1360 -y 550 -defaultsOSRD
+preplace inst edge_detector_0 -pg 1 -lvl 3 -x 680 -y 80 -defaultsOSRD
+preplace inst edge_detector_1 -pg 1 -lvl 3 -x 680 -y 300 -defaultsOSRD
+preplace inst packetizer_0 -pg 1 -lvl 3 -x 680 -y 460 -defaultsOSRD
+preplace inst moving_average_0 -pg 1 -lvl 6 -x 1610 -y 580 -defaultsOSRD
+preplace inst mute_v1_0 -pg 1 -lvl 5 -x 1360 -y 170 -defaultsOSRD
+preplace inst volume_controller_0 -pg 1 -lvl 4 -x 1040 -y 420 -defaultsOSRD
+preplace netloc sys_clock_1 1 0 1 NJ 650
+preplace netloc reset_1 1 0 4 10 480 210 180 540 380 830J
+preplace netloc clk_wiz_0_clk_out1 1 1 3 N 620 NJ 620 NJ
+preplace netloc clk_wiz_0_clk_out2 1 1 5 200 20 520 550 840 520 1230 460 1490J
+preplace netloc util_vector_logic_0_Res 1 2 4 530 560 850 530 1210 470 1480J
+preplace netloc input_signal_0_1 1 0 2 NJ 120 NJ
+preplace netloc debouncer_0_debounced 1 2 1 N 100
+preplace netloc edge_detector_0_edge_detected 1 3 1 870 80n
+preplace netloc debouncer_1_debounced 1 2 1 N 320
+preplace netloc edge_detector_1_edge_detected 1 3 1 860 300n
+preplace netloc input_signal_1_1 1 0 2 NJ 340 NJ
+preplace netloc volume_controller_0_volume_level 1 4 3 NJ 430 NJ 430 NJ
+preplace netloc sw_in_0_1 1 0 6 NJ 780 NJ 780 NJ 780 NJ 780 1230J 660 1480J
+preplace netloc mute_left_0_1 1 0 5 NJ 190 NJ 190 NJ 190 NJ 190 NJ
+preplace netloc mute_right_0_1 1 0 5 NJ 210 NJ 210 NJ 210 NJ 210 NJ
+preplace netloc moving_average_0_m_axis 1 4 3 1240 440 NJ 440 1730
+preplace netloc AXI4Stream_UART_0_UART 1 4 3 NJ 670 NJ 670 NJ
+preplace netloc packetizer_0_m_axis 1 3 1 820 460n
+preplace netloc depacketizer_0_m_axis 1 5 1 N 550
+preplace netloc AXI4Stream_UART_0_M00_AXIS_RX 1 4 1 1220 530n
+preplace netloc mute_v1_0_m_axis 1 3 3 880 270 NJ 270 1490
+preplace netloc volume_controller_0_m_axis 1 2 3 540 540 NJ 540 1200
+levelinfo -pg 1 -10 110 370 680 1040 1360 1610 1750
+pagesize -pg 1 -db -bbox -sgen -160 0 1940 800
 "
 }
 0
