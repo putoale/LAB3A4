@@ -13,7 +13,7 @@
 --                                                                     --
 -- The multiplication is implemented as a shift_left and a             --
 -- subtraction, whilst the division is implemented by means of a LUT   --
---              (Ci siamo sentiti  ariguardo su teams)                 --
+--              (Ci siamo sentiti a riguardo su teams)                 --
 -------------------------------------------------------------------------
 
 library IEEE;

@@ -3,7 +3,7 @@
 -- filter. It handles the two channels in parallel, making it possible --
 -- to read data while writing other ones                               --
 --                                                                     --
---                (Ci siamo sentiti su piazza)                         --
+--              (Ci siamo sentiti a riguardo su teams)                 --
 -------------------------------------------------------------------------
 
 
@@ -12,34 +12,34 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity moving_average_v2 is
-Generic(
-  MEAN_AV_WIDTH2 : positive := 5; -- Filter width is 2**MEAN_AV_WIDTH2
-  DATA_WIDTH : positive := 16
-);
-Port (
-  --------------------------Clk/Reset-----------------------
-  clk   : in std_logic;
-  aresetn : in std_logic;
-  ----------------------------------------------------------
+ Generic(
+          MEAN_AV_WIDTH2 : positive := 5; -- Filter width is 2**MEAN_AV_WIDTH2
+          DATA_WIDTH     : positive := 16
+ );
+ Port (
+        -----------------------Clk/Reset---------------------------
+        clk   : in std_logic;
+        aresetn : in std_logic;
+        ----------------------------------------------------------
 
-  --------------------------switches------------------------
-  sw_in :  in std_logic;
-  ----------------------------------------------------------
+        -----------------------Switches---------------------------
+        sw_in :  in std_logic;
+        ----------------------------------------------------------
 
-  ------------------- Slave AXI4Stream Port-----------------
-  s_axis_tvalid	: in std_logic;
-  s_axis_tdata	: in std_logic_vector(DATA_WIDTH-1 downto 0);
-  s_axis_tlast	: in std_logic;
-  s_axis_tready	: out std_logic;
-  ----------------------------------------------------------
+        ------------------- Slave AXI4Stream Port-----------------
+        s_axis_tvalid	: in std_logic;
+        s_axis_tdata	: in std_logic_vector(DATA_WIDTH-1 downto 0);
+        s_axis_tlast	: in std_logic;
+        s_axis_tready	: out std_logic;
+        ----------------------------------------------------------
 
-  ------------------- Master AXI4Stream Port-----------------
-  m_axis_tvalid	: out std_logic;
-  m_axis_tdata	: out std_logic_vector(DATA_WIDTH-1 downto 0);
-  m_axis_tlast	: out std_logic;
-  m_axis_tready	: in std_logic
-  ----------------------------------------------------------
-  );
+        ------------------- Master AXI4Stream Port-----------------
+        m_axis_tvalid	: out std_logic;
+        m_axis_tdata	: out std_logic_vector(DATA_WIDTH-1 downto 0);
+        m_axis_tlast	: out std_logic;
+        m_axis_tready	: in std_logic
+        ----------------------------------------------------------
+ );
 end moving_average_v2;
 
 architecture Behavioral of moving_average_v2 is
@@ -49,8 +49,8 @@ architecture Behavioral of moving_average_v2 is
   signal state_dx : state_type  := IDLE;
 
   type mem_type is array (0 to 2**MEAN_AV_WIDTH2-1) of std_logic_vector(data_width-1 downto 0);
-  signal last_values_sx				: mem_type :=(others=>(others=>'0'));
-  signal last_values_dx		   	: mem_type :=(others=>(others=>'0'));
+  signal last_values_sx			: mem_type :=(others=>(others=>'0'));
+  signal last_values_dx		  : mem_type :=(others=>(others=>'0'));
 
   signal data_in_sx         : std_logic_vector(DATA_WIDTH-1 downto 0) := (others=> '0');
   signal data_in_dx         : std_logic_vector(DATA_WIDTH-1 downto 0) := (others=> '0');
@@ -69,7 +69,6 @@ architecture Behavioral of moving_average_v2 is
   signal tlast_sampled_dx    : std_logic := '0';
 
   signal read_allowed_sx     : std_logic := '1';  -- if 0, dx is allowed
-
   signal write_allowed_sx    : std_logic := '1';  -- if 0, dx is allowed
 
   signal sub_sx : signed (DATA_WIDTH downto 0) := (Others =>'0');
@@ -95,8 +94,8 @@ begin
             data_out_sx when state_sx = SEND_DATA else
             data_out_dx when state_dx = SEND_DATA;
 
---------------------------------------------------FSM SX--------------------------------------------------
-  FSM_sx : PROCESS(clk,aresetn)
+------------------------------------------------- FSM SX ------------------------------------------------
+ FSM_sx : PROCESS(clk,aresetn)
   variable sum_sx : signed (DATA_WIDTH - 1 + MEAN_AV_WIDTH2 downto 0) := (Others =>'0');
   begin
 
@@ -117,7 +116,7 @@ begin
         when RECEIVE_DATA =>
 
             if s_axis_tvalid = '1' then
-              sw_reg_sx <= sw_in;
+              sw_reg_sx  <= sw_in;
               data_in_sx <= s_axis_tdata;
 
               if s_axis_tlast = '0' then
@@ -129,7 +128,7 @@ begin
 
         when SUBTRACTION =>
 
-            state_sx<=AVERAGE;
+            state_sx <= AVERAGE;
 
             if tlast_sampled_sx ='0' then
               last_values_sx <= data_in_sx & last_values_sx(0 to last_values_sx'high-1);
@@ -138,7 +137,7 @@ begin
 
 
         when AVERAGE =>
-          state_sx <= WAIT_WRITE;
+          state_sx  <= WAIT_WRITE;
 
           if tlast_sampled_sx ='0' then
             sum_sx := last_sum_sx + resize(sub_sx,sum_sx'length);
@@ -165,11 +164,10 @@ begin
       end if;
 
   end process;
----------------------------------------------------END FSM SX-----------------------------------------
+----------------------------------------------- END FSM SX ----------------------------------------------
 
-
------------------------------------------------------FSM DX-------------------------------------------
-  FSM_dx : PROCESS(clk,aresetn)
+------------------------------------------------- FSM DX ---------------------------------------------
+ FSM_dx : PROCESS(clk,aresetn)
   variable sum_dx : signed (DATA_WIDTH-1+MEAN_AV_WIDTH2 downto 0) := (Others =>'0');
   begin
 
@@ -190,7 +188,7 @@ begin
         when RECEIVE_DATA =>
 
             if s_axis_tvalid = '1' then
-              sw_reg_dx <= sw_in;
+              sw_reg_dx  <= sw_in;
               data_in_dx <= s_axis_tdata;
 
               if s_axis_tlast = '1' then
@@ -202,7 +200,7 @@ begin
 
         when SUBTRACTION =>
 
-            state_dx<=AVERAGE;
+            state_dx <= AVERAGE;
 
              if tlast_sampled_dx ='1' then
                last_values_dx <= data_in_dx & last_values_dx(0 to last_values_dx'high-1);
@@ -210,7 +208,7 @@ begin
              end if;
 
         when AVERAGE =>
-          state_dx <= WAIT_WRITE;
+          state_dx  <= WAIT_WRITE;
 
            if tlast_sampled_dx ='1' then
              sum_dx := last_sum_dx + resize(sub_dx,sum_dx'length);
@@ -237,32 +235,28 @@ begin
       end if;
 
   end process;
+----------------------------------------------- END FSM DX -------------------------------------------
 
---------------------------------------------------END FSM DX-----------------------------------------
-
-allowed_control: process(clk,aresetn)
-begin
-  if aresetn = '0' then
-    read_allowed_sx  <= '1';
-    write_allowed_sx <= '1';
-  elsif rising_edge(clk) then
-
-    if (state_sx = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '0') then
-      read_allowed_sx <= '0';
-    elsif (state_dx = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '1') then
-      read_allowed_sx <= '1';
-    end if;
-
-    if (state_sx = SEND_DATA and m_axis_tready = '1') then
-      write_allowed_sx <= '0';
-    elsif (state_dx = SEND_DATA and m_axis_tready = '1') then
+ allowed_control: process(clk,aresetn)
+  begin
+    if aresetn = '0' then
+      read_allowed_sx  <= '1';
       write_allowed_sx <= '1';
+    elsif rising_edge(clk) then
+
+      if (state_sx = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '0') then
+        read_allowed_sx <= '0';
+      elsif (state_dx = RECEIVE_DATA and s_axis_tvalid = '1' and s_axis_tlast = '1') then
+        read_allowed_sx <= '1';
+      end if;
+
+      if (state_sx = SEND_DATA and m_axis_tready = '1') then
+        write_allowed_sx <= '0';
+      elsif (state_dx = SEND_DATA and m_axis_tready = '1') then
+        write_allowed_sx <= '1';
+      end if;
+
     end if;
-
-  end if;
-
-
-
-end process;
+  end process;
 
 end Behavioral;

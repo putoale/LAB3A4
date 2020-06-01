@@ -105,7 +105,7 @@ architecture Behavioral of volume_controller is
                 led_out   => volume_level
      );
 
-    with state select s_axis_tready	<=
+    with state select s_axis_tready	 <=
       '1' when RECEIVE_DATA, -- RECEIVE_DATA is the only state in which the module can receive
       '0' when others;       -- Every other state doesn't need data input
 
@@ -113,7 +113,7 @@ architecture Behavioral of volume_controller is
       '1' when SEND_DATA,   -- SEND_DATA is the only state in which the module has all the data ready and available
       '0' when others;      -- Every other state doesn't have valid data to send
 
-    with state select m_axis_tlast <=
+    with state select m_axis_tlast   <=
       tlast_sampled when SEND_DATA, -- When the data is sent it means a Tlast has been correctly sampled
       '0' when others;
 
@@ -132,11 +132,13 @@ architecture Behavioral of volume_controller is
       elsif rising_edge(aclk) then -- Working Condition
 
         case state is
-
+        -------------------------------------- IDLE STATE ----------------------------------------------------------------------------
           when IDLE  => -- "Do nothing" state, to start and reset the FSM
                state <= RECEIVE_DATA;
+        ------------------------------------------------------------------------------------------------------------------------------
 
-          when RECEIVE_DATA =>
+        -------------------------------------- RECEIVE DATA --------------------------------------------------------------------------
+          when RECEIVE_DATA => -- Stores the input data managing Tlast
               if s_axis_tvalid = '1' then -- When the AXIslave has valid data to share
                  data_in          <= signed(s_axis_tdata);
 
@@ -156,8 +158,10 @@ architecture Behavioral of volume_controller is
                  end if;
 
               end if;
+        ------------------------------------------------------------------------------------------------------------------------------
 
-          when COMPUTE_SHIFT =>
+        -------------------------------------- COMPUTE SHIFT -------------------------------------------------------------------------
+          when COMPUTE_SHIFT => -- Needed to accurately shift the volume to the current value
               if diff > 0 then -- If the volume has been raised
                  data_out_temp <= shift_left(data_in,to_integer(diff)); -- data_out_temp stores the preliminarly shifted data
                  -- The shift could cause a change of sign if we don't check what happens to the MSB
@@ -173,8 +177,10 @@ architecture Behavioral of volume_controller is
               -- bitmask_overflow is then computed as the logic AND between the bitmask and the data to be shifted
               bitmask_overflow  <=  data_in AND bitmask; -- It can then be used to understand if the multiplication overflows, changing the sign of the input data
               ------------------------------------------------------------------------------
+        ------------------------------------------------------------------------------------------------------------------------------
 
-          when CHECK_OVERFLOW =>
+        -------------------------------------- CHECK OVERFLOW ------------------------------------------------------------------------
+          when CHECK_OVERFLOW => -- Needed if the input data needs to be shifted left (multiplied), this could cause overflow
               if data_in(data_in'high) = '0' then -- when the MSB of the data is 0 (positive)
                 if (bitmask_overflow) /= 0 then   -- If there would be some kind of positive overflow
                    data_out <= saturate_up;       -- data_out "saturates" and becomes the highest POSITIVE number representable
@@ -191,12 +197,14 @@ architecture Behavioral of volume_controller is
               end if;
 
               state <= SEND_DATA;                -- The data is ready to be sent
+        ------------------------------------------------------------------------------------------------------------------------------
 
-          when SEND_DATA =>
+        --------------------------------------- SEND DATA ----------------------------------------------------------------------------
+          when SEND_DATA => -- The data gets sent and outputted until the AXImaster is ready again
               if m_axis_tready ='1'  then -- When the sending is done and the master tready is back to 1
                  state <= RECEIVE_DATA;   -- The FSM can start over
               end if;
-
+        ------------------------------------------------------------------------------------------------------------------------------
         end case;
 
       end if;
