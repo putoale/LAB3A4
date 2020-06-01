@@ -23,10 +23,10 @@ architecture Behavioral of tb_volume_led is
 	-----------------------------------
 
 	--------- Constants For DUT -------
-  constant VOLUME_BITS    : INTEGER:=4;
-  constant MIN_VOLUME     : INTEGER:=2;
-  constant MAX_VOLUME     : INTEGER:=12;
-  constant DEFAULT_VOLUME : INTEGER:=6;
+  constant VOLUME_BITS    : POSITIVE:=4;
+  constant MIN_VOLUME     : NATURAL:=2;
+  constant MAX_VOLUME     : POSITIVE:=12;
+  constant DEFAULT_VOLUME : NATURAL:=6;
 	-----------------------------------
 
 	-----------------------------------------------------------------
@@ -39,9 +39,9 @@ architecture Behavioral of tb_volume_led is
   component volume_led_ctrl_v2 is
     Generic(
             VOLUME_BITS    : POSITIVE := 4;
-            MIN_VOLUME     : INTEGER  := 0;
+            MIN_VOLUME     : NATURAL  := 0;
             MAX_VOLUME     : POSITIVE := 15;
-            DEFAULT_VOLUME : POSITIVE := 7
+            DEFAULT_VOLUME : NATURAL := 7
     );
     Port (
             aclk    : in std_logic;

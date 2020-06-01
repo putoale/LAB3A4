@@ -23,9 +23,9 @@ library IEEE;
 entity volume_led_ctrl_v2 is
   Generic(
             VOLUME_BITS    : POSITIVE := 4;  -- Bits used to represent the volume value
-            MIN_VOLUME     : INTEGER  := 0;  -- Minimum volume possible
+            MIN_VOLUME     : NATURAL  := 0;  -- Minimum volume possible
             MAX_VOLUME     : POSITIVE := 15; -- Maximum volume possible
-            DEFAULT_VOLUME : POSITIVE := 7   -- Starting volume value
+            DEFAULT_VOLUME : NATURAL := 7   -- Starting volume value
   );
   Port (
           -----------------------clk/reset--------------------------

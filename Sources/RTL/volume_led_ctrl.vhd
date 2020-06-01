@@ -6,9 +6,9 @@ use IEEE.NUMERIC_STD.ALL;
 entity volume_led_ctrl is
   Generic(
           VOLUME_BITS    : POSITIVE := 4; --number of bits to write the volume level (as unsigned)
-          MIN_VOLUME     : INTEGER  := 0;
+          MIN_VOLUME     : NATURAL  := 0;
           MAX_VOLUME     : POSITIVE := 15;
-          DEFAULT_VOLUME : POSITIVE := 7
+          DEFAULT_VOLUME : NATURAL := 7
   );
   Port (
           -----------------------Clk/Reset----------------------------

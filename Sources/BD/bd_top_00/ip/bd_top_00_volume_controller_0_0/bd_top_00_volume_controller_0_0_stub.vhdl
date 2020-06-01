@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Sun May 31 21:32:38 2020
+-- Date        : Mon Jun  1 13:33:47 2020
 -- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/bd_top_00/ip/bd_top_00_volume_controller_0_0/bd_top_00_volume_controller_0_0_stub.vhdl
@@ -18,6 +18,7 @@ entity bd_top_00_volume_controller_0_0 is
     aresetn : in STD_LOGIC;
     volume_up : in STD_LOGIC;
     volume_down : in STD_LOGIC;
+    volume_level : out STD_LOGIC_VECTOR ( 15 downto 0 );
     s_axis_tvalid : in STD_LOGIC;
     s_axis_tready : out STD_LOGIC;
     s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -25,8 +26,7 @@ entity bd_top_00_volume_controller_0_0 is
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
     m_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_tlast : out STD_LOGIC;
-    volume_level : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    m_axis_tlast : out STD_LOGIC
   );
 
 end bd_top_00_volume_controller_0_0;
@@ -35,7 +35,7 @@ architecture stub of bd_top_00_volume_controller_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,volume_up,volume_down,s_axis_tvalid,s_axis_tready,s_axis_tdata[15:0],s_axis_tlast,m_axis_tvalid,m_axis_tready,m_axis_tdata[15:0],m_axis_tlast,volume_level[15:0]";
+attribute black_box_pad_pin of stub : architecture is "aclk,aresetn,volume_up,volume_down,volume_level[15:0],s_axis_tvalid,s_axis_tready,s_axis_tdata[15:0],s_axis_tlast,m_axis_tvalid,m_axis_tready,m_axis_tdata[15:0],m_axis_tlast";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "volume_controller,Vivado 2019.2";
 begin

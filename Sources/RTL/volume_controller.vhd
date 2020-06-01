@@ -7,9 +7,9 @@ entity volume_controller is
             DATA_WIDTH     : POSITIVE := 16;
 
             VOLUME_BITS    : POSITIVE := 4;  -- Bits used to represent the volume value
-            MIN_VOLUME     : INTEGER  := 0;  -- Minimum volume possible
+            MIN_VOLUME     : NATURAL  := 0;  -- Minimum volume possible
             MAX_VOLUME     : POSITIVE := 15; -- Maximum volume possible
-            DEFAULT_VOLUME : POSITIVE := 7   -- Starting volume value
+            DEFAULT_VOLUME : NATURAL := 7   -- Starting volume value
   );
   Port (
         --------------------------Clk/Reset--------------------------
@@ -45,9 +45,9 @@ architecture Behavioral of volume_controller is
   component volume_led_ctrl is
     Generic(
             VOLUME_BITS    : POSITIVE := 4;
-            MIN_VOLUME     : INTEGER  := 0;
+            MIN_VOLUME     : NATURAL  := 0;
             MAX_VOLUME     : POSITIVE := 15;
-            DEFAULT_VOLUME : POSITIVE := 7
+            DEFAULT_VOLUME : NATURAL := 7
     );
     Port (
             aclk     : in std_logic;

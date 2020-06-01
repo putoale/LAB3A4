@@ -59,6 +59,7 @@ ENTITY bd_top_00_volume_controller_0_0 IS
     aresetn : IN STD_LOGIC;
     volume_up : IN STD_LOGIC;
     volume_down : IN STD_LOGIC;
+    volume_level : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     s_axis_tvalid : IN STD_LOGIC;
     s_axis_tready : OUT STD_LOGIC;
     s_axis_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -66,8 +67,7 @@ ENTITY bd_top_00_volume_controller_0_0 IS
     m_axis_tvalid : OUT STD_LOGIC;
     m_axis_tready : IN STD_LOGIC;
     m_axis_tdata : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    m_axis_tlast : OUT STD_LOGIC;
-    volume_level : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+    m_axis_tlast : OUT STD_LOGIC
   );
 END bd_top_00_volume_controller_0_0;
 
@@ -87,6 +87,7 @@ ARCHITECTURE bd_top_00_volume_controller_0_0_arch OF bd_top_00_volume_controller
       aresetn : IN STD_LOGIC;
       volume_up : IN STD_LOGIC;
       volume_down : IN STD_LOGIC;
+      volume_level : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       s_axis_tvalid : IN STD_LOGIC;
       s_axis_tready : OUT STD_LOGIC;
       s_axis_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -94,8 +95,7 @@ ARCHITECTURE bd_top_00_volume_controller_0_0_arch OF bd_top_00_volume_controller
       m_axis_tvalid : OUT STD_LOGIC;
       m_axis_tready : IN STD_LOGIC;
       m_axis_tdata : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      m_axis_tlast : OUT STD_LOGIC;
-      volume_level : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+      m_axis_tlast : OUT STD_LOGIC
     );
   END COMPONENT volume_controller;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -130,6 +130,7 @@ BEGIN
       aresetn => aresetn,
       volume_up => volume_up,
       volume_down => volume_down,
+      volume_level => volume_level,
       s_axis_tvalid => s_axis_tvalid,
       s_axis_tready => s_axis_tready,
       s_axis_tdata => s_axis_tdata,
@@ -137,7 +138,6 @@ BEGIN
       m_axis_tvalid => m_axis_tvalid,
       m_axis_tready => m_axis_tready,
       m_axis_tdata => m_axis_tdata,
-      m_axis_tlast => m_axis_tlast,
-      volume_level => volume_level
+      m_axis_tlast => m_axis_tlast
     );
 END bd_top_00_volume_controller_0_0_arch;

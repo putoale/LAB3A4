@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun May 31 21:31:52 2020" VIVADOVERSION="2019.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jun  1 13:32:47 2020" VIVADOVERSION="2019.2">
 
   <SYSTEMINFO ARCH="artix7" BOARD="digilentinc.com:basys3:part0:1.1" DEVICE="7a35t" NAME="bd_top_00" PACKAGE="cpg236" SPEEDGRADE="-1"/>
 
@@ -810,9 +810,9 @@
             <CONNECTION INSTANCE="packetizer_0" PORT="aclk"/>
             <CONNECTION INSTANCE="debouncer_1" PORT="clk"/>
             <CONNECTION INSTANCE="edge_detector_1" PORT="clk"/>
-            <CONNECTION INSTANCE="moving_average_0" PORT="clk"/>
-            <CONNECTION INSTANCE="mute_v1_0" PORT="clk"/>
             <CONNECTION INSTANCE="volume_controller_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="mute_v1_0" PORT="clk"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
@@ -823,7 +823,7 @@
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DEBOUNCE_MS" VALUE="10"/>
-        <PARAMETER NAME="CLOCK_FREQ" VALUE="100000000"/>
+        <PARAMETER NAME="CLOCK_FREQ" VALUE="225000000"/>
         <PARAMETER NAME="Component_Name" VALUE="bd_top_00_debouncer_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -855,7 +855,7 @@
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="DEBOUNCE_MS" VALUE="10"/>
-        <PARAMETER NAME="CLOCK_FREQ" VALUE="100000000"/>
+        <PARAMETER NAME="CLOCK_FREQ" VALUE="225000000"/>
         <PARAMETER NAME="Component_Name" VALUE="bd_top_00_debouncer_1_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -1390,9 +1390,9 @@
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="m00_axis_rx_aresetn"/>
             <CONNECTION INSTANCE="AXI4Stream_UART_0" PORT="s00_axis_tx_aresetn"/>
             <CONNECTION INSTANCE="depacketizer_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="moving_average_0" PORT="aresetn"/>
-            <CONNECTION INSTANCE="mute_v1_0" PORT="aresetn"/>
             <CONNECTION INSTANCE="volume_controller_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="mute_v1_0" PORT="aresetn"/>
+            <CONNECTION INSTANCE="moving_average_0" PORT="aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1428,6 +1428,11 @@
         <PORT DIR="I" NAME="volume_down" SIGIS="undef" SIGNAME="edge_detector_1_edge_detected">
           <CONNECTIONS>
             <CONNECTION INSTANCE="edge_detector_1" PORT="edge_detected"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="volume_level" RIGHT="0" SIGIS="undef" SIGNAME="volume_controller_0_volume_level">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="volume_level_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="s_axis_tvalid" SIGIS="undef" SIGNAME="mute_v1_0_m_axis_tvalid">
@@ -1468,11 +1473,6 @@
         <PORT DIR="O" NAME="m_axis_tlast" SIGIS="undef" SIGNAME="packetizer_0_s_axis_tlast">
           <CONNECTIONS>
             <CONNECTION INSTANCE="packetizer_0" PORT="s_axis_tlast"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="volume_level" RIGHT="0" SIGIS="undef" SIGNAME="volume_controller_0_volume_level">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="volume_level_0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Sun May 31 21:32:38 2020
+-- Date        : Mon Jun  1 13:33:47 2020
 -- Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/bd_top_00/ip/bd_top_00_volume_controller_0_0/bd_top_00_volume_controller_0_0_sim_netlist.vhdl
@@ -4627,6 +4627,7 @@ entity bd_top_00_volume_controller_0_0 is
     aresetn : in STD_LOGIC;
     volume_up : in STD_LOGIC;
     volume_down : in STD_LOGIC;
+    volume_level : out STD_LOGIC_VECTOR ( 15 downto 0 );
     s_axis_tvalid : in STD_LOGIC;
     s_axis_tready : out STD_LOGIC;
     s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -4634,8 +4635,7 @@ entity bd_top_00_volume_controller_0_0 is
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
     m_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_tlast : out STD_LOGIC;
-    volume_level : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    m_axis_tlast : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of bd_top_00_volume_controller_0_0 : entity is true;

@@ -15,9 +15,9 @@ architecture Behavioral of tb_vol_control is
   constant DATA_WIDTH     : POSITIVE := 16;
 
   constant VOLUME_BITS    : POSITIVE := 4;
-  constant MIN_VOLUME     : INTEGER  := 7;
+  constant MIN_VOLUME     : NATURAL  := 7;
   constant MAX_VOLUME     : POSITIVE := 19;
-  constant DEFAULT_VOLUME : POSITIVE := 12;
+  constant DEFAULT_VOLUME : NATURAL := 12;
 	-----------------------------------
 
 
@@ -27,9 +27,9 @@ architecture Behavioral of tb_vol_control is
           DATA_WIDTH     : POSITIVE := 16;
 
           VOLUME_BITS    : POSITIVE := 4;
-          MIN_VOLUME     : INTEGER  := 0;
+          MIN_VOLUME     : NATURAL  := 0;
           MAX_VOLUME     : POSITIVE := 15;
-          DEFAULT_VOLUME : POSITIVE := 7
+          DEFAULT_VOLUME : NATURAL := 7
     );
     Port (
           aclk    : in std_logic;
@@ -75,26 +75,15 @@ architecture Behavioral of tb_vol_control is
 
   type signal_input is array (0 to 8) of std_logic_vector(DATA_WIDTH-1 downto 0);
 
-  -- signal inputs : signal_input:=(std_logic_vector(to_signed(10,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(-10,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(120,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(-120,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(40,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(80,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(40,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(30,DATA_WIDTH)),
-	-- std_logic_vector(to_signed(-84,DATA_WIDTH)));
-
-	signal inputs : signal_input:=(std_logic_vector(to_signed(10,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)),
-	std_logic_vector(to_signed(-10487,DATA_WIDTH)));
-
+  signal inputs : signal_input:=(std_logic_vector(to_signed(10,DATA_WIDTH)),
+	std_logic_vector(to_signed(-10,DATA_WIDTH)),
+	std_logic_vector(to_signed(120,DATA_WIDTH)),
+	std_logic_vector(to_signed(-120,DATA_WIDTH)),
+	std_logic_vector(to_signed(40,DATA_WIDTH)),
+	std_logic_vector(to_signed(80,DATA_WIDTH)),
+	std_logic_vector(to_signed(40,DATA_WIDTH)),
+	std_logic_vector(to_signed(30,DATA_WIDTH)),
+	std_logic_vector(to_signed(-84,DATA_WIDTH)));
 
 begin
 
@@ -103,10 +92,10 @@ begin
 		generic map(
       DATA_WIDTH     =>DATA_WIDTH,
 
-      VOLUME_BITS    =>VOLUME_BITS,
-      MIN_VOLUME     =>MIN_VOLUME,
-      MAX_VOLUME     =>MAX_VOLUME,
-      DEFAULT_VOLUME =>DEFAULT_VOLUME
+      VOLUME_BITS    => VOLUME_BITS,
+      MIN_VOLUME     => MIN_VOLUME,
+      MAX_VOLUME     => MAX_VOLUME,
+      DEFAULT_VOLUME => DEFAULT_VOLUME
 		)
 		port map (
      aclk      =>aclk,

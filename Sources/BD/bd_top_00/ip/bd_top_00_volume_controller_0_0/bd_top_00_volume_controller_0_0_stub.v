@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Sun May 31 21:32:38 2020
+// Date        : Mon Jun  1 13:33:47 2020
 // Host        : DESKTOP-O39JAIK running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               C:/Vivado_DESD_Project/Project/Personal/Lab3_A4/LAB3A4/Sources/BD/bd_top_00/ip/bd_top_00_volume_controller_0_0/bd_top_00_volume_controller_0_0_stub.v
@@ -15,13 +15,14 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "volume_controller,Vivado 2019.2" *)
 module bd_top_00_volume_controller_0_0(aclk, aresetn, volume_up, volume_down, 
-  s_axis_tvalid, s_axis_tready, s_axis_tdata, s_axis_tlast, m_axis_tvalid, m_axis_tready, 
-  m_axis_tdata, m_axis_tlast, volume_level)
-/* synthesis syn_black_box black_box_pad_pin="aclk,aresetn,volume_up,volume_down,s_axis_tvalid,s_axis_tready,s_axis_tdata[15:0],s_axis_tlast,m_axis_tvalid,m_axis_tready,m_axis_tdata[15:0],m_axis_tlast,volume_level[15:0]" */;
+  volume_level, s_axis_tvalid, s_axis_tready, s_axis_tdata, s_axis_tlast, m_axis_tvalid, 
+  m_axis_tready, m_axis_tdata, m_axis_tlast)
+/* synthesis syn_black_box black_box_pad_pin="aclk,aresetn,volume_up,volume_down,volume_level[15:0],s_axis_tvalid,s_axis_tready,s_axis_tdata[15:0],s_axis_tlast,m_axis_tvalid,m_axis_tready,m_axis_tdata[15:0],m_axis_tlast" */;
   input aclk;
   input aresetn;
   input volume_up;
   input volume_down;
+  output [15:0]volume_level;
   input s_axis_tvalid;
   output s_axis_tready;
   input [15:0]s_axis_tdata;
@@ -30,5 +31,4 @@ module bd_top_00_volume_controller_0_0(aclk, aresetn, volume_up, volume_down,
   input m_axis_tready;
   output [15:0]m_axis_tdata;
   output m_axis_tlast;
-  output [15:0]volume_level;
 endmodule
