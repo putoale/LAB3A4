@@ -104,6 +104,9 @@ architecture Behavioral of volume_controller is
                 volume    => volume,
                 led_out   => volume_level
      );
+     --------------------------------------------------------------------
+     --                       AXIStream signals handle                 --
+     --------------------------------------------------------------------
 
     with state select s_axis_tready	 <=
       '1' when RECEIVE_DATA, -- RECEIVE_DATA is the only state in which the module can receive
@@ -118,6 +121,11 @@ architecture Behavioral of volume_controller is
       '0' when others;
 
     m_axis_tdata <= std_logic_vector(data_out); -- data out is put directly in the AXImaster Tdata
+    --------------------------------------------------------------------
+    --                   END AXIStream signals handle                 --
+    --------------------------------------------------------------------
+
+
     volume_sign  <= signed('0' & volume);       -- volume is converted into a positive signed value
 
     FSM : PROCESS(aclk,aresetn)
@@ -127,7 +135,7 @@ architecture Behavioral of volume_controller is
 
       if aresetn = '0' then    -- Reset condition
         state <= IDLE;         -- Restart the FSM
-        tlast_expected <= '0'; -- Stop expecting a Tlast
+        tlast_expected <= '0'; -- signal storing the expected tlast
 
       elsif rising_edge(aclk) then -- Working Condition
 
@@ -139,7 +147,7 @@ architecture Behavioral of volume_controller is
 
         -------------------------------------- RECEIVE DATA --------------------------------------------------------------------------
           when RECEIVE_DATA => -- Stores the input data managing Tlast
-              if s_axis_tvalid = '1' then -- When the AXIslave has valid data to share
+              if s_axis_tvalid = '1' then -- When the AXIStream slave has valid data to share
                  data_in          <= signed(s_axis_tdata);
 
                  if s_axis_tlast  = tlast_expected then
@@ -181,14 +189,14 @@ architecture Behavioral of volume_controller is
 
         -------------------------------------- CHECK OVERFLOW ------------------------------------------------------------------------
           when CHECK_OVERFLOW => -- Needed if the input data needs to be shifted left (multiplied), this could cause overflow
-              if data_in(data_in'high) = '0' then -- when the MSB of the data is 0 (positive)
+              if data_in(data_in'high) = '0' then -- when the MSB of the data_in is 0 (positive)
                 if (bitmask_overflow) /= 0 then   -- If there would be some kind of positive overflow
                    data_out <= saturate_up;       -- data_out "saturates" and becomes the highest POSITIVE number representable
                 else
                    data_out <= data_out_temp;     -- Otherwise there's no change to make
                 end if;
 
-              else                               -- when the MSB of the data is 1 (negative)
+              else                               -- when the MSB of the data_in is 1 (negative)
                 if (bitmask_overflow) /= bitmask then -- If there would be some kind of negative underflow
                    data_out <= saturate_down;    -- data_out "saturates" and becomes the highest (in module) NEGATIVE number representable
                 else
@@ -200,7 +208,7 @@ architecture Behavioral of volume_controller is
         ------------------------------------------------------------------------------------------------------------------------------
 
         --------------------------------------- SEND DATA ----------------------------------------------------------------------------
-          when SEND_DATA => -- The data gets sent and outputted until the AXImaster is ready again
+          when SEND_DATA => -- The data gets sent and outputted until the AXIStream master port is ready again
               if m_axis_tready ='1'  then -- When the sending is done and the master tready is back to 1
                  state <= RECEIVE_DATA;   -- The FSM can start over
               end if;
